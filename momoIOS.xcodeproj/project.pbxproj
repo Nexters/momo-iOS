@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E83238E92984FDDA00DC83C2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E83238E82984FDDA00DC83C2 /* RxSwift */; };
+		E83238EC2984FE0800DC83C2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EB2984FE0800DC83C2 /* Toast */; };
+		E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EE2984FE3200DC83C2 /* Alamofire */; };
 		E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */; };
 		E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */; };
 		E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F42984FC23003D1AD0 /* ViewController.swift */; };
 		E8D5C3F82984FC23003D1AD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D5C3F62984FC23003D1AD0 /* Main.storyboard */; };
 		E8D5C3FA2984FC25003D1AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D5C3F92984FC25003D1AD0 /* Assets.xcassets */; };
 		E8D5C3FD2984FC25003D1AD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D5C3FB2984FC25003D1AD0 /* LaunchScreen.storyboard */; };
+		E8D5C4072984FD73003D1AD0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E8D5C4062984FD73003D1AD0 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E83238EC2984FE0800DC83C2 /* Toast in Frameworks */,
+				E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */,
+				E83238E92984FDDA00DC83C2 /* RxSwift in Frameworks */,
+				E8D5C4072984FD73003D1AD0 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,12 +85,19 @@
 				E8D5C3E92984FC23003D1AD0 /* Sources */,
 				E8D5C3EA2984FC23003D1AD0 /* Frameworks */,
 				E8D5C3EB2984FC23003D1AD0 /* Resources */,
+				E8D5C4042984FCCA003D1AD0 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = momoIOS;
+			packageProductDependencies = (
+				E8D5C4062984FD73003D1AD0 /* SnapKit */,
+				E83238E82984FDDA00DC83C2 /* RxSwift */,
+				E83238EB2984FE0800DC83C2 /* Toast */,
+				E83238EE2984FE3200DC83C2 /* Alamofire */,
+			);
 			productName = momoIOS;
 			productReference = E8D5C3ED2984FC23003D1AD0 /* momoIOS.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +126,12 @@
 				Base,
 			);
 			mainGroup = E8D5C3E42984FC23003D1AD0;
+			packageReferences = (
+				E8D5C4052984FD73003D1AD0 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E83238E72984FDDA00DC83C2 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E83238EA2984FE0800DC83C2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				E83238ED2984FE3200DC83C2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = E8D5C3EE2984FC23003D1AD0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,6 +153,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E8D5C4042984FCCA003D1AD0 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E8D5C3E92984FC23003D1AD0 /* Sources */ = {
@@ -356,6 +398,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E83238E72984FDDA00DC83C2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		E83238EA2984FE0800DC83C2 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E83238ED2984FE3200DC83C2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E8D5C4052984FD73003D1AD0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E83238E82984FDDA00DC83C2 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E83238E72984FDDA00DC83C2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		E83238EB2984FE0800DC83C2 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E83238EA2984FE0800DC83C2 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		E83238EE2984FE3200DC83C2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E83238ED2984FE3200DC83C2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E8D5C4062984FD73003D1AD0 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8D5C4052984FD73003D1AD0 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E8D5C3E52984FC23003D1AD0 /* Project object */;
 }
