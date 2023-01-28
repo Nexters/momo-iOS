@@ -10,6 +10,7 @@
 		E83238E92984FDDA00DC83C2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E83238E82984FDDA00DC83C2 /* RxSwift */; };
 		E83238EC2984FE0800DC83C2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EB2984FE0800DC83C2 /* Toast */; };
 		E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EE2984FE3200DC83C2 /* Alamofire */; };
+		E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83238F0298506A000DC83C2 /* MainViewController.swift */; };
 		E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */; };
 		E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */; };
 		E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F42984FC23003D1AD0 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E83238F0298506A000DC83C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8D5C3ED2984FC23003D1AD0 /* momoIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momoIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
 				E8D5C3F42984FC23003D1AD0 /* ViewController.swift */,
+				E83238F0298506A000DC83C2 /* MainViewController.swift */,
 				E8D5C3F62984FC23003D1AD0 /* Main.storyboard */,
 				E8D5C3F92984FC25003D1AD0 /* Assets.xcassets */,
 				E8D5C3FB2984FC25003D1AD0 /* LaunchScreen.storyboard */,
@@ -183,6 +186,7 @@
 				E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */,
 				E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */,
 				E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */,
+				E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
