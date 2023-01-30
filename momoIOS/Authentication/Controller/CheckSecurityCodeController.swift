@@ -29,7 +29,7 @@ class CheckSecurityCodeController: UIViewController {
         border.backgroundColor = .black
         return border
     }()
-    
+
     private let completeButton: UIButton = {
         return actionButton(title: "가입완료!")
     }()
@@ -39,6 +39,7 @@ class CheckSecurityCodeController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
+        codeField.becomeFirstResponder()
     }
     
     // MARK: - Helpers
@@ -51,7 +52,7 @@ class CheckSecurityCodeController: UIViewController {
         
         view.addSubview(codeField)
         codeField.snp.makeConstraints { make in
-            make.top.equalTo(guidePhrase.snp.bottom).offset(130)
+            make.top.equalTo(guidePhrase.snp.bottom).offset(100)
             make.left.right.equalToSuperview().inset(20)
         }
         

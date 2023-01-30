@@ -42,6 +42,10 @@ class RegistrationController: UIViewController {
         pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
+    
     // MARK: - Selectors
     
     @objc func handleRegistration() {
