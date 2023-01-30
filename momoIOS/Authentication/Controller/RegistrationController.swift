@@ -31,19 +31,23 @@ class RegistrationController: UIViewController {
         return pushAnotherViewButton(subtitle: "이미 가입했다면?", title: "로그인하기")
     }()
     
-
-    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
+        registrationButton.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         pushLoginViewButton.addTarget(self, action: #selector(handlePushLoginView), for: .touchUpInside)
         pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     // MARK: - Selectors
+    
+    @objc func handleRegistration() {
+        let controller = CheckSecurityCodeController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     @objc func handlePushLoginView() {
     }
