@@ -17,6 +17,7 @@
 		E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8207931298A163400B36FC9 /* UIView+Extension.swift */; };
 		E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */; };
 		E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */; };
+		BF0408632987B3AA00F1129B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0408622987B3AA00F1129B /* LoginController.swift */; };
 		E83238E92984FDDA00DC83C2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E83238E82984FDDA00DC83C2 /* RxSwift */; };
 		E83238EC2984FE0800DC83C2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EB2984FE0800DC83C2 /* Toast */; };
 		E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EE2984FE3200DC83C2 /* Alamofire */; };
@@ -39,6 +40,7 @@
 		E8207931298A163400B36FC9 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionInfoCell.swift; sourceTree = "<group>"; };
 		E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionNoInfoCell.swift; sourceTree = "<group>"; };
+		BF0408622987B3AA00F1129B /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E83238F0298506A000DC83C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8D5C3ED2984FC23003D1AD0 /* momoIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momoIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,20 @@
 				E8207931298A163400B36FC9 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+		BF0408602987B3AA00F1129B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BF0408612987B3AA00F1129B /* Controller */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		BF0408612987B3AA00F1129B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF0408622987B3AA00F1129B /* LoginController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E8D5C3E42984FC23003D1AD0 = {
@@ -104,6 +120,7 @@
 		E8D5C3EF2984FC23003D1AD0 /* momoIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BF0408602987B3AA00F1129B /* Authentication */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
 				E8D5C3F42984FC23003D1AD0 /* ViewController.swift */,
@@ -235,6 +252,7 @@
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
+				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
