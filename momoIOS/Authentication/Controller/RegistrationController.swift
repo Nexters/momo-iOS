@@ -1,5 +1,5 @@
 //
-//  LoginController.swift
+//  RegistrationController.swift
 //  momoIOS
 //
 //  Created by 문다 on 2023/01/30.
@@ -8,16 +8,8 @@
 import UIKit
 import SnapKit
 
-class LoginController: UIViewController {
+class RegistrationController: UIViewController {
     // MARK: - Properties
-    
-    private let welcomeTitle: UILabel = {
-        let title = UILabel()
-        title.text = "간단한 출석체크,\n모두모여에서"
-        title.font = UIFont.systemFont(ofSize: 40, weight: .regular)
-        title.numberOfLines = 0
-        return title
-    }()
     
     private lazy var emailTextField: UITextField = {
         return inputContainerView(placeholder: "이메일을 입력해주세요")
@@ -27,13 +19,19 @@ class LoginController: UIViewController {
         return inputContainerView(placeholder: "비밀번호를 입력해주세요")
     }()
     
-    private let loginButton: UIButton = {
-        return actionButton(title: "로그인")
+    private lazy var checkPasswordTextField: UITextField = {
+        return inputContainerView(placeholder: "비밀번호를 재입력해주세요")
     }()
     
-    private let pushRegistrationViewButton: UIButton = {
-        return pushAnotherViewButton(subtitle: "회원가입이 필요하다면?", title: "가입하기")
+    private let registrationButton: UIButton = {
+        return actionButton(title: "가입하기")
     }()
+    
+    private let pushLoginViewButton: UIButton = {
+        return pushAnotherViewButton(subtitle: "이미 가입했다면?", title: "로그인하기")
+    }()
+    
+
     
     // MARK: - Lifecycles
     
@@ -41,13 +39,13 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureUI()
-        pushRegistrationViewButton.addTarget(self, action: #selector(handlePushRegistrationView), for: .touchUpInside)
+        pushLoginViewButton.addTarget(self, action: #selector(handlePushLoginView), for: .touchUpInside)
         pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     // MARK: - Selectors
     
-    @objc func handlePushRegistrationView() {
+    @objc func handlePushLoginView() {
     }
     
     @objc func handlePushHelpLogin() {
@@ -62,7 +60,7 @@ class LoginController: UIViewController {
             make.left.equalTo(view).offset(20)
         }
         
-        let fieldStack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+        let fieldStack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, checkPasswordTextField, registrationButton])
         fieldStack.axis = .vertical
         fieldStack.spacing = 15
         view.addSubview(fieldStack)
@@ -71,7 +69,7 @@ class LoginController: UIViewController {
             make.left.right.equalToSuperview().inset(20)
         }
         
-        let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLogin])
+        let helpStack = UIStackView(arrangedSubviews: [pushLoginViewButton, pushHelpLogin])
         helpStack.axis = .vertical
         helpStack.spacing = 30
         view.addSubview(helpStack)
