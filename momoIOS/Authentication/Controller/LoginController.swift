@@ -66,8 +66,10 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         configureUI()
+        pushRegistrationViewButton.addTarget(self, action: #selector(handlePushRegistrationView), for: .touchUpInside)
+        pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     // MARK: - Selectors
@@ -81,44 +83,29 @@ class LoginController: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
         view.addSubview(welcomeTitle)
-        
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.left.equalTo(view).offset(20)
         }
         
-        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
-        stack.axis = .vertical
-        stack.spacing = 15
-        view.addSubview(stack)
-        stack.snp.makeConstraints { make in
+        let fieldStack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+        fieldStack.axis = .vertical
+        fieldStack.spacing = 15
+        view.addSubview(fieldStack)
+        fieldStack.snp.makeConstraints { make in
             make.top.equalTo(welcomeTitle.snp.bottom).offset(50)
-            make.left.equalTo(view).offset(20)
-            make.right.equalTo(view).offset(-20)
+            make.left.right.equalToSuperview().inset(20)
         }
         
-        view.addSubview(loginButton)
-        loginButton.snp.makeConstraints { make in
-            make.top.equalTo(stack.snp.bottom).offset(20)
-            make.left.equalTo(view).offset(20)
-            make.right.equalTo(view).offset(-20)
+        let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLogin])
+        helpStack.axis = .vertical
+        helpStack.spacing = 30
+        view.addSubview(helpStack)
+        helpStack.snp.makeConstraints { make in
+            make.top.equalTo(fieldStack.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(20)
         }
-        
-        view.addSubview(pushRegistrationViewButton)
-        pushRegistrationViewButton.snp.makeConstraints { make in
-            make.top.equalTo(loginButton.snp.bottom).offset(20)
-            make.left.right.equalToSuperview()
-        }
-        pushRegistrationViewButton.addTarget(self, action: #selector(handlePushRegistrationView), for: .touchUpInside)
-
-        view.addSubview(pushHelpLogin)
-        pushHelpLogin.snp.makeConstraints { make in
-            make.top.equalTo(pushRegistrationViewButton.snp.bottom).offset(30)
-            make.left.right.equalToSuperview()
-        }
-        pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
 }
 
@@ -126,12 +113,12 @@ class LoginController: UIViewController {
 
 extension LoginController {
     func inputContainerView(placeholder: String) -> UITextField {
-        let tf = UITextField()
-        tf.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        tf.placeholder = placeholder
-        tf.borderStyle = .roundedRect
-        tf.font = UIFont.systemFont(ofSize: 16)
-        tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        return tf
+        let textfield = UITextField()
+        textfield.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        textfield.placeholder = placeholder
+        textfield.borderStyle = .roundedRect
+        textfield.font = UIFont.systemFont(ofSize: 16)
+        textfield.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        return textfield
     }
 }
