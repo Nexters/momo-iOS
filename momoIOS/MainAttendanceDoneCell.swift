@@ -38,7 +38,9 @@ class MainAttendanceDoneCell: UITableViewCell {
         self.contentView.layer.cornerRadius = 12
 
         self.setupIconImageView()
-        self.setupLabels()
+        self.setupTitleLabel()
+        self.setupTimeStatusViews()
+        self.setupScoreLabel()
         self.setupHistoryButton()
     }
     
@@ -49,12 +51,14 @@ class MainAttendanceDoneCell: UITableViewCell {
         self.contentView.addSubview(self.iconImageView)
     }
     
-    private func setupLabels() {
+    private func setupTitleLabel() {
         self.titleLabel.text = "출석이 완료되었습니다"
         self.titleLabel.font = .systemFont(ofSize: 17, weight: .medium)
         self.titleLabel.textColor = .white
         self.contentView.addSubview(self.titleLabel)
-        
+    }
+    
+    private func setupTimeStatusViews() {
         self.timeLabel.text = "2023.01.07 pm 1:30"
         self.timeLabel.font = .systemFont(ofSize: 13, weight: .medium)
         self.timeLabel.textColor = .white
@@ -66,8 +70,9 @@ class MainAttendanceDoneCell: UITableViewCell {
         self.timeStatusContainerView.addSubview(self.statusLabel)
         
         self.contentView.addSubview(self.timeStatusContainerView)
-        
-        // 감점 여부에 따라 hidden 처리 필요
+    }
+    
+    private func setupScoreLabel() {
         self.scoreLabel.text = "(-5점이 감점되었습니다)"
         self.scoreLabel.font = .systemFont(ofSize: 13, weight: .regular)
         self.scoreLabel.textColor = .white
@@ -76,25 +81,8 @@ class MainAttendanceDoneCell: UITableViewCell {
     
     private func setupHistoryButton() {
         self.historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
-        
-        if #available(iOS 15.0, *) {
-            var configuration = UIButton.Configuration.filled()
-            var attributedTitle = AttributedString("출석 히스토리")
-            attributedTitle.font = .systemFont(ofSize: 12, weight: .medium)
-            attributedTitle.foregroundColor = .white
-            configuration.attributedTitle = attributedTitle
-            configuration.background.backgroundColor = .white.withAlphaComponent(0.14)
-            configuration.background.cornerRadius = 6
-            configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-            self.historyButton.configuration = configuration
-        } else {
-            self.historyButton.setTitle("출석 히스토리", for: .normal)
-            self.historyButton.titleLabel?.font = .systemFont(ofSize: 12, weight: .medium)
-            self.historyButton.setTitleColor(.white, for: .normal)
-            self.historyButton.backgroundColor = .white.withAlphaComponent(0.14)
-            self.historyButton.layer.cornerRadius = 6
-            self.historyButton.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
-        }
+        self.historyButton.setTitle("출석 히스토리", size: 12, weight: .medium, color: .white)
+        self.historyButton.configurate(bgColor: .white.withAlphaComponent(0.14), cornerRadius: 6, margin: 10)
         self.contentView.addSubview(self.historyButton)        
     }
     
