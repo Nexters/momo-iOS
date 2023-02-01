@@ -14,18 +14,13 @@ extension UIColor {
         return UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
     
-    convenience init(red: Int, green: Int, blue:Int, a:Int = 0xFF){
+    convenience init(red: Int, green: Int, blue:Int, a:CGFloat){
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0,
-                  blue: CGFloat(blue) / 255.0, alpha: CGFloat(a) / 255.0)
+                  blue: CGFloat(blue) / 255.0, alpha: a)
     }
     
-    convenience init(Hex: Int){
+    convenience init(Hex: Int, alpha: CGFloat = 1.0){
         self.init(red: (Hex >> 16) & 0xFF, green: (Hex >> 8) & 0xFF,
-                  blue: Hex & 0xFF)
-    }
-    
-    convenience init(AHex: Int){
-        self.init(red: (AHex >> 16) & 0xFF, green: (AHex >> 8) & 0xFF,
-                  blue: AHex & 0xFF, a: (AHex >> 24) & 0xFF)
+                  blue: Hex & 0xFF, a: alpha)
     }
 }
