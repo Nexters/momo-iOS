@@ -23,4 +23,9 @@ extension UIColor {
         self.init(red: (Hex >> 16) & 0xFF, green: (Hex >> 8) & 0xFF,
                   blue: Hex & 0xFF)
     }
+    
+    convenience init(AHex: Int){
+        self.init(red: (AHex >> 16) & 0xFF, green: (AHex >> 8) & 0xFF,
+                  blue: AHex & 0xFF, a: (AHex >> 24) & 0xFF)
+    }
 }
