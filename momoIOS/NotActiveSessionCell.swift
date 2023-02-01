@@ -4,8 +4,6 @@
 //
 //  Created by JOSUEYEON on 2023/02/01.
 //
-
-import Foundation
 import UIKit
 import SnapKit
 
@@ -51,8 +49,6 @@ import SnapKit
          askBtn.backgroundColor = .black
          askBtn.layer.cornerRadius = 7
          askBtn.setTitle("문의하기", size: 16, weight: .bold, color: .white)
-         
-         
      }
 
      required init?(coder: NSCoder) {
