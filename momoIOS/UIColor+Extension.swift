@@ -13,4 +13,14 @@ extension UIColor {
     static func rgba(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, _ alpha: CGFloat) -> UIColor {
         return UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
+    
+    convenience init(red: Int, green: Int, blue:Int, a:Int = 0xFF){
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0,
+                  blue: CGFloat(blue) / 255.0, alpha: CGFloat(a) / 255.0)
+    }
+    
+    convenience init(Hex: Int){
+        self.init(red: (Hex >> 16) & 0xFF, green: (Hex >> 8) & 0xFF,
+                  blue: Hex & 0xFF)
+    }
 }
