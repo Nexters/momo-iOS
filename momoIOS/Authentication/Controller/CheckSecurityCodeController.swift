@@ -42,6 +42,15 @@ class CheckSecurityCodeController: UIViewController {
         codeField.becomeFirstResponder()
     }
     
+    // MARK: Selectors
+    @objc func handleCompleteRegistration() {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: {
+            // TODO: 확인필요, 보안코드가 일치한 후 어디까지 pop하고 정보입력뷰를 present하는지
+            let nav = InputMemberInfoController()
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        })    }
+    
     // MARK: - Helpers
     func configureUI() {
         view.addSubview(guidePhrase)
@@ -68,5 +77,6 @@ class CheckSecurityCodeController: UIViewController {
             make.top.equalTo(borderView.snp.bottom).offset(40)
             make.left.right.equalToSuperview().inset(20)
         }
+        completeButton.addTarget(self, action: #selector(handleCompleteRegistration), for: .touchUpInside)
     }
 }

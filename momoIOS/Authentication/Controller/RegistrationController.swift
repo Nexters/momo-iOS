@@ -54,6 +54,9 @@ class RegistrationController: UIViewController {
     }
     
     @objc func handlePushLoginView() {
+        let nav = UINavigationController(rootViewController: LoginController())
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     @objc func handlePushHelpLogin() {

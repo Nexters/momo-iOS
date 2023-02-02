@@ -52,6 +52,7 @@ class LoginController: UIViewController {
     // MARK: - Selectors
     
     @objc func handlePushRegistrationView() {
+        self.dismiss(animated: true)
     }
     
     @objc func handlePushHelpLogin() {
