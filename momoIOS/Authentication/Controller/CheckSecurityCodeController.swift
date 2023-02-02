@@ -50,7 +50,7 @@ class CheckSecurityCodeController: UIViewController {
     @objc func handleCompleteRegistration() {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
             // TODO: 확인필요, 보안코드가 일치한 후 어디까지 pop하고 정보입력뷰를 present하는지
-            let nav = InputMemberInfoController()
+            let nav = UINavigationController(rootViewController: InputMemberInfoController())
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
         })    }
