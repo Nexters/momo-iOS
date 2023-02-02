@@ -74,7 +74,9 @@ class PersonalInformationController: UIViewController {
         label.textColor = UIColor.rgba(118, 118, 118, 1)
         return label
     }()
- 
+    
+    private let historyTableView = UITableView()
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -133,9 +135,71 @@ class PersonalInformationController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
-
+    
+    private func setupTableHeader() -> UIView {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 38))
+        header.backgroundColor = UIColor.rgba(250, 250, 250, 1)
+        
+        let label = UILabel(frame: header.frame)
+        label.text = "출석 히스토리"
+        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.textColor = UIColor.rgba(84, 84, 84, 1)
+        label.textAlignment = .left
+        
+        header.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.equalTo(header.snp.left).offset(20)
+            make.centerY.equalTo(header.snp.centerY)
+        }
+        return header
+    }
+    
+    private func setupHistoryTableView() {
+        self.historyTableView.delegate = self
+        self.historyTableView.dataSource = self
+        registerCells()
+        view.addSubview(historyTableView)
+        historyTableView.showsVerticalScrollIndicator = false
+        historyTableView.allowsSelection = false
+        
+        let header = setupTableHeader()
+        historyTableView.tableHeaderView = header
+        
+        historyTableView.separatorStyle = .none
+        historyTableView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(view)
+            make.height.equalTo(320)
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    private func registerCells() {
+        historyTableView.register(AttendanceHistoryCell.self, forCellReuseIdentifier: AttendanceHistoryCell.id)
+    }
+    
     private func setupLayout() {
         setupUserProfileImage()
         setupUserProfileInformation()
+        setupHistoryTableView()
+    }
+}
+
+extension PersonalInformationController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+           return 1
+       }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: AttendanceHistoryCell.id) {
+            return cell
+        } else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = .black
+            return cell
+        }
     }
 }

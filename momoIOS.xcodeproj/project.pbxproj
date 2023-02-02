@@ -11,6 +11,7 @@
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
 		3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713D0298946FF006F922F /* UIColor+Extension.swift */; };
+		BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */; };
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
 		E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */; };
 		E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */; };
@@ -34,6 +35,7 @@
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
 		3AA713D0298946FF006F922F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceHistoryCell.swift; sourceTree = "<group>"; };
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
 		E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionDetailCell.swift; sourceTree = "<group>"; };
 		E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionTimeCell.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */,
+				BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */,
 			);
 			path = PersonalInformation;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
+				BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
