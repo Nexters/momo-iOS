@@ -37,6 +37,9 @@ class CheckSecurityCodeController: UIViewController {
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        codeField.delegate = self
+        
         view.backgroundColor = .white
         configureUI()
         codeField.becomeFirstResponder()
@@ -78,5 +81,18 @@ class CheckSecurityCodeController: UIViewController {
             make.left.right.equalToSuperview().inset(20)
         }
         completeButton.addTarget(self, action: #selector(handleCompleteRegistration), for: .touchUpInside)
+    }
+}
+
+extension CheckSecurityCodeController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let maxLength: Int = 12
+            
+        // 최대 글자수 이상을 입력한 이후에는 중간에 다른 글자를 추가할 수 없게끔 작동
+        if text.count >= maxLength && range.length == 0 && range.location <= maxLength {
+            return false
+        }
+        return true
     }
 }
