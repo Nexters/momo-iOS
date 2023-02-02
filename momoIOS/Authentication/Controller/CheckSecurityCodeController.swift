@@ -41,6 +41,7 @@ class CheckSecurityCodeController: UIViewController {
         codeField.delegate = self
         
         view.backgroundColor = .white
+        setNavCustom()
         configureUI()
         codeField.becomeFirstResponder()
     }
@@ -55,7 +56,20 @@ class CheckSecurityCodeController: UIViewController {
         })    }
     
     // MARK: - Helpers
-    func configureUI() {
+    
+    private func setNavCustom() {
+        let navBar = self.navigationController?.navigationBar
+        navBar?.tintColor = .black
+        navBar?.backIndicatorImage = UIImage(systemName: "arrow.left")
+        navBar?.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left")
+        navBar?.topItem?.title = ""
+        
+        let title = UILabel()
+        title.text = "회원가입"
+        self.navigationItem.titleView = title
+    }
+    
+    private func configureUI() {
         view.addSubview(guidePhrase)
         guidePhrase.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
@@ -89,7 +103,6 @@ extension CheckSecurityCodeController: UITextFieldDelegate {
         guard let text = textField.text else { return false }
         let maxLength: Int = 12
             
-        // 최대 글자수 이상을 입력한 이후에는 중간에 다른 글자를 추가할 수 없게끔 작동
         if text.count >= maxLength && range.length == 0 && range.location <= maxLength {
             return false
         }
