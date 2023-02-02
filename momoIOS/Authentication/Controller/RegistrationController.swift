@@ -23,7 +23,7 @@ class RegistrationController: UIViewController {
     }()
     
     private lazy var passwordTextField: UITextField = {
-        return inputContainerView(placeholder: "비밀번호를 입력해주세요")
+        return inputContainerView(placeholder: "비밀번호를 입력해주세요", isSecureField: true)
     }()
     
     private let validPasswordFormatLabel: UILabel = {
@@ -36,7 +36,7 @@ class RegistrationController: UIViewController {
     }()
     
     private lazy var checkPasswordTextField: UITextField = {
-        return inputContainerView(placeholder: "비밀번호를 재입력해주세요")
+        return inputContainerView(placeholder: "비밀번호를 재입력해주세요", isSecureField: true)
     }()
     
     private let confirmPasswordLabel: UILabel = {

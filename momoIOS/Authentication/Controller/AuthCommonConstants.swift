@@ -20,13 +20,14 @@ let welcomeTitle: UILabel = {
 }()
 
 // MARK: - UITextField
-func inputContainerView(placeholder: String) -> UITextField {
+func inputContainerView(placeholder: String, isSecureField: Bool = false) -> UITextField {
     let textfield = UITextField()
     textfield.heightAnchor.constraint(equalToConstant: 55).isActive = true
     textfield.placeholder = placeholder
     textfield.borderStyle = .roundedRect
     textfield.font = UIFont.systemFont(ofSize: 16)
     textfield.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+    textfield.isSecureTextEntry = isSecureField
     return textfield
 }
 

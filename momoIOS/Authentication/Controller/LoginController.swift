@@ -24,7 +24,7 @@ class LoginController: UIViewController {
     }()
     
     private lazy var passwordTextField: UITextField = {
-        return inputContainerView(placeholder: "비밀번호를 입력해주세요")
+        return inputContainerView(placeholder: "비밀번호를 입력해주세요", isSecureField: true)
     }()
     
     private let loginButton: UIButton = {
