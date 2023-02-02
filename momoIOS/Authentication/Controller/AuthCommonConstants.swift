@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Colors
-let authDefaultButtonColor = UIColor(red: 56/255, green: 56/255, blue: 56/255, alpha: 1)
+let authDefaultButtonColor: UIColor = .rgba(56, 56, 56, 1)
 
 // MARK: - UILabel
 let welcomeTitle: UILabel = {
