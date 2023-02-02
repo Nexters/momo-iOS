@@ -62,6 +62,10 @@ class PersonalInformationController: UIViewController {
         jobLabel.text = userJob.uppercased()
         jobLabel.font = .systemFont(ofSize: 13)
         jobLabelView.addSubview(jobLabel)
+        jobLabel.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(jobLabelView).inset(5)
+            make.horizontalEdges.equalTo(jobLabelView).inset(10)
+        }
         jobLabelView.backgroundColor = UIColor.rgba(243, 243, 243, 1)
         
         return view
