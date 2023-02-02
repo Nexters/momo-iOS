@@ -110,7 +110,7 @@ class AttendanceHistoryCell: UITableViewCell {
     
     private func setupCell() {
         contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.horizontalEdges.equalToSuperview().inset(10)
             make.height.greaterThanOrEqualTo(60)
         }
         let historyDateContainerView = setupHistoryIndexView()
