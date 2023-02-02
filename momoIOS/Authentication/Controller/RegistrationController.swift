@@ -60,6 +60,13 @@ class RegistrationController: UIViewController {
     }
     
     @objc func handlePushHelpLogin() {
+        // TODO: 로그인 가이드 url 변경 필요
+        guard let url = URL(string: "https://www.google.co.kr/") else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:])
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     // MARK: - Helpers
