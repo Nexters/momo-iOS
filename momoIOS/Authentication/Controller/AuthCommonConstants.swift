@@ -65,3 +65,11 @@ let pushHelpLogin: UIButton = {
     button.setAttributedTitle(attributedTitle, for: .normal)
     return button
 }()
+
+// MARK: - Methods
+func setupUIStackView(_ views: [UIView]) -> UIStackView {
+    let container = UIStackView(arrangedSubviews: views)
+    container.axis = .vertical
+    container.spacing = 5
+    return container
+}
