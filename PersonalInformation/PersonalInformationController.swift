@@ -12,10 +12,23 @@ class PersonalInformationController: UIViewController {
     
     // MARK: - Properties
     
+    // 임시 데이터
+    private let data = [0: ("출석", 3, nil),
+                        1: ("지각", 0, nil),
+                        2: ("결석", 0, -30)]
+    // indexPath.row: (title.text, result.text, score?.text)
+    
     private let username = "김넥터"
     private let userJob = "designer"
     private let userYear = 22
     private let email = "nexters@naver.com"
+    
+    private let historyTableView = UITableView()
+    private let resultCollectionContainerView = UIView()
+    private let resultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    
+    private lazy var hintLatePenalty = setupHintPenalty("-5점")
+    private lazy var hintAbsentPenalty = setupHintPenalty("통보 -10 / 무단 -15")
     
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 93, height: 93))
@@ -47,7 +60,6 @@ class PersonalInformationController: UIViewController {
     }()
     
     private lazy var userBasicInfomationView: UIStackView = {
-        
         let usernameLabel = UILabel()
         let jobLabel = UILabel()
         let jobLabelView = UIView()
@@ -79,65 +91,79 @@ class PersonalInformationController: UIViewController {
         return label
     }()
     
-    private let historyTableView = UITableView()
-    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        self.view.backgroundColor = .white
 
-        setupCustomNav()
-        setupLayout()
+        self.setupCustomNav()
+        self.setupLayout()
     }
     
     // MARK: - Selectors
     
+    @objc private func goBackToMainVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Helpers
     
     private func setupCustomNav() {
+        // custom nav
+        let navBar = self.navigationController?.navigationBar
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .rgba(24, 24, 24, 0.16)
+        appearance.backgroundColor = .white
+        navBar?.scrollEdgeAppearance = appearance
+        
         // back button (left)
-        let navBar = navigationController?.navigationBar
-        navBar?.topItem?.title = ""
-        navBar?.backIndicatorImage = UIImage(systemName: "arrow.left")
-        navBar?.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left")
+        self.navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(goBackToMainVC))
         
         // title (center)
         let title = UILabel()
         title.text = "나의 정보"
         title.textColor = .black
+        title.font = .systemFont(ofSize: 15)
         navigationItem.titleView = title
         
         // logout (right)
         let logout = UILabel()
         logout.text = "로그아웃"
         logout.textColor = .gray
+        logout.font = .systemFont(ofSize: 15)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logout)
     }
 
     private func setupUserProfileImage() {
-        view.addSubviews(profileImageView, userActiveStatus)
-        profileImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(36)
-            make.centerX.equalToSuperview()
-        }
-        userActiveStatus.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.centerY).offset(10)
-            make.left.equalTo(profileImageView.snp.centerX).offset(10)
-        }
+        view.addSubviews(profileImageView, userActiveStatus, userBasicInfomationView, userAdditionalInformationView)
     }
     
-    private func setupUserProfileInformation() {
-        view.addSubviews(userBasicInfomationView, userAdditionalInformationView)
-        userBasicInfomationView.snp.makeConstraints { make in
-            make.top.equalTo(profileImageView.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
+    private func setupHintPenalty(_ hint: String) -> UILabel {
+        let hintLabel = UILabel()
+        hintLabel.text = hint
+        hintLabel.font = .systemFont(ofSize: 13)
+        hintLabel.textColor = .rgba(152, 152, 152, 1)
+        return hintLabel
+    }
+    
+    private func setupResultCollectionView() {
+        self.resultCollectionView.delegate = self
+        self.resultCollectionView.dataSource = self
+        resultCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        resultCollectionView.backgroundColor = .white
+        resultCollectionView.register(AttendanceResultCell.self, forCellWithReuseIdentifier: AttendanceResultCell.id)
+        
+        resultCollectionContainerView.addSubview(resultCollectionView)
+        resultCollectionView.layer.masksToBounds = false
+        resultCollectionView.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(resultCollectionContainerView).inset(20)
+            make.horizontalEdges.equalTo(resultCollectionContainerView).inset(20)
         }
-        userAdditionalInformationView.snp.makeConstraints { make in
-            make.top.equalTo(userBasicInfomationView.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
-        }
+        
+        view.addSubviews(resultCollectionContainerView, hintLatePenalty, hintAbsentPenalty)
     }
     
     private func setupTableHeader() -> UIView {
@@ -146,7 +172,7 @@ class PersonalInformationController: UIViewController {
         
         let label = UILabel(frame: header.frame)
         label.text = "출석 히스토리"
-        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.textColor = UIColor.rgba(84, 84, 84, 1)
         label.textAlignment = .left
         
@@ -161,30 +187,63 @@ class PersonalInformationController: UIViewController {
     private func setupHistoryTableView() {
         self.historyTableView.delegate = self
         self.historyTableView.dataSource = self
-        registerCells()
+        self.historyTableView.register(AttendanceHistoryCell.self, forCellReuseIdentifier: AttendanceHistoryCell.id)
         view.addSubview(historyTableView)
         historyTableView.showsVerticalScrollIndicator = false
         historyTableView.allowsSelection = false
+        historyTableView.separatorStyle = .none
         
         let header = setupTableHeader()
         historyTableView.tableHeaderView = header
-        
-        historyTableView.separatorStyle = .none
-        historyTableView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view)
-            make.height.equalTo(320)
-            make.bottom.equalToSuperview()
-        }
     }
     
-    private func registerCells() {
-        historyTableView.register(AttendanceHistoryCell.self, forCellReuseIdentifier: AttendanceHistoryCell.id)
+    private func setupViews() {
+        setupUserProfileImage()
+        setupResultCollectionView()
+        setupHistoryTableView()
     }
     
     private func setupLayout() {
-        setupUserProfileImage()
-        setupUserProfileInformation()
-        setupHistoryTableView()
+        setupViews()
+        
+        profileImageView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(36)
+            make.centerX.equalToSuperview()
+        }
+        userActiveStatus.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.centerY).offset(10)
+            make.left.equalTo(profileImageView.snp.centerX).offset(10)
+        }
+        
+        userBasicInfomationView.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        userAdditionalInformationView.snp.makeConstraints { make in
+            make.top.equalTo(userBasicInfomationView.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        
+        resultCollectionContainerView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.top.equalTo(userAdditionalInformationView.snp.bottom).offset(27)
+            make.height.equalTo(135)
+        }
+        
+        hintAbsentPenalty.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(25)
+            make.top.equalTo(resultCollectionContainerView.snp.bottom)
+        }
+        hintLatePenalty.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(resultCollectionContainerView.snp.bottom)
+        }
+        
+        historyTableView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.top.equalTo(hintLatePenalty.snp.bottom).offset(26)
+            make.bottom.equalToSuperview()
+        }
     }
 }
 
@@ -205,5 +264,27 @@ extension PersonalInformationController: UITableViewDelegate, UITableViewDataSou
             cell.backgroundColor = .black
             return cell
         }
+    }
+}
+
+extension PersonalInformationController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.width - 60) / 3, height: 105)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = resultCollectionView.dequeueReusableCell(withReuseIdentifier: AttendanceResultCell.id, for: indexPath) as! AttendanceResultCell
+        let data = data[indexPath.row]!
+        cell.cellTitle.text = data.0
+        cell.attendanceResult.text = indexPath.row == 2 ? "\(String(describing: data.1))/2" : "\(String(describing: data.1))"
+        if let score = data.2 {
+            cell.resultScore.text = "\(score)"
+        }
+        return cell
     }
 }
