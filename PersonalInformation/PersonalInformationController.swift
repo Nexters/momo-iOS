@@ -91,6 +91,24 @@ class PersonalInformationController: UIViewController {
         return label
     }()
     
+    private lazy var tableViewHeader: UIView = {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 38))
+        header.backgroundColor = UIColor.rgba(250, 250, 250, 1)
+        
+        let label = UILabel(frame: header.frame)
+        label.text = "출석 히스토리"
+        label.font = .systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = UIColor.rgba(84, 84, 84, 1)
+        label.textAlignment = .left
+        
+        header.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.equalTo(header.snp.left).offset(20)
+            make.centerY.equalTo(header.snp.centerY)
+        }
+        return header
+    }()
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -166,35 +184,14 @@ class PersonalInformationController: UIViewController {
         view.addSubviews(resultCollectionContainerView, hintLatePenalty, hintAbsentPenalty)
     }
     
-    private func setupTableHeader() -> UIView {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 38))
-        header.backgroundColor = UIColor.rgba(250, 250, 250, 1)
-        
-        let label = UILabel(frame: header.frame)
-        label.text = "출석 히스토리"
-        label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = UIColor.rgba(84, 84, 84, 1)
-        label.textAlignment = .left
-        
-        header.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.left.equalTo(header.snp.left).offset(20)
-            make.centerY.equalTo(header.snp.centerY)
-        }
-        return header
-    }
-    
     private func setupHistoryTableView() {
         self.historyTableView.delegate = self
         self.historyTableView.dataSource = self
         self.historyTableView.register(AttendanceHistoryCell.self, forCellReuseIdentifier: AttendanceHistoryCell.id)
-        view.addSubview(historyTableView)
+        view.addSubviews(tableViewHeader, historyTableView)
         historyTableView.showsVerticalScrollIndicator = false
         historyTableView.allowsSelection = false
         historyTableView.separatorStyle = .none
-        
-        let header = setupTableHeader()
-        historyTableView.tableHeaderView = header
     }
     
     private func setupViews() {
@@ -239,9 +236,14 @@ class PersonalInformationController: UIViewController {
             make.top.equalTo(resultCollectionContainerView.snp.bottom)
         }
         
-        historyTableView.snp.makeConstraints { make in
+        tableViewHeader.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(hintLatePenalty.snp.bottom).offset(26)
+            make.height.equalTo(38)
+        }
+        historyTableView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.top.equalTo(tableViewHeader.snp.bottom)
             make.bottom.equalToSuperview()
         }
     }
