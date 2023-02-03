@@ -4,8 +4,6 @@
 //
 //  Created by JOSUEYEON on 2023/02/01.
 //
-
-import Foundation
 import UIKit
 import SnapKit
 
@@ -16,17 +14,17 @@ class MainSessionNoInfoCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "MainSessionNoInfoCell")
+        self.contentView.addSubviews(sessionInfoLayout, noInfoMessageLabel)
         self.initViews()
     }
     
     private func initViews() {
-        self.contentView.snp.makeConstraints() { make in
+        self.contentView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(260)
         }
-        self.contentView.addSubviews(sessionInfoLayout, noInfoMessageLabel)
-        
-        sessionInfoLayout.snp.makeConstraints() { make in
+
+        sessionInfoLayout.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
@@ -37,11 +35,11 @@ class MainSessionNoInfoCell: UITableViewCell {
         sessionInfoLayout.layer.cornerRadius = 12
         
         sessionInfoLayout.addSubview(noInfoMessageLabel)
-        noInfoMessageLabel.snp.makeConstraints() { make in
+        noInfoMessageLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         noInfoMessageLabel.text = "상세정보가 업데이트 될 예정입니다"
-        noInfoMessageLabel.textColor = UIColor(Hex: 0x737373)
+        noInfoMessageLabel.textColor = UIColor(hex: 0x737373)
         noInfoMessageLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
     
