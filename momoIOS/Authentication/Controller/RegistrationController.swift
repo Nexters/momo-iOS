@@ -63,6 +63,7 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
         self.setupTargets()
         self.setupLayout()
         self.registrationButton.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
@@ -173,11 +174,7 @@ class RegistrationController: UIViewController {
         let passwordContainerView = setupPasswordTextFieldView()
         let checkPasswordContainerView = setupCheckPasswordTextFieldView()
         
-        fieldStack.addArrangedSubview(emailContainerView)
-        fieldStack.addArrangedSubview(passwordContainerView)
-        fieldStack.addArrangedSubview(checkPasswordContainerView)
-        fieldStack.addArrangedSubview(registrationButton)
-        
+        fieldStack.addArrangedSubviews(emailContainerView, passwordContainerView, checkPasswordContainerView, registrationButton)
         fieldStack.axis = .vertical
         fieldStack.spacing = 10
         

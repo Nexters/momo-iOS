@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     // MARK: - Setup
     private func setupViews() {
         self.mainButton.setTitle("Main으로 이동", for: .normal)
-        self.otherButton.setTitle("...으로 이동", for: .normal)
+        self.otherButton.setTitle("가입화면으로 이동", for: .normal)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
