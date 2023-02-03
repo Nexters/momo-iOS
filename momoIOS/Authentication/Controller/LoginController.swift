@@ -40,7 +40,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureUI()
+        setupLayout()
         pushRegistrationViewButton.addTarget(self, action: #selector(handlePushRegistrationView), for: .touchUpInside)
         pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
@@ -67,26 +67,27 @@ class LoginController: UIViewController {
     
     // MARK: - Helpers
     
-    func configureUI() {
-        view.addSubview(welcomeTitle)
+    func setupLayout() {
+        let fieldStack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+        fieldStack.axis = .vertical
+        fieldStack.spacing = 15
+        
+        let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLogin])
+        helpStack.axis = .vertical
+        helpStack.spacing = 30
+        
+        view.addSubviews(welcomeTitle, fieldStack, helpStack)
+        
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.left.equalTo(view).offset(20)
         }
         
-        let fieldStack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
-        fieldStack.axis = .vertical
-        fieldStack.spacing = 15
-        view.addSubview(fieldStack)
         fieldStack.snp.makeConstraints { make in
             make.top.equalTo(welcomeTitle.snp.bottom).offset(50)
             make.left.right.equalToSuperview().inset(20)
         }
         
-        let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLogin])
-        helpStack.axis = .vertical
-        helpStack.spacing = 30
-        view.addSubview(helpStack)
         helpStack.snp.makeConstraints { make in
             make.top.equalTo(fieldStack.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(20)

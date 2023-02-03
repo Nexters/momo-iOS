@@ -55,21 +55,24 @@ class RegistrationController: UIViewController {
         return pushAnotherViewButton(subtitle: "이미 가입했다면?", title: "로그인하기")
     }()
     
+    private let fieldStack = UIStackView()
+    private let helpStack = UIStackView()
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupTargets()
-        configureUI()
-        registrationButton.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
-        pushLoginViewButton.addTarget(self, action: #selector(handlePushLoginView), for: .touchUpInside)
+        self.setupTargets()
+        self.setupLayout()
+        self.registrationButton.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
+        self.pushLoginViewButton.addTarget(self, action: #selector(handlePushLoginView), for: .touchUpInside)
         pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             self.view.endEditing(true)
-        }
+    }
     
     // MARK: - Selectors
     
@@ -94,7 +97,7 @@ class RegistrationController: UIViewController {
         }
     }
     
-    func isValidPassword(password: String) -> Bool {
+    private func isValidPassword(password: String) -> Bool {
         let passwordRegEx = "^(?=.*[A-Za-z])(?=.*[0-9]).{8,20}"
         return NSPredicate(format: "SELF MATCHES %@", passwordRegEx).evaluate(with: password)
     }
@@ -124,18 +127,18 @@ class RegistrationController: UIViewController {
         }
     }
     
-    @objc func handleRegistration() {
+    @objc private func handleRegistration() {
         let controller = CheckSecurityCodeController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    @objc func handlePushLoginView() {
+    @objc private func handlePushLoginView() {
         let nav = UINavigationController(rootViewController: LoginController())
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     
-    @objc func handlePushHelpLogin() {
+    @objc private func handlePushHelpLogin() {
         // TODO: 로그인 가이드 url 변경 필요
         guard let url = URL(string: "https://www.google.co.kr/") else { return }
         if #available(iOS 10.0, *) {
@@ -165,30 +168,38 @@ class RegistrationController: UIViewController {
         return setupUIStackView([checkPasswordTextField, confirmPasswordLabel])
     }
     
-    func configureUI() {
-        view.addSubview(welcomeTitle)
+    private func setupViews() {
+        let emailContainerView = setupEmailContainerView()
+        let passwordContainerView = setupPasswordTextFieldView()
+        let checkPasswordContainerView = setupCheckPasswordTextFieldView()
+        
+        fieldStack.addArrangedSubview(emailContainerView)
+        fieldStack.addArrangedSubview(passwordContainerView)
+        fieldStack.addArrangedSubview(checkPasswordContainerView)
+        fieldStack.addArrangedSubview(registrationButton)
+        
+        fieldStack.axis = .vertical
+        fieldStack.spacing = 10
+        
+        helpStack.addArrangedSubviews(pushLoginViewButton, pushHelpLogin)
+        helpStack.axis = .vertical
+        helpStack.spacing = 30
+        
+        view.addSubviews(welcomeTitle, fieldStack, helpStack)
+    }
+    
+    private func setupLayout() {
+        setupViews()
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.left.equalTo(view).offset(20)
         }
         
-        let emailContainerView = setupEmailContainerView()
-        let passwordContainerView = setupPasswordTextFieldView()
-        let checkPasswordContainerView = setupCheckPasswordTextFieldView()
-
-        let fieldStack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, checkPasswordContainerView, registrationButton])
-        fieldStack.axis = .vertical
-        fieldStack.spacing = 10
-        view.addSubview(fieldStack)
         fieldStack.snp.makeConstraints { make in
             make.top.equalTo(welcomeTitle.snp.bottom).offset(50)
             make.left.right.equalToSuperview().inset(20)
         }
-        
-        let helpStack = UIStackView(arrangedSubviews: [pushLoginViewButton, pushHelpLogin])
-        helpStack.axis = .vertical
-        helpStack.spacing = 30
-        view.addSubview(helpStack)
+
         helpStack.snp.makeConstraints { make in
             make.top.equalTo(fieldStack.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(20)

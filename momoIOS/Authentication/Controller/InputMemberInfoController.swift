@@ -68,8 +68,6 @@ class InputMemberInfoController: UIViewController {
         let view = UIView()
         
         let label = setLabel(text: "직군")
-//        let designerButton = setJobButton(jobName: "Designer", width: 200, tag: 1)
-//        let developerButton = setJobButton(jobName: "Developer", width: 215, tag: 2)
         
         view.addSubviews(label, designerButton, developerButton)
         label.snp.makeConstraints { make in
@@ -123,7 +121,7 @@ class InputMemberInfoController: UIViewController {
         
         view.backgroundColor = .white
         setupCustomNav()
-        configureUI()
+        setupLayout()
     }
     
     // MARK: - Selectors
@@ -151,7 +149,7 @@ class InputMemberInfoController: UIViewController {
         self.navigationItem.titleView?.tintColor = .black
     }
     
-    private func configureUI() {
+    private func setupLayout() {
         let inputViews = [setInputNameView(), setInputYearView(), setInputJobView()]
         inputViews.forEach { view in
             view.snp.makeConstraints { make in

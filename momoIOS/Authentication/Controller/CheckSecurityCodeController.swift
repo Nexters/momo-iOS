@@ -70,26 +70,24 @@ class CheckSecurityCodeController: UIViewController {
     }
     
     private func configureUI() {
-        view.addSubview(guidePhrase)
+        view.addSubviews(guidePhrase, codeField, borderView, completeButton)
+
         guidePhrase.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.left.equalToSuperview().offset(20)
         }
         
-        view.addSubview(codeField)
         codeField.snp.makeConstraints { make in
             make.top.equalTo(guidePhrase.snp.bottom).offset(100)
             make.left.right.equalToSuperview().inset(20)
         }
         
-        view.addSubview(borderView)
         borderView.snp.makeConstraints { make in
             make.top.equalTo(codeField.snp.bottom).offset(8)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(0.75)
         }
-        
-        view.addSubview(completeButton)
+
         completeButton.snp.makeConstraints { make in
             make.top.equalTo(borderView.snp.bottom).offset(40)
             make.left.right.equalToSuperview().inset(20)
