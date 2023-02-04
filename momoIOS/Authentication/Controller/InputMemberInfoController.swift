@@ -122,6 +122,10 @@ class InputMemberInfoController: UIViewController {
         setupLayout()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+    }
+    
     // MARK: - Selectors
     
     @objc private func handleJobSelection(_ selectedButton: UIButton) {

@@ -39,6 +39,10 @@ class CheckSecurityCodeController: UIViewController {
         codeField.becomeFirstResponder()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+    }
+    
     // MARK: Selectors
     @objc func handleCompleteRegistration() {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
