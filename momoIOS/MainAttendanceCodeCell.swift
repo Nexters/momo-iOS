@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class MainAttendanceCodeCell: UITableViewCell {
+    private let cardView: UIView = UIView()
     private let titleLabel: UILabel = UILabel()
     private let codeStackView: UIStackView = UIStackView()
     private let descriptionLabel: UILabel = UILabel()
@@ -17,6 +18,7 @@ class MainAttendanceCodeCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "MainAttendanceCodeCell")
         
+        self.selectionStyle = .none
         self.setupViews()
         self.setupLayout()
     }
@@ -28,13 +30,14 @@ class MainAttendanceCodeCell: UITableViewCell {
     // MARK: - Setup
     private func setupViews() {
         // TODO: ViewModel 바라보도록 수정 필요
-        self.contentView.backgroundColor = .darkGray
-        self.contentView.layer.cornerRadius = 12
+        self.cardView.backgroundColor = .rgba(128, 135, 201, 1)
+        self.cardView.layer.cornerRadius = 12
+        self.contentView.addSubview(self.cardView)
         
         self.titleLabel.text = "출석체크 코드 입력"
         self.titleLabel.font = .systemFont(ofSize: 17, weight: .medium)
         self.titleLabel.textColor = .white
-        self.contentView.addSubview(self.titleLabel)
+        self.cardView.addSubview(self.titleLabel)
         
         self.codeStackView.axis = .horizontal
         self.codeStackView.alignment = .center
@@ -44,16 +47,22 @@ class MainAttendanceCodeCell: UITableViewCell {
             lineView.backgroundColor = .white
             self.codeStackView.addArrangedSubview(lineView)
         }
-        self.contentView.addSubview(self.codeStackView)
+        self.cardView.addSubview(self.codeStackView)
         
         self.descriptionLabel.text = "운영진이 공지해준 출석체크 코드를 입력해주세요!"
         self.descriptionLabel.font = .systemFont(ofSize: 14)
-        self.descriptionLabel.textColor = .lightGray
-        self.contentView.addSubview(self.descriptionLabel)
+        self.descriptionLabel.textColor = .white.withAlphaComponent(0.67)
+        self.cardView.addSubview(self.descriptionLabel)
     }
     
     // MARK: - Layout
     private func setupLayout() {
+        self.cardView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalToSuperview().inset(19)
+        }
+        
         self.titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(28)
             make.centerX.equalToSuperview()

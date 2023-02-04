@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class MainAttendanceDoneCell: UITableViewCell {
+    private let cardView: UIView = UIView()
     private var iconImageView: UIImageView = UIImageView()
     private let titleLabel: UILabel = UILabel()
     private let timeStatusContainerView: UIView = UIView()
@@ -23,6 +24,7 @@ class MainAttendanceDoneCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "MainAttendanceDoneCell")
         
+        self.selectionStyle = .none
         self.setupViews()
         self.setupLayout()
     }
@@ -34,8 +36,9 @@ class MainAttendanceDoneCell: UITableViewCell {
     // MARK: - Setup
     // TODO: ViewModel 바라보도록 수정 필요
     private func setupViews() {
-        self.contentView.backgroundColor = .brown
-        self.contentView.layer.cornerRadius = 12
+        self.cardView.backgroundColor = .rgba(128, 135, 201, 1)
+        self.cardView.layer.cornerRadius = 12
+        self.contentView.addSubview(self.cardView)
 
         self.setupIconImageView()
         self.setupTitleLabel()
@@ -48,14 +51,14 @@ class MainAttendanceDoneCell: UITableViewCell {
         let checkImage = UIImage(systemName: "checkmark.circle")
         self.iconImageView.image = checkImage
         self.iconImageView.tintColor = .white
-        self.contentView.addSubview(self.iconImageView)
+        self.cardView.addSubview(self.iconImageView)
     }
     
     private func setupTitleLabel() {
         self.titleLabel.text = "출석이 완료되었습니다"
         self.titleLabel.font = .systemFont(ofSize: 17, weight: .medium)
         self.titleLabel.textColor = .white
-        self.contentView.addSubview(self.titleLabel)
+        self.cardView.addSubview(self.titleLabel)
     }
     
     private func setupTimeStatusViews() {
@@ -69,25 +72,31 @@ class MainAttendanceDoneCell: UITableViewCell {
         self.statusLabel.textColor = .white
         self.timeStatusContainerView.addSubview(self.statusLabel)
         
-        self.contentView.addSubview(self.timeStatusContainerView)
+        self.cardView.addSubview(self.timeStatusContainerView)
     }
     
     private func setupScoreLabel() {
         self.scoreLabel.text = "(-5점이 감점되었습니다)"
         self.scoreLabel.font = .systemFont(ofSize: 13, weight: .regular)
         self.scoreLabel.textColor = .white
-        self.contentView.addSubview(self.scoreLabel)
+        self.cardView.addSubview(self.scoreLabel)
     }
     
     private func setupHistoryButton() {
         self.historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
         self.historyButton.setTitle("출석 히스토리", size: 12, weight: .medium, color: .white)
         self.historyButton.configurate(bgColor: .white.withAlphaComponent(0.14), cornerRadius: 6, padding: 10)
-        self.contentView.addSubview(self.historyButton)        
+        self.cardView.addSubview(self.historyButton)        
     }
     
     // MARK: - Layout
     private func setupLayout() {
+        self.cardView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalToSuperview().inset(19)
+        }
+        
         self.iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(31)
             make.size.equalTo(42)
