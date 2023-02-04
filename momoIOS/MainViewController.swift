@@ -69,10 +69,6 @@ class MainViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func goToHistoryVC() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     private func showAbsenceModal() {
         let absenceModal = AbsenceModalViewController()
         absenceModal.modalPresentationStyle = .overFullScreen
@@ -104,7 +100,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.historyButtonAction = { [weak self] in
-                self?.goToHistoryVC()
+                self?.goToUserProfileVC()
             }
             return cell
         case 3:
@@ -126,7 +122,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0: // (MainAttendanceCodeCell) 출석 코드 입력 셀
+        case 1: // (MainAttendanceCodeCell) 출석 코드 입력 셀
             self.goToAttendanceVC()
         default:
             break
