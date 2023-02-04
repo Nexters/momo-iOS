@@ -17,12 +17,26 @@ class MainViewController: UIViewController {
         
         self.setupTableView()
         self.setupLayout()
+        self.setNavCustom()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // MARK: - navigation controller custom
+    private func setNavCustom() {
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationItem.hidesBackButton = true
+        let location = UIBarButtonItem(image: UIImage(systemName: "location.circle"), style: .plain, target: nil, action: nil)
+        let myLocation = UIBarButtonItem(title: "서울특별시 강남구 역삼로", style: .plain, target: nil, action: nil)
+        let GPS = UIBarButtonItem(image: UIImage(systemName: "scope"), style: .plain, target: nil, action: nil)
+        let profile = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
+        
+        self.navigationItem.leftBarButtonItems = [location, myLocation, GPS]
+        self.navigationItem.rightBarButtonItem = profile
     }
     
     // MARK: - Setup
@@ -36,10 +50,15 @@ class MainViewController: UIViewController {
     private func registerCells() {
         self.tableView.register(MainAttendanceCodeCell.self, forCellReuseIdentifier: "MainAttendanceCodeCell")
         self.tableView.register(MainAttendanceDoneCell.self, forCellReuseIdentifier: "MainAttendanceDoneCell")
+        self.tableView.register(MainSessionTimeCell.self, forCellReuseIdentifier: "MainSessionTimeCell")
+        self.tableView.register(MainSessionDetailCell.self, forCellReuseIdentifier: "MainSessionDetailCell")
+        self.tableView.register(MainSessionInfoCell.self, forCellReuseIdentifier: "MainSessionInfoCell")
+        self.tableView.register(MainSessionAbsentCell.self, forCellReuseIdentifier: "MainSessionAbsentCell")
     }
     
     // MARK: - Layout
     private func setupLayout() {
+        self.tableView.separatorStyle = .none
         self.tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -53,11 +72,17 @@ class MainViewController: UIViewController {
     private func goToHistoryVC() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    private func showAbsenceModal() {
+        let absenceModal = AbsenceModalViewController()
+        absenceModal.modalPresentationStyle = .overFullScreen
+        self.present(absenceModal, animated: true)
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 6
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -66,13 +91,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return tableView.dequeueReusableCell(withIdentifier: "MainAttendanceCodeCell") ?? UITableViewCell()
+            return tableView.dequeueReusableCell(withIdentifier: "MainSessionTimeCell") ?? UITableViewCell()
         case 1:
+            return tableView.dequeueReusableCell(withIdentifier: "MainAttendanceCodeCell") ?? UITableViewCell()
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainAttendanceDoneCell") as? MainAttendanceDoneCell else {
                 return UITableViewCell()
             }
             cell.historyButtonAction = { [weak self] in
                 self?.goToHistoryVC()
+            }
+            return cell
+        case 3:
+            return tableView.dequeueReusableCell(withIdentifier: "MainSessionDetailCell") ?? UITableViewCell()
+        case 4:
+            return tableView.dequeueReusableCell(withIdentifier: "MainSessionInfoCell") ?? UITableViewCell()
+        case 5:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainSessionAbsentCell") as? MainSessionAbsentCell else {
+                return UITableViewCell()
+            }
+            cell.seesionAbsentBtnAction = { [weak self] in
+                self?.showAbsenceModal()
             }
             return cell
         default:

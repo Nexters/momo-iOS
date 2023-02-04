@@ -125,7 +125,10 @@ class AbsenceModalViewController: UIViewController {
     }
     
     private func closeModal() {
-        self.view.backgroundColor = .clear
-        self.dismiss(animated: true)
+        UIView.animate(withDuration: 0.3) {
+            self.view.backgroundColor = .clear
+        } completion: { _ in
+            self.dismiss(animated: true)
+        }
     }
 }

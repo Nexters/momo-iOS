@@ -12,6 +12,18 @@
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
 		3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713D0298946FF006F922F /* UIColor+Extension.swift */; };
+		BF0408632987B3AA00F1129B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0408622987B3AA00F1129B /* LoginController.swift */; };
+		BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086A2987E34800F1129B /* AuthCommonConstants.swift */; };
+		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
+		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
+		BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */; };
+		BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */; };
+		E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */; };
+		E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */; };
+		E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */; };
+		E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8207931298A163400B36FC9 /* UIView+Extension.swift */; };
+		E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */; };
+		E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */; };
 		E83238E92984FDDA00DC83C2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E83238E82984FDDA00DC83C2 /* RxSwift */; };
 		E83238EC2984FE0800DC83C2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EB2984FE0800DC83C2 /* Toast */; };
 		E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EE2984FE3200DC83C2 /* Alamofire */; };
@@ -29,6 +41,18 @@
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
 		3AA713D0298946FF006F922F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		BF0408622987B3AA00F1129B /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BF04086A2987E34800F1129B /* AuthCommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCommonConstants.swift; sourceTree = "<group>"; };
+		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
+		BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberInfoController.swift; sourceTree = "<group>"; };
+		BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionDetailCell.swift; sourceTree = "<group>"; };
+		E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionTimeCell.swift; sourceTree = "<group>"; };
+		E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionAbsentCell.swift; sourceTree = "<group>"; };
+		E8207931298A163400B36FC9 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionInfoCell.swift; sourceTree = "<group>"; };
+		E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionNoInfoCell.swift; sourceTree = "<group>"; };
 		E83238F0298506A000DC83C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8D5C3ED2984FC23003D1AD0 /* momoIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momoIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,9 +77,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF0408602987B3AA00F1129B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				BF0408612987B3AA00F1129B /* Controller */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		BF0408612987B3AA00F1129B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF0408622987B3AA00F1129B /* LoginController.swift */,
+				BF04086C2987E38C00F1129B /* RegistrationController.swift */,
+				BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */,
+				BF04086A2987E34800F1129B /* AuthCommonConstants.swift */,
+				BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E8207929298A116700B36FC9 /* MainSession */ = {
+			isa = PBXGroup;
+			children = (
+				E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */,
+				E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */,
+				E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */,
+				E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */,
+				E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */,
+			);
+			path = MainSession;
+			sourceTree = "<group>";
+		};
+		E8207930298A163400B36FC9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8207931298A163400B36FC9 /* UIView+Extension.swift */,
+				BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E8D5C3E42984FC23003D1AD0 = {
 			isa = PBXGroup;
 			children = (
+				E8207930298A163400B36FC9 /* Extensions */,
+				E8207929298A116700B36FC9 /* MainSession */,
 				E8D5C3EF2984FC23003D1AD0 /* momoIOS */,
 				E8D5C3EE2984FC23003D1AD0 /* Products */,
 			);
@@ -72,6 +139,7 @@
 		E8D5C3EF2984FC23003D1AD0 /* momoIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BF0408602987B3AA00F1129B /* Authentication */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
 				E8D5C3F42984FC23003D1AD0 /* ViewController.swift */,
@@ -190,15 +258,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */,
 				E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */,
 				E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */,
+				BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */,
 				E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */,
 				3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */,
 				E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */,
 				3A5AC30A2989784A0080323A /* AbsenceModalViewController.swift in Sources */,
+				BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */,
+				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
+				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
+				E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */,
+				E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */,
+				BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */,
+				E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */,
+				E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */,
+				E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */,
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
+				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
