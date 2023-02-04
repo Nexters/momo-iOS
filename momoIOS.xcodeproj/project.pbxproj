@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
 		3A5AC30A2989784A0080323A /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC3092989784A0080323A /* AbsenceModalViewController.swift */; };
+		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
 		3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713D0298946FF006F922F /* UIColor+Extension.swift */; };
@@ -39,8 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		3A5AC3092989784A0080323A /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
+		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
 		3AA713D0298946FF006F922F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -179,10 +179,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D5C4012984FC25003D1AD0 /* Build configuration list for PBXNativeTarget "momoIOS" */;
 			buildPhases = (
+				E8D5C4042984FCCA003D1AD0 /* SwiftLint Script */,
 				E8D5C3E92984FC23003D1AD0 /* Sources */,
 				E8D5C3EA2984FC23003D1AD0 /* Frameworks */,
 				E8D5C3EB2984FC23003D1AD0 /* Resources */,
-				E8D5C4042984FCCA003D1AD0 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -266,7 +266,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
