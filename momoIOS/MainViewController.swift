@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         let location = UIBarButtonItem(image: UIImage(systemName: "location.circle"), style: .plain, target: nil, action: nil)
         let myLocation = UIBarButtonItem(title: "서울특별시 강남구 역삼로", style: .plain, target: nil, action: nil)
         let GPS = UIBarButtonItem(image: UIImage(systemName: "scope"), style: .plain, target: nil, action: nil)
-        let profile = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
+        let profile = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: self, action: #selector(goToUserProfileVC))
         
         self.navigationItem.leftBarButtonItems = [location, myLocation, GPS]
         self.navigationItem.rightBarButtonItem = profile
@@ -78,6 +78,10 @@ class MainViewController: UIViewController {
         absenceModal.modalPresentationStyle = .overFullScreen
         self.present(absenceModal, animated: true)
     }
+        
+    @objc private func goToUserProfileVC() {
+        let controller = PersonalInformationController()
+        self.navigationController?.pushViewController(controller, animated: true)
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
