@@ -25,7 +25,9 @@ func pushAnotherViewButton(subtitle: String, title: String) -> UIButton {
     return button
 }
 
-let pushHelpLogin: UIButton = {
+// MARK: - Methods
+
+func setupPushHelpLoginButton() -> UIButton {
     let button = UIButton(type: .system)
     let attributedTitle = NSMutableAttributedString(
         string: "로그인에 문제가 있나요?",
@@ -33,9 +35,8 @@ let pushHelpLogin: UIButton = {
                      NSAttributedString.Key.foregroundColor: UIColor.gray])
     button.setAttributedTitle(attributedTitle, for: .normal)
     return button
-}()
+}
 
-// MARK: - Methods
 func setupUIStackView(_ views: [UIView]) -> UIStackView {
     let container = UIStackView(arrangedSubviews: views)
     container.axis = .vertical

@@ -51,6 +51,7 @@ class RegistrationController: UIViewController {
     
     private let fieldStack = UIStackView()
     private let helpStack = UIStackView()
+    private let pushHelpLoginButton = setupPushHelpLoginButton()
     
     // MARK: - Lifecycles
     
@@ -62,7 +63,7 @@ class RegistrationController: UIViewController {
         self.setupLayout()
         self.registrationButton.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         self.pushLoginViewButton.addTarget(self, action: #selector(handlePushLoginView), for: .touchUpInside)
-        pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
+        pushHelpLoginButton.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -172,7 +173,7 @@ class RegistrationController: UIViewController {
         fieldStack.axis = .vertical
         fieldStack.spacing = 10
         
-        helpStack.addArrangedSubviews(pushLoginViewButton, pushHelpLogin)
+        helpStack.addArrangedSubviews(pushLoginViewButton, pushHelpLoginButton)
         helpStack.axis = .vertical
         helpStack.spacing = 30
         

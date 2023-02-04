@@ -21,6 +21,8 @@ class LoginController: UIViewController {
         return pushAnotherViewButton(subtitle: "회원가입이 필요하다면?", title: "가입하기")
     }()
     
+    private let pushHelpLoginButton = setupPushHelpLoginButton()
+    
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
@@ -28,7 +30,7 @@ class LoginController: UIViewController {
         view.backgroundColor = .white
         setupLayout()
         pushRegistrationViewButton.addTarget(self, action: #selector(handlePushRegistrationView), for: .touchUpInside)
-        pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
+        pushHelpLoginButton.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,7 +60,7 @@ class LoginController: UIViewController {
         fieldStack.axis = .vertical
         fieldStack.spacing = 15
         
-        let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLogin])
+        let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLoginButton])
         helpStack.axis = .vertical
         helpStack.spacing = 30
         
