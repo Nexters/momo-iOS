@@ -82,6 +82,7 @@ class MainViewController: UIViewController {
     @objc private func goToUserProfileVC() {
         let controller = PersonalInformationController()
         self.navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
