@@ -82,7 +82,7 @@ class MainAttendanceDoneCell: UITableViewCell {
     private func setupHistoryButton() {
         self.historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
         self.historyButton.setTitle("출석 히스토리", size: 12, weight: .medium, color: .white)
-        self.historyButton.configurate(bgColor: .white.withAlphaComponent(0.14), cornerRadius: 6, margin: 10)
+        self.historyButton.configurate(bgColor: .white.withAlphaComponent(0.14), cornerRadius: 6, padding: 10)
         self.contentView.addSubview(self.historyButton)        
     }
     

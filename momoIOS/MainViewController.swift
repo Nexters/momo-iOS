@@ -72,6 +72,12 @@ class MainViewController: UIViewController {
     private func goToHistoryVC() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    private func showAbsenceModal() {
+        let absenceModal = AbsenceModalViewController()
+        absenceModal.modalPresentationStyle = .overFullScreen
+        self.present(absenceModal, animated: true)
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -101,7 +107,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             return tableView.dequeueReusableCell(withIdentifier: "MainSessionInfoCell") ?? UITableViewCell()
         case 5:
-            return tableView.dequeueReusableCell(withIdentifier: "MainSessionAbsentCell") ?? UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainSessionAbsentCell") as? MainSessionAbsentCell else {
+                return UITableViewCell()
+            }
+            cell.seesionAbsentBtnAction = { [weak self] in
+                self?.showAbsenceModal()
+            }
+            return cell
         default:
             return UITableViewCell()
         }
