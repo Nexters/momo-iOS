@@ -12,6 +12,8 @@ class MainSessionAbsentCell: UITableViewCell {
     let sessionAbsentBtn = UIButton()
     let sessionabsentDescription = UILabel()
     
+    var seesionAbsentBtnAction: (() -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "MainSessionTimeCell")
         self.initViews()
@@ -27,6 +29,7 @@ class MainSessionAbsentCell: UITableViewCell {
         sessionAbsentBtn.layer.borderWidth = 1
         sessionAbsentBtn.layer.borderColor = UIColor(hex: 0xB9B9B9).cgColor
         sessionAbsentBtn.layer.cornerRadius = 10
+        sessionAbsentBtn.addTarget(self, action: #selector(didTapSessionAbsentBtn), for: .touchUpInside)
         
         sessionabsentDescription.text = "통보 결석은 세션 시작 하루전까지 유효합니다."
         sessionabsentDescription.sizeToFit()
@@ -55,5 +58,9 @@ class MainSessionAbsentCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func didTapSessionAbsentBtn() {
+        self.seesionAbsentBtnAction?()
     }
 }

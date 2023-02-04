@@ -28,7 +28,7 @@ extension UIButton {
         strokeColor: UIColor? = nil,
         strokeWidth: CGFloat = 0,
         cornerRadius: CGFloat = 0,
-        margin: CGFloat? = nil
+        edgeInsets: NSDirectionalEdgeInsets? = nil
     ) {
         if #available(iOS 15.0, *) {
             var configuration = self.configuration ?? .plain()
@@ -36,8 +36,8 @@ extension UIButton {
             configuration.background.strokeColor = strokeColor
             configuration.background.strokeWidth = strokeWidth
             configuration.background.cornerRadius = cornerRadius
-            margin.map {
-                configuration.contentInsets = .init(top: $0, leading: $0, bottom: $0, trailing: $0)
+            edgeInsets.map {
+                configuration.contentInsets = $0
             }
             self.configuration = configuration
         } else {
@@ -45,9 +45,20 @@ extension UIButton {
             self.layer.cornerRadius = cornerRadius
             self.layer.borderWidth = strokeWidth
             self.layer.borderColor = strokeColor?.cgColor
-            margin.map {
-                self.contentEdgeInsets = .init(top: $0, left: $0, bottom: $0, right: $0)
+            edgeInsets.map {
+                self.contentEdgeInsets = .init(top: $0.top, left: $0.leading, bottom: $0.bottom, right: $0.trailing)
             }
         }
+    }
+    
+    func configurate(
+        bgColor: UIColor = .clear,
+        strokeColor: UIColor? = nil,
+        strokeWidth: CGFloat = 0,
+        cornerRadius: CGFloat = 0,
+        padding: CGFloat? = nil
+    ) {
+        let edgeInsets = padding.map { NSDirectionalEdgeInsets(top: $0, leading: $0, bottom: $0, trailing: $0) }
+        self.configurate(bgColor: bgColor, strokeColor: strokeColor, strokeWidth: strokeWidth, cornerRadius: cornerRadius, edgeInsets: edgeInsets)
     }
 }
