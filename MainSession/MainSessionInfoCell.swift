@@ -20,7 +20,7 @@ class MainSessionInfoCell: UITableViewCell {
     let moreDetailBtn = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: "MainSessionTimeCell")
+        super.init(style: style, reuseIdentifier: "MainSessionInfoCell")
         self.initViews()
         self.setViewConstraints()
         self.setLabelConstraints()
