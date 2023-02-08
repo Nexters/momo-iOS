@@ -66,7 +66,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Action
     private func goToAttendanceVC() {
-        self.navigationController?.popViewController(animated: true)
+        let attandanceVC = AttendanceDetailViewController()
+        self.navigationController?.pushViewController(attandanceVC, animated: true)
     }
     
     private func showAbsenceModal() {
