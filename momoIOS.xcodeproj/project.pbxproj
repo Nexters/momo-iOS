@@ -260,8 +260,8 @@
 				BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */,
 			);
 			path = MemberManagement;
-			sourceTree = "<group>";
-		};
+            sourceTree = "<group>";
+        };
 		BF43B57429951CB90026DCE3 /* MoimManagement */ = {
 			isa = PBXGroup;
 			children = (
