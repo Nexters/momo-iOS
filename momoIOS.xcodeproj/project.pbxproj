@@ -19,6 +19,7 @@
 		BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */; };
 		BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */; };
 		BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57729951F0C0026DCE3 /* ProfileView.swift */; };
+		BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */; };
 		BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */; };
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
 		BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */; };
@@ -53,6 +54,7 @@
 		BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceHistoryCell.swift; sourceTree = "<group>"; };
 		BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoimManagementController.swift; sourceTree = "<group>"; };
 		BF43B57729951F0C0026DCE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoimSettingCell.swift; sourceTree = "<group>"; };
 		BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResultCell.swift; sourceTree = "<group>"; };
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
 		BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberInfoController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */,
+				BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */,
 			);
 			path = Management;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */,
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
+				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
 				BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */,
 			);
