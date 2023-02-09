@@ -12,13 +12,13 @@ class ProfileView: UIView {
     
     // MARK: - Properties
     private let username = "김넥터"
-    private let userJob = "designer"
+    private let userJob = "admin"
     private let userYear = 22
     private let email = "nexters@naver.com"
     
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 93, height: 93))
-        imageView.image = UIImage(named: "\(userJob)")!
+        imageView.image = UIImage(named: "\(userJob)") ?? UIImage(named: "designer")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 93 / 2
         imageView.clipsToBounds = true
