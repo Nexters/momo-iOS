@@ -13,11 +13,13 @@ class AttendanceCodeDetailViewController: UIViewController {
     private let codeContainerView: UIStackView = UIStackView()
     private let codeTextFields: [UITextField] = [UITextField(), UITextField(), UITextField(), UITextField()]
     private let descriptionLabel: UILabel = UILabel()
+    private let attendButton: UIButton = UIButton()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupKeyboardNotifications()
         self.setupViews()
         self.setupLayout()
     }
@@ -29,7 +31,25 @@ class AttendanceCodeDetailViewController: UIViewController {
         self.setupNavigation()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Setup
+    private func setupKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
     private func setupNavigation() {
         
     }
@@ -62,6 +82,9 @@ class AttendanceCodeDetailViewController: UIViewController {
         self.descriptionLabel.font = .systemFont(ofSize: 12)
         self.descriptionLabel.textColor = .white.withAlphaComponent(0.67)
         self.backgroundView.addSubview(self.descriptionLabel)
+        
+        self.attendButton.setTitle("출석하기", size: 16, weight: .bold, color: .white)
+        self.attendButton.configurate(bgColor: .rgba(56, 56, 56, 1), cornerRadius: 7, padding: 10)
     }
     
     // MARK: - Layout
@@ -108,5 +131,37 @@ class AttendanceCodeDetailViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(42)
         }
+        
+        self.view.addSubview(self.attendButton)
+        self.attendButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(24)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(28)
+            make.height.equalTo(54)
+        }
+    }
+    
+    // MARK: - Actions
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if self.isEditingCode {
+            self.attendButton.moveWithKeyboard(
+                willShow: true,
+                notification: notification,
+                safeAreaBottomInset: self.view.safeAreaInsets.bottom
+            )
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        self.attendButton.moveWithKeyboard(
+            willShow: false,
+            notification: notification,
+            safeAreaBottomInset: self.view.safeAreaInsets.bottom
+        )
+    }
+    
+    // MARK: - Logics
+    private var isEditingCode: Bool {
+        let textFileds = self.codeTextFields
+        return textFileds[0].isEditing || textFileds[1].isEditing || textFileds[2].isEditing || textFileds[3].isEditing
     }
 }
