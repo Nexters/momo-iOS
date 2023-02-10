@@ -39,13 +39,13 @@ class AttendanceCodeDetailViewController: UIViewController {
     private func setupKeyboardNotifications() {
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.keyboardWillShow),
+            selector: #selector(keyboardWillShow(_:)),
             name: UIResponder.keyboardWillShowNotification,
             object: nil)
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.keyboardWillHide),
+            selector: #selector(keyboardWillHide(_:)),
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
@@ -74,8 +74,7 @@ class AttendanceCodeDetailViewController: UIViewController {
             textField.textColor = .white
             textField.font = .systemFont(ofSize: 32, weight: .medium)
             textField.keyboardType = .numberPad
-//            textField.delegate = self
-//            textField.dataSource = self
+            textField.delegate = self
         }
         
         self.descriptionLabel.text = "운영진이 공지해준 출석체크 코드를 입력해주세요!"
@@ -139,8 +138,51 @@ class AttendanceCodeDetailViewController: UIViewController {
             make.height.equalTo(54)
         }
     }
+}
+
+// MARK: - UITextFieldDelegate
+extension AttendanceCodeDetailViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let newText = range.lowerBound == 0 ? string : currentText.replaced(string, in: range) ?? ""
+        
+        if newText.count == 0 {
+            textField.text = newText
+            self.prevTextField(textField)?.becomeFirstResponder()
+        } else {
+            self.fillTextField(textField, with: newText)
+        }
+        return false
+    }
     
-    // MARK: - Actions
+    // MARK: - TextField Values
+    private var isEditingCode: Bool {
+        for textField in self.codeTextFields where textField.isEditing == true {
+            return true
+        }
+        return false
+    }
+    
+    private func textFieldIndex(of textField: UITextField) -> Int? {
+        for index in 0..<self.codeTextFields.count {
+            if textField == self.codeTextFields[index] {
+                return index
+            }
+        }
+        return nil
+    }
+    
+    private func prevTextField(_ textField: UITextField) -> UITextField? {
+        guard let index = self.textFieldIndex(of: textField) else { return nil }
+        return self.codeTextFields[safe: index - 1]
+    }
+    
+    private func nextTextField(_ textField: UITextField) -> UITextField? {
+        guard let index = self.textFieldIndex(of: textField) else { return nil }
+        return self.codeTextFields[safe: index + 1]
+    }
+    
+    // MARK: - TextField Actions
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if self.isEditingCode {
             self.attendButton.moveWithKeyboard(
@@ -159,9 +201,31 @@ class AttendanceCodeDetailViewController: UIViewController {
         )
     }
     
-    // MARK: - Logics
-    private var isEditingCode: Bool {
-        let textFileds = self.codeTextFields
-        return textFileds[0].isEditing || textFileds[1].isEditing || textFileds[2].isEditing || textFileds[3].isEditing
+    private func fillTextField(_ textField: UITextField, with string: String) {
+        let string = string.trimmingCharacters(in: CharacterSet(charactersIn: "0123456789.").inverted)
+        guard !string.isEmpty else { return }
+        textField.text = string[safe: 0]
+        
+        guard let nextTextField = self.nextTextField(textField) else { return }
+        nextTextField.becomeFirstResponder()
+        if nextTextField.text?.isEmpty == false {
+            self.setCursor(of: nextTextField, at: 0)
+        }
+        self.fillTextField(nextTextField, with: string[1..<string.count])
+    }
+    
+    private func clearTextField(after textField: UITextField) {
+        guard let index = self.textFieldIndex(of: textField) else { return }
+        let nextIndex: Int = index + 1
+        let totalCount = self.codeTextFields.count
+        
+        for index in nextIndex..<totalCount {
+            self.codeTextFields[safe: index]?.text = ""
+        }
+    }
+    
+    private func setCursor(of textField: UITextField, at position: Int) {
+        let position = textField.position(from: textField.beginningOfDocument, offset: position)!
+        textField.selectedTextRange = textField.textRange(from: position, to: position)
     }
 }
