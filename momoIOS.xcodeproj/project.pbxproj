@@ -18,6 +18,9 @@
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
 		BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */; };
 		BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */; };
+		BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */; };
+		BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57729951F0C0026DCE3 /* ProfileView.swift */; };
+		BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */; };
 		BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */; };
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
 		BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */; };
@@ -51,6 +54,9 @@
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
 		BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
 		BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceHistoryCell.swift; sourceTree = "<group>"; };
+		BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoimManagementController.swift; sourceTree = "<group>"; };
+		BF43B57729951F0C0026DCE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoimSettingCell.swift; sourceTree = "<group>"; };
 		BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResultCell.swift; sourceTree = "<group>"; };
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
 		BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberInfoController.swift; sourceTree = "<group>"; };
@@ -103,6 +109,15 @@
 				BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF43B57429951CB90026DCE3 /* MoimManagement */ = {
+			isa = PBXGroup;
+			children = (
+				BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */,
+				BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */,
+			);
+			path = MoimManagement;
 			sourceTree = "<group>";
 		};
 		BF405C7629972C0700B5889D /* MemberManagement */ = {
@@ -166,8 +181,10 @@
 		E8D5C3EF2984FC23003D1AD0 /* momoIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BF43B57429951CB90026DCE3 /* MoimManagement */,
 				BF405C7629972C0700B5889D /* MemberManagement */,
 				BF0408602987B3AA00F1129B /* Authentication */,
+				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
 				E8D5C3F42984FC23003D1AD0 /* ViewController.swift */,
@@ -301,14 +318,17 @@
 				BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */,
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
+				BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */,
 				E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */,
 				E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */,
 				BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */,
 				E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */,
 				E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */,
 				E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */,
+				BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */,
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
+				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
 				BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */,
 			);
