@@ -16,6 +16,7 @@
 		BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086A2987E34800F1129B /* AuthCommonConstants.swift */; };
 		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
+		BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */; };
 		BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */; };
 		BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */; };
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
@@ -48,6 +49,7 @@
 		BF04086A2987E34800F1129B /* AuthCommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCommonConstants.swift; sourceTree = "<group>"; };
 		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
+		BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
 		BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceHistoryCell.swift; sourceTree = "<group>"; };
 		BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResultCell.swift; sourceTree = "<group>"; };
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		BF405C7629972C0700B5889D /* MemberManagement */ = {
+			isa = PBXGroup;
+			children = (
+				BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */,
+			);
+			path = MemberManagement;
+			sourceTree = "<group>";
+		};
 		BF9988FA298AD002005723C7 /* PersonalInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +166,7 @@
 		E8D5C3EF2984FC23003D1AD0 /* momoIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BF405C7629972C0700B5889D /* MemberManagement */,
 				BF0408602987B3AA00F1129B /* Authentication */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
@@ -278,6 +289,7 @@
 				BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */,
 				BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */,
 				E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */,
+				BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */,
 				E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */,
 				BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */,
 				E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */,
