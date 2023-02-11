@@ -15,7 +15,7 @@ class MainSessionAbsentCell: UITableViewCell {
     var seesionAbsentBtnAction: (() -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: "MainSessionTimeCell")
+        super.init(style: style, reuseIdentifier: "MainSessionAbsentCell")
         self.initViews()
         self.setConstraints()
     }
