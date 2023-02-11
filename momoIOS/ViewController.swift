@@ -56,10 +56,13 @@ class ViewController: UIViewController {
     
     @objc private func goToOtherViewController() {
         self.navigationController?.pushViewController(RegistrationController(), animated: true)
+<<<<<<< HEAD
     }
     
     @objc private func goToAdminViewController() {
         self.navigationController?.pushViewController(AdminSessionTableViewController(), animated: true)
+=======
+>>>>>>> 96a0356 ([STYLE][#34] 회원관리/모임관리 구분을 위해 폴더명 변경)
     }
     
     @objc private func goToRegisterPlaceViewController() {
