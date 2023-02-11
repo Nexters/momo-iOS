@@ -15,6 +15,14 @@ class AttendanceCodeDetailViewController: UIViewController {
     private let descriptionLabel: UILabel = UILabel()
     private let attendButton: UIButton = UIButton()
     
+    private var inputCodeString: String {
+        var string = ""
+        self.codeTextFields.forEach { textField in
+            string.append(textField.text ?? " ")
+        }
+        return string
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +59,21 @@ class AttendanceCodeDetailViewController: UIViewController {
     }
     
     private func setupNavigation() {
+        let navigationBar = self.navigationController?.navigationBar
+        let appearance = navigationBar?.standardAppearance ?? UINavigationBarAppearance()
+        appearance.shadowColor = .rgba(24, 24, 24, 0.16)
+        appearance.backgroundColor = .white.withAlphaComponent(0.96)
+        navigationBar?.standardAppearance = appearance
         
+        let backButtonImage = UIImage(systemName: "arrow.left")
+        let backBarButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(popViewController))
+        self.navigationItem.leftBarButtonItem = backBarButton
+            
+        let titleLabel = UILabel()
+        titleLabel.text = "서울특별시 강남구 역삼로"
+        titleLabel.textColor = .black
+        titleLabel.font = .systemFont(ofSize: 14)
+        self.navigationItem.titleView = titleLabel
     }
     
     private func setupViews() {
@@ -83,7 +105,8 @@ class AttendanceCodeDetailViewController: UIViewController {
         self.backgroundView.addSubview(self.descriptionLabel)
         
         self.attendButton.setTitle("출석하기", size: 16, weight: .bold, color: .white)
-        self.attendButton.configurate(bgColor: .rgba(56, 56, 56, 1), cornerRadius: 7, padding: 10)
+        self.configureAttendButtonEnabled()
+        self.attendButton.addTarget(self, action: #selector(didTapAttendButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -138,11 +161,39 @@ class AttendanceCodeDetailViewController: UIViewController {
             make.height.equalTo(54)
         }
     }
+    
+    // MARK: - Actions
+    @objc private func didTapAttendButton() {
+        self.popViewController()
+    }
+    
+    private func configureAttendButtonEnabled() {
+        let isAttendButtonEnabled = {
+            for textField in self.codeTextFields where textField.text.isEmptyOrNil {
+                return false
+            }
+            return true
+        }()
+        
+        if isAttendButtonEnabled {
+            self.attendButton.isEnabled = true
+            self.attendButton.configurate(bgColor: .rgba(56, 56, 56, 1), cornerRadius: 7, padding: 10)
+        } else {
+            self.attendButton.isEnabled = false
+            self.attendButton.configurate(bgColor: .rgba(200, 200, 200, 1), cornerRadius: 7, padding: 10)
+        }
+    }
+    
+    @objc private func popViewController(animated: Bool = true) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - UITextFieldDelegate
 extension AttendanceCodeDetailViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        defer { self.configureAttendButtonEnabled() }
+        
         let currentText = textField.text ?? ""
         let newText = range.lowerBound == 0 ? string : currentText.replaced(string, in: range) ?? ""
         
@@ -183,7 +234,7 @@ extension AttendanceCodeDetailViewController: UITextFieldDelegate {
     }
     
     // MARK: - TextField Actions
-    @objc func keyboardWillShow(_ notification: NSNotification) {
+    @objc private func keyboardWillShow(_ notification: NSNotification) {
         if self.isEditingCode {
             self.attendButton.moveWithKeyboard(
                 willShow: true,
@@ -193,7 +244,7 @@ extension AttendanceCodeDetailViewController: UITextFieldDelegate {
         }
     }
     
-    @objc func keyboardWillHide(_ notification: NSNotification) {
+    @objc private func keyboardWillHide(_ notification: NSNotification) {
         self.attendButton.moveWithKeyboard(
             willShow: false,
             notification: notification,
