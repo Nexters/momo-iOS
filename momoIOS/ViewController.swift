@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     // MARK: - Views
     private let mainButton: UIButton = UIButton()
     private let otherButton: UIButton = UIButton()
+    private let adminButton: UIButton = UIButton()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -24,12 +25,14 @@ class ViewController: UIViewController {
     private func setupViews() {
         self.mainButton.setTitle("Main으로 이동", for: .normal)
         self.otherButton.setTitle("가입화면으로 이동", for: .normal)
+        self.adminButton.setTitle("어드민 세션", for: .normal)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.addArrangedSubview(self.mainButton)
         stackView.addArrangedSubview(self.otherButton)
+        stackView.addArrangedSubview(self.adminButton)
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -39,6 +42,7 @@ class ViewController: UIViewController {
     private func setupButtonActions() {
         self.mainButton.addTarget(self, action: #selector(goToMainViewController), for: .touchUpInside)
         self.otherButton.addTarget(self, action: #selector(goToOtherViewController), for: .touchUpInside)
+        self.adminButton.addTarget(self, action: #selector(goToAdminViewController), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -48,5 +52,9 @@ class ViewController: UIViewController {
     
     @objc private func goToOtherViewController() {
         self.navigationController?.pushViewController(RegistrationController(), animated: true)
+    }
+    
+    @objc private func goToAdminViewController() {
+        self.navigationController?.pushViewController(AdminSessionTableViewController(), animated: true)
     }
 }
