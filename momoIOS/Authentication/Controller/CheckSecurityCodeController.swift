@@ -8,14 +8,9 @@
 import UIKit
 
 class CheckSecurityCodeController: UIViewController {
+    
     // MARK: - Properties
-    private let guidePhrase: UILabel = {
-        let phrase = UILabel()
-        phrase.text = "보안코드를\n입력해주세요."
-        phrase.font = UIFont.systemFont(ofSize: 40, weight: .regular)
-        phrase.numberOfLines = 0
-        return phrase
-    }()
+    private lazy var guidePhrase = CommonTitleLabel(labelText: "보안코드를\n입력해주세요.")
     
     private let codeField: UITextField = {
         let field = UITextField()
@@ -30,9 +25,7 @@ class CheckSecurityCodeController: UIViewController {
         return border
     }()
 
-    private let completeButton: UIButton = {
-        return actionButton(title: "가입완료!")
-    }()
+    private let completeButton = CommonActionButton(buttonTitle: "가입완료!")
     
     // MARK: - Lifecyle
     override func viewDidLoad() {

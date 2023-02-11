@@ -23,7 +23,7 @@ class InputMemberInfoController: UIViewController {
         let view = UIView()
         
         let label = setLabel(text: "이름")
-        let textField = inputContainerView(placeholder: "")
+        let textField = CommonTextField(placeholderText: "")
         
         view.addSubviews(label, textField)
         label.snp.makeConstraints { make in
@@ -41,7 +41,7 @@ class InputMemberInfoController: UIViewController {
         let view = UIView()
         
         let titleLabel = setLabel(text: "기수")
-        let textField = inputContainerView(placeholder: "")
+        let textField = CommonTextField(placeholderText: "")
         let yearLabel = setLabel(text: "기")
         
         view.addSubviews(titleLabel, textField, yearLabel)
@@ -106,9 +106,7 @@ class InputMemberInfoController: UIViewController {
         return button
     }
     
-    private let completeButton: UIButton = {
-        return actionButton(title: "가입완료!")
-    }()
+    private let completeButton = CommonActionButton(buttonTitle: "가입완료!")
     
     // MARK: - Lifecycles
     
