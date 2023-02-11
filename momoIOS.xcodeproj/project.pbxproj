@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A5AC30A2989784A0080323A /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC3092989784A0080323A /* AbsenceModalViewController.swift */; };
 		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
+		3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */; };
+		3A8E2DE129976A8F00D5476A /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E2DE029976A8F00D5476A /* AbsenceModalViewController.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
 		3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713D0298946FF006F922F /* UIColor+Extension.swift */; };
 		3ABBF74829975801004D4D0B /* NotActiveSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF74729975801004D4D0B /* NotActiveSessionCell.swift */; };
 		3ABBF75129975EDA004D4D0B /* AdminSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF74E29975ED9004D4D0B /* AdminSessionCell.swift */; };
 		3ABBF75229975EDA004D4D0B /* AdminSessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF74F29975ED9004D4D0B /* AdminSessionTableViewController.swift */; };
 		3ABBF75329975EDA004D4D0B /* AddSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF75029975ED9004D4D0B /* AddSessionViewController.swift */; };
+		3ABEDB7129976EF100F9BF1C /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB6F29976EF100F9BF1C /* UINavigationController+Extension.swift */; };
+		3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */; };
+		3ABEDB742997719000F9BF1C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB732997719000F9BF1C /* String+Extension.swift */; };
+		3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */; };
 		BF0408632987B3AA00F1129B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0408622987B3AA00F1129B /* LoginController.swift */; };
 		BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086A2987E34800F1129B /* AuthCommonConstants.swift */; };
 		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
@@ -47,15 +52,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A5AC3092989784A0080323A /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
 		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
+		3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCodeDetailViewController.swift; sourceTree = "<group>"; };
+		3A8E2DE029976A8F00D5476A /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
 		3AA713D0298946FF006F922F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3ABBF74729975801004D4D0B /* NotActiveSessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActiveSessionCell.swift; sourceTree = "<group>"; };
 		3ABBF74E29975ED9004D4D0B /* AdminSessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSessionCell.swift; sourceTree = "<group>"; };
 		3ABBF74F29975ED9004D4D0B /* AdminSessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSessionTableViewController.swift; sourceTree = "<group>"; };
 		3ABBF75029975ED9004D4D0B /* AddSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSessionViewController.swift; sourceTree = "<group>"; };
+		3ABEDB6F29976EF100F9BF1C /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		3ABEDB732997719000F9BF1C /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		BF0408622987B3AA00F1129B /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BF04086A2987E34800F1129B /* AuthCommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCommonConstants.swift; sourceTree = "<group>"; };
 		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -99,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A8E2DDC2997697E00D5476A /* AttendanceCodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */,
+			);
+			path = AttendanceCodeDetail;
+			sourceTree = "<group>";
+		};
 		3ABBF73F29975082004D4D0B /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +129,7 @@
 		3ABBF742299750A4004D4D0B /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				3A5AC3092989784A0080323A /* AbsenceModalViewController.swift */,
+				3A8E2DE029976A8F00D5476A /* AbsenceModalViewController.swift */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 			);
 			path = UI;
@@ -145,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				3ABBF743299752EB004D4D0B /* Main */,
+				3A8E2DDC2997697E00D5476A /* AttendanceCodeDetail */,
 				BF9988FA298AD002005723C7 /* PersonalInformation */,
 			);
 			path = UserSide;
@@ -220,8 +239,12 @@
 		E8207930298A163400B36FC9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */,
+				3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */,
+				3ABEDB732997719000F9BF1C /* String+Extension.swift */,
 				3A5AC30F29898B330080323A /* UIButton+Extension.swift */,
 				3AA713D0298946FF006F922F /* UIColor+Extension.swift */,
+				3ABEDB6F29976EF100F9BF1C /* UINavigationController+Extension.swift */,
 				BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */,
 				E8207931298A163400B36FC9 /* UIView+Extension.swift */,
 			);
@@ -373,14 +396,15 @@
 				E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */,
 				3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */,
 				E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */,
-				3A5AC30A2989784A0080323A /* AbsenceModalViewController.swift in Sources */,
 				BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */,
 				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
 				BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */,
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
 				BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */,
+				3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */,
 				E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */,
+				3A8E2DE129976A8F00D5476A /* AbsenceModalViewController.swift in Sources */,
 				3ABBF74829975801004D4D0B /* NotActiveSessionCell.swift in Sources */,
 				3ABBF75229975EDA004D4D0B /* AdminSessionTableViewController.swift in Sources */,
 				E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */,
@@ -390,11 +414,15 @@
 				E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */,
 				E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */,
 				BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */,
+				3ABEDB742997719000F9BF1C /* String+Extension.swift in Sources */,
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
 				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
 				BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */,
+				3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */,
+				3ABEDB7129976EF100F9BF1C /* UINavigationController+Extension.swift in Sources */,
+				3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
