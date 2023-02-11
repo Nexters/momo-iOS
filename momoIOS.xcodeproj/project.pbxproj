@@ -107,6 +107,29 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		3ABBF743299752EB004D4D0B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E83238F0298506A000DC83C2 /* MainViewController.swift */,
+				3ABBF7442997530D004D4D0B /* Cells */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3ABBF7442997530D004D4D0B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */,
+				E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */,
+				E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */,
+				E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */,
+				E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */,
+				3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */,
+				3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BF0408602987B3AA00F1129B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,18 +177,6 @@
 			path = PersonalInformation;
 			sourceTree = "<group>";
 		};
-		E8207929298A116700B36FC9 /* MainSession */ = {
-			isa = PBXGroup;
-			children = (
-				E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */,
-				E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */,
-				E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */,
-				E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */,
-				E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */,
-			);
-			path = MainSession;
-			sourceTree = "<group>";
-		};
 		E8207930298A163400B36FC9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				BF9988FA298AD002005723C7 /* PersonalInformation */,
-				E8207929298A116700B36FC9 /* MainSession */,
 				E8D5C3EF2984FC23003D1AD0 /* momoIOS */,
 				E8D5C3EE2984FC23003D1AD0 /* Products */,
 			);
@@ -202,13 +212,11 @@
 				BF43B57429951CB90026DCE3 /* MoimManagement */,
 				BF405C7629972C0700B5889D /* MemberManagement */,
 				BF0408602987B3AA00F1129B /* Authentication */,
+				3ABBF743299752EB004D4D0B /* Main */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
 				E8D5C3F42984FC23003D1AD0 /* ViewController.swift */,
-				E83238F0298506A000DC83C2 /* MainViewController.swift */,
-				3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */,
-				3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */,
 				3A5AC3092989784A0080323A /* AbsenceModalViewController.swift */,
 				E8D5C3F92984FC25003D1AD0 /* Assets.xcassets */,
 				E8D5C3FE2984FC25003D1AD0 /* Info.plist */,
