@@ -18,6 +18,7 @@ class AdminSessionCell: UITableViewCell {
     let rightArrowImg = UIImageView()
     let sessionKeyworkLabel = UILabel()
     let sessionDetailLabel = UILabel()
+    let cellHeight = UILabel()
     let checkCodeLayout = UIView()
     let checkCodeLabel = UILabel()
      
@@ -34,7 +35,7 @@ class AdminSessionCell: UITableViewCell {
         mainView.layer.cornerRadius = 13
         mainView.backgroundColor = UIColor(hex: 0xF5F5F5)
         
-        self.mainView.addSubviews(sessionWeekLabel, sessionDdayLayout, sessionDdayLabel, sessionDateLabel, rightArrowImg, sessionKeyworkLabel, sessionDetailLabel)
+        self.mainView.addSubviews(sessionWeekLabel, sessionDdayLayout, sessionDdayLabel, sessionDateLabel, rightArrowImg, sessionKeyworkLabel, sessionDetailLabel, cellHeight)
         sessionWeekLabel.text = "1주차"
         sessionWeekLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
@@ -55,66 +56,89 @@ class AdminSessionCell: UITableViewCell {
         sessionKeyworkLabel.textColor = UIColor(hex: 0x717171)
         sessionKeyworkLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
-        sessionDetailLabel.text = "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!\nd\nd\nd\nd\nd\nd\nd\nd\nd"
+        sessionDetailLabel.text = "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!"
         sessionDetailLabel.numberOfLines = 0
         sessionDetailLabel.textAlignment = .justified
         sessionDetailLabel.textColor = UIColor(hex: 0x717171)
         sessionDetailLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
     }
-    
+
     private func setBaseConstraints() {
-//        self.contentView.snp.makeConstraints { make in
-//            make.leading.trailing.top.equalToSuperview()
-//            make.height.greaterThanOrEqualTo(153)
-//        }
         mainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.top.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(6)
         }
-        
+
         sessionWeekLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(20)
-            make.width.equalTo(sessionWeekLabel.intrinsicContentSize.width)
         }
-        
+
         sessionDdayLabel.snp.makeConstraints { make in
             make.center.equalTo(sessionDdayLayout)
         }
-        
+
         sessionDdayLayout.snp.makeConstraints { make in
             make.centerY.equalTo(sessionWeekLabel)
             make.leading.equalTo(sessionWeekLabel.snp.trailing).offset(8)
-            make.width.equalTo(sessionDdayLabel.intrinsicContentSize.width + 22)
+            make.width.greaterThanOrEqualTo(sessionDdayLabel.intrinsicContentSize.width + 22)
             make.height.equalTo(28)
         }
-        
+
         sessionDateLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(40)
             make.centerY.equalTo(sessionWeekLabel)
         }
-        
+
         rightArrowImg.snp.makeConstraints { make in
             make.size.equalTo(15)
             make.centerY.equalTo(sessionDateLabel)
             make.right.equalToSuperview().inset(20)
         }
-        
+
         sessionKeyworkLabel.snp.makeConstraints { make in
             make.top.equalTo(sessionWeekLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         sessionDetailLabel.snp.makeConstraints { make in
             make.top.equalTo(sessionKeyworkLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.greaterThanOrEqualTo(sessionDetailLabel.intrinsicContentSize.height)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+    
+        cellHeight.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(sessionDetailLabel.snp.bottom)
+            make.height.greaterThanOrEqualTo(20)
         }
     }
     
-    private func setCheckCodeView() {
+    func setCheckCodeView() {
         mainView.addSubviews(checkCodeLayout, checkCodeLabel)
+        
+        cellHeight.snp.remakeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(checkCodeLayout.snp.top)
+            make.top.equalTo(sessionDetailLabel.snp.bottom)
+            make.height.greaterThanOrEqualTo(20)
+        }
+        
+        checkCodeLayout.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(56)
+        }
+        checkCodeLayout.layer.masksToBounds = true
+        checkCodeLayout.layer.cornerRadius = 13
+        checkCodeLayout.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        checkCodeLayout.backgroundColor = UIColor(hex: 0x9272EC)
+        
+        checkCodeLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(checkCodeLayout)
+            make.leading.equalTo(checkCodeLayout).offset(20)
+        }
+        checkCodeLabel.text = "출석체크 코드 8237"
+        checkCodeLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        checkCodeLabel.textColor = .white
     }
     
     required init?(coder: NSCoder) {
