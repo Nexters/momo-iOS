@@ -42,7 +42,6 @@ class ViewController: UIViewController {
     private func setupButtonActions() {
         self.mainButton.addTarget(self, action: #selector(goToMainViewController), for: .touchUpInside)
         self.otherButton.addTarget(self, action: #selector(goToOtherViewController), for: .touchUpInside)
-        self.otherButton.addTarget(self, action: #selector(goToOtherViewController), for: .touchUpInside)
         self.adminButton.addTarget(self, action: #selector(goToAdminViewController), for: .touchUpInside)
     }
     
