@@ -130,6 +130,24 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		3ABBF745299754AA004D4D0B /* UserSide */ = {
+			isa = PBXGroup;
+			children = (
+				3ABBF743299752EB004D4D0B /* Main */,
+				BF9988FA298AD002005723C7 /* PersonalInformation */,
+			);
+			path = UserSide;
+			sourceTree = "<group>";
+		};
+		3ABBF746299754C0004D4D0B /* AdminSide */ = {
+			isa = PBXGroup;
+			children = (
+				BF43B57429951CB90026DCE3 /* MoimManagement */,
+				BF405C7629972C0700B5889D /* MemberManagement */,
+			);
+			path = AdminSide;
+			sourceTree = "<group>";
+		};
 		BF0408602987B3AA00F1129B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +209,6 @@
 		E8D5C3E42984FC23003D1AD0 = {
 			isa = PBXGroup;
 			children = (
-				BF9988FA298AD002005723C7 /* PersonalInformation */,
 				E8D5C3EF2984FC23003D1AD0 /* momoIOS */,
 				E8D5C3EE2984FC23003D1AD0 /* Products */,
 			);
@@ -209,10 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				3ABBF73F29975082004D4D0B /* Common */,
-				BF43B57429951CB90026DCE3 /* MoimManagement */,
-				BF405C7629972C0700B5889D /* MemberManagement */,
 				BF0408602987B3AA00F1129B /* Authentication */,
-				3ABBF743299752EB004D4D0B /* Main */,
+				3ABBF746299754C0004D4D0B /* AdminSide */,
+				3ABBF745299754AA004D4D0B /* UserSide */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
