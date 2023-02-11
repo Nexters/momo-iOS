@@ -11,25 +11,11 @@ import SnapKit
 class LoginController: UIViewController {
     // MARK: - Properties
     
-    private let welcomeTitle: UILabel = {
-        let title = UILabel()
-        title.text = "간단한 출석체크,\n모두모여에서"
-        title.font = UIFont.systemFont(ofSize: 40, weight: .regular)
-        title.numberOfLines = 0
-        return title
-    }()
+    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간단한 출석체크,\n모두모여에서")
+    private lazy var emailTextField = CommonTextField(placeholderText: "이메일을 입력해주세요")
+    private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
     
-    private lazy var emailTextField: UITextField = {
-        return inputContainerView(placeholder: "이메일을 입력해주세요")
-    }()
-    
-    private lazy var passwordTextField: UITextField = {
-        return inputContainerView(placeholder: "비밀번호를 입력해주세요", isSecureField: true)
-    }()
-    
-    private let loginButton: UIButton = {
-        return actionButton(title: "로그인")
-    }()
+    private let loginButton = CommonActionButton(buttonTitle: "로그인")
     
     private let pushRegistrationViewButton: UIButton = {
         return pushAnotherViewButton(subtitle: "회원가입이 필요하다면?", title: "가입하기")

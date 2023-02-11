@@ -12,18 +12,10 @@ class AddIndividualMemberViewcontroller: UIViewController {
     
     // MARK: - Properties
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "회원정보를\n입력하세요."
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 40, weight: .regular)
-        label.textColor = .black
-        return label
-    }()
-    
-    private lazy var nameTextField = inputContainerView(placeholder: "이름")
-    private lazy var emailTextField = inputContainerView(placeholder: "메일 주소")
-    private lazy var addButton = actionButton(title: "등록하기")
+    private lazy var titleLabel = CommonTitleLabel(labelText: "회원정보를\n입력하세요.")
+    private lazy var nameTextField = CommonTextField(placeholderText: "이름")
+    private lazy var emailTextField = CommonTextField(placeholderText: "메일 주소")
+    private lazy var addButton = CommonActionButton(buttonTitle: "등록하기")
     
     // MARK: - Lifecycles
     

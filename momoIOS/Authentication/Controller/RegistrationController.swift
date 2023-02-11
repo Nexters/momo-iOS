@@ -11,9 +11,9 @@ import SnapKit
 class RegistrationController: UIViewController {
     // MARK: - Properties
     
-    private lazy var emailTextField: UITextField = {
-        return inputContainerView(placeholder: "이메일을 입력해주세요")
-    }()
+    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간단한 출석체크,\n모두모여에서")
+    
+    private lazy var emailTextField = CommonTextField(placeholderText: "이메일을 입력해주세요")
     
     private let validEmailFormatLabel: UILabel = {
         let label = UILabel()
@@ -22,9 +22,7 @@ class RegistrationController: UIViewController {
         return label
     }()
     
-    private lazy var passwordTextField: UITextField = {
-        return inputContainerView(placeholder: "비밀번호를 입력해주세요", isSecureField: true)
-    }()
+    private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
     
     private let validPasswordFormatLabel: UILabel = {
         let label = UILabel()
@@ -35,9 +33,7 @@ class RegistrationController: UIViewController {
         return label
     }()
     
-    private lazy var checkPasswordTextField: UITextField = {
-        return inputContainerView(placeholder: "비밀번호를 재입력해주세요", isSecureField: true)
-    }()
+    private lazy var checkPasswordTextField = CommonTextField(placeholderText: "비밀번호를 재입력해주세요", isSecure: true)
     
     private let confirmPasswordLabel: UILabel = {
         let label = UILabel()
@@ -47,9 +43,7 @@ class RegistrationController: UIViewController {
         return label
     }()
     
-    private let registrationButton: UIButton = {
-        return actionButton(title: "가입하기")
-    }()
+    private let registrationButton = CommonActionButton(buttonTitle: "가입하기")
     
     private let pushLoginViewButton: UIButton = {
         return pushAnotherViewButton(subtitle: "이미 가입했다면?", title: "로그인하기")
