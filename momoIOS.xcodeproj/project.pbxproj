@@ -109,13 +109,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		BF43B57429951CB90026DCE3 /* Management */ = {
+		BF43B57429951CB90026DCE3 /* MoimManagement */ = {
 			isa = PBXGroup;
 			children = (
 				BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */,
 				BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */,
 			);
-			path = Management;
+			path = MoimManagement;
 			sourceTree = "<group>";
 		};
 		BF9988FA298AD002005723C7 /* PersonalInformation */ = {
@@ -171,7 +171,7 @@
 		E8D5C3EF2984FC23003D1AD0 /* momoIOS */ = {
 			isa = PBXGroup;
 			children = (
-				BF43B57429951CB90026DCE3 /* Management */,
+				BF43B57429951CB90026DCE3 /* MoimManagement */,
 				BF0408602987B3AA00F1129B /* Authentication */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 				E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */,

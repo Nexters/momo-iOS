@@ -47,6 +47,6 @@ class ViewController: UIViewController {
     }
     
     @objc private func goToOtherViewController() {
-        self.navigationController?.pushViewController(MoimManagementcontrolelr(), animated: true)
+        self.navigationController?.pushViewController(RegistrationController(), animated: true)
     }
 }
