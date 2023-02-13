@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     private let otherButton: UIButton = UIButton()
     private let adminButton: UIButton = UIButton()
     private let registerPlaceButton = UIButton()
+    private let newNextersButton: UIButton = UIButton()
+    private let moimSettingButton: UIButton = UIButton()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,14 +30,13 @@ class ViewController: UIViewController {
         self.otherButton.setTitle("가입화면으로 이동", for: .normal)
         self.adminButton.setTitle("어드민 세션", for: .normal)
         self.registerPlaceButton.setTitle("장소등록 화면", for: .normal)
+        self.newNextersButton.setTitle("새 기수 시작 화면", for: .normal)
+        self.moimSettingButton.setTitle("모임 설정 관리 화면", for: .normal)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.addArrangedSubview(self.mainButton)
-        stackView.addArrangedSubview(self.otherButton)
-        stackView.addArrangedSubview(self.adminButton)
-        stackView.addArrangedSubview(self.registerPlaceButton)
+        stackView.addArrangedSubviews(mainButton, otherButton, adminButton, registerPlaceButton, newNextersButton, moimSettingButton)
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -47,6 +48,8 @@ class ViewController: UIViewController {
         self.otherButton.addTarget(self, action: #selector(goToOtherViewController), for: .touchUpInside)
         self.adminButton.addTarget(self, action: #selector(goToAdminViewController), for: .touchUpInside)
         self.registerPlaceButton.addTarget(self, action: #selector(goToRegisterPlaceViewController), for: .touchUpInside)
+        self.newNextersButton.addTarget(self, action: #selector(goToNewNexterViewController), for: .touchUpInside)
+        self.moimSettingButton.addTarget(self, action: #selector(goToMoimSettingViewController), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -56,13 +59,18 @@ class ViewController: UIViewController {
     
     @objc private func goToOtherViewController() {
         self.navigationController?.pushViewController(RegistrationController(), animated: true)
-<<<<<<< HEAD
     }
     
     @objc private func goToAdminViewController() {
         self.navigationController?.pushViewController(AdminSessionTableViewController(), animated: true)
-=======
->>>>>>> 96a0356 ([STYLE][#34] 회원관리/모임관리 구분을 위해 폴더명 변경)
+    }
+    
+    @objc private func goToNewNexterViewController() {
+        self.navigationController?.pushViewController(InputMoimYearController(), animated: true)
+    }
+    
+    @objc private func goToMoimSettingViewController() {
+        self.navigationController?.pushViewController(MoimManagementcontrolelr(), animated: true)
     }
     
     @objc private func goToRegisterPlaceViewController() {
