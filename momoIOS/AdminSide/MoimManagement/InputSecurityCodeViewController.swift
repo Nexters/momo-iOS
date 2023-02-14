@@ -12,6 +12,8 @@ class InputSecurityCodeViewController: UIViewController {
     
     // MARK: - Properties
     
+    // private let codeRegEx = "[A-Za-z0-9]{6,12}"
+    
     private var isEditingCode: Bool {
         return self.codeField.isEditing
     }
@@ -38,6 +40,7 @@ class InputSecurityCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.codeField.delegate = self
         self.setupKeyboardNotifications()
         self.setupCustomNav()
         self.setupLayout()

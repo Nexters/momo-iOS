@@ -40,7 +40,7 @@ class InputMoimYearController: UIViewController, UITextFieldDelegate {
         
         self.setupKeyboardNotifications()
         self.setupAction()
-        
+        self.codeField.keyboardType = .numberPad
         self.view.backgroundColor = .white
         self.setupCustomNav()
         self.setupLayout()
