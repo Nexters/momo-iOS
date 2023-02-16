@@ -58,7 +58,7 @@ class SampleListViewController: UITableViewController {
     return section.samples[indexPath.row]
   }
 
-  @objc private func showConfiguration(_sender: UIButton) {
+  @objc private func showConfiguration(sender: UIButton) {
     navigationController?.present(
       ConfigurationViewController(configuration: configuration), animated: true)
   }
