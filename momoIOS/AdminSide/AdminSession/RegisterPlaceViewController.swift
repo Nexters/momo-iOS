@@ -142,15 +142,11 @@ extension RegisterPlaceViewController: UISearchBarDelegate {
 
 extension RegisterPlaceViewController: GMSAutocompleteTableDataSourceDelegate {
     func didUpdateAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
-        // Turn the network activity indicator off.
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         // Reload table data.
         resultTableView.reloadData()
     }
 
     func didRequestAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
-        // Turn the network activity indicator on.
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         // Reload table data.
         resultTableView.reloadData()
     }
