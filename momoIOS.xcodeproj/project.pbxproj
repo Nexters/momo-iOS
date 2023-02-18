@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,11 +20,13 @@
 		3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */; };
 		3ABEDB742997719000F9BF1C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB732997719000F9BF1C /* String+Extension.swift */; };
 		3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */; };
+		87F8DFFA60C924D9501841E5 /* libPods-momoIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45B17EF748C61E8DABEACD4 /* libPods-momoIOS.a */; };
 		BF0408632987B3AA00F1129B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0408622987B3AA00F1129B /* LoginController.swift */; };
 		BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086A2987E34800F1129B /* AuthCommonConstants.swift */; };
 		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
 		BF088BC5299A10B100A63A5B /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */; };
+		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
 		BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */; };
 		BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */; };
 		BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7F29976F9300B5889D /* CommonTextField.swift */; };
@@ -37,6 +39,8 @@
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
 		BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */; };
 		BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */; };
+		BFC2E404299E5A9A001D1E34 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC2E403299E5A9A001D1E34 /* API.plist */; };
+		BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */; };
 		E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */; };
 		E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */; };
 		E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */; };
@@ -68,11 +72,14 @@
 		3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		3ABEDB732997719000F9BF1C /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		8273295DD5293F3ED48138F8 /* Pods-momoIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momoIOS.release.xcconfig"; path = "Target Support Files/Pods-momoIOS/Pods-momoIOS.release.xcconfig"; sourceTree = "<group>"; };
+		AADB49F93EF973F8B0D3AD5E /* Pods-momoIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momoIOS.debug.xcconfig"; path = "Target Support Files/Pods-momoIOS/Pods-momoIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		BF0408622987B3AA00F1129B /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BF04086A2987E34800F1129B /* AuthCommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCommonConstants.swift; sourceTree = "<group>"; };
 		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
 		BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
+		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
 		BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
 		BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTitleLabel.swift; sourceTree = "<group>"; };
 		BF405C7F29976F9300B5889D /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
@@ -85,6 +92,9 @@
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
 		BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberInfoController.swift; sourceTree = "<group>"; };
 		BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		BFC2E403299E5A9A001D1E34 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
+		BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "momo++Bundle.swift"; sourceTree = "<group>"; };
+		E45B17EF748C61E8DABEACD4 /* libPods-momoIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momoIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionDetailCell.swift; sourceTree = "<group>"; };
 		E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionTimeCell.swift; sourceTree = "<group>"; };
 		E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionAbsentCell.swift; sourceTree = "<group>"; };
@@ -109,6 +119,7 @@
 				E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */,
 				E83238E92984FDDA00DC83C2 /* RxSwift in Frameworks */,
 				E8D5C4072984FD73003D1AD0 /* SnapKit in Frameworks */,
+				87F8DFFA60C924D9501841E5 /* libPods-momoIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,8 +205,26 @@
 				3ABBF74E29975ED9004D4D0B /* AdminSessionCell.swift */,
 				3ABBF74F29975ED9004D4D0B /* AdminSessionTableViewController.swift */,
 				3ABBF75029975ED9004D4D0B /* AddSessionViewController.swift */,
+				BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */,
 			);
 			path = AdminSession;
+			sourceTree = "<group>";
+		};
+		59A22CA9F5D6697459D41317 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AADB49F93EF973F8B0D3AD5E /* Pods-momoIOS.debug.xcconfig */,
+				8273295DD5293F3ED48138F8 /* Pods-momoIOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6B32116BBD4222CC779ED7B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E45B17EF748C61E8DABEACD4 /* libPods-momoIOS.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BF0408602987B3AA00F1129B /* Authentication */ = {
@@ -273,6 +302,8 @@
 				E8D5C3EF2984FC23003D1AD0 /* momoIOS */,
 				E8D5C3EE2984FC23003D1AD0 /* Products */,
 				BF088BC3299A0F7000A63A5B /* Recovered References */,
+				59A22CA9F5D6697459D41317 /* Pods */,
+				6B32116BBD4222CC779ED7B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,7 +322,9 @@
 				E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */,
 				E8D5C3F42984FC23003D1AD0 /* ViewController.swift */,
 				E8D5C3F92984FC25003D1AD0 /* Assets.xcassets */,
+				BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */,
 				E8D5C3FE2984FC25003D1AD0 /* Info.plist */,
+				BFC2E403299E5A9A001D1E34 /* API.plist */,
 				3ABBF73F29975082004D4D0B /* Common */,
 				BF0408602987B3AA00F1129B /* Authentication */,
 				3ABBF746299754C0004D4D0B /* AdminSide */,
@@ -307,10 +340,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D5C4012984FC25003D1AD0 /* Build configuration list for PBXNativeTarget "momoIOS" */;
 			buildPhases = (
+				FA53D89EC6C241F9178A3E75 /* [CP] Check Pods Manifest.lock */,
 				E8D5C4042984FCCA003D1AD0 /* SwiftLint Script */,
 				E8D5C3E92984FC23003D1AD0 /* Sources */,
 				E8D5C3EA2984FC23003D1AD0 /* Frameworks */,
 				E8D5C3EB2984FC23003D1AD0 /* Resources */,
+				E4227B8D8328AAB020BC89BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,7 +378,7 @@
 				};
 			};
 			buildConfigurationList = E8D5C3E82984FC23003D1AD0 /* Build configuration list for PBXProject "momoIOS" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -372,12 +407,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D5C3FA2984FC25003D1AD0 /* Assets.xcassets in Resources */,
+				BFC2E404299E5A9A001D1E34 /* API.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E4227B8D8328AAB020BC89BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-momoIOS/Pods-momoIOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-momoIOS/Pods-momoIOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-momoIOS/Pods-momoIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E8D5C4042984FCCA003D1AD0 /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,6 +448,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		FA53D89EC6C241F9178A3E75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-momoIOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -429,6 +504,7 @@
 				E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */,
 				BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */,
 				3ABBF75129975EDA004D4D0B /* AdminSessionCell.swift in Sources */,
+				BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */,
 				E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */,
 				E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */,
 				E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */,
@@ -441,6 +517,7 @@
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
 				BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */,
 				3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */,
+				BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */,
 				3ABEDB7129976EF100F9BF1C /* UINavigationController+Extension.swift in Sources */,
 				3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */,
 			);
@@ -565,6 +642,7 @@
 		};
 		E8D5C4022984FC25003D1AD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AADB49F93EF973F8B0D3AD5E /* Pods-momoIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -592,6 +670,7 @@
 		};
 		E8D5C4032984FC25003D1AD0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8273295DD5293F3ED48138F8 /* Pods-momoIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

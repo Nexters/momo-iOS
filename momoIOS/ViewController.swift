@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     private let mainButton: UIButton = UIButton()
     private let otherButton: UIButton = UIButton()
     private let adminButton: UIButton = UIButton()
+    private let registerPlaceButton = UIButton()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
         self.mainButton.setTitle("Main으로 이동", for: .normal)
         self.otherButton.setTitle("가입화면으로 이동", for: .normal)
         self.adminButton.setTitle("어드민 세션", for: .normal)
+        self.registerPlaceButton.setTitle("장소등록 화면", for: .normal)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -33,6 +35,7 @@ class ViewController: UIViewController {
         stackView.addArrangedSubview(self.mainButton)
         stackView.addArrangedSubview(self.otherButton)
         stackView.addArrangedSubview(self.adminButton)
+        stackView.addArrangedSubview(self.registerPlaceButton)
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -43,6 +46,7 @@ class ViewController: UIViewController {
         self.mainButton.addTarget(self, action: #selector(goToMainViewController), for: .touchUpInside)
         self.otherButton.addTarget(self, action: #selector(goToOtherViewController), for: .touchUpInside)
         self.adminButton.addTarget(self, action: #selector(goToAdminViewController), for: .touchUpInside)
+        self.registerPlaceButton.addTarget(self, action: #selector(goToRegisterPlaceViewController), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -56,5 +60,9 @@ class ViewController: UIViewController {
     
     @objc private func goToAdminViewController() {
         self.navigationController?.pushViewController(AdminSessionTableViewController(), animated: true)
+    }
+    
+    @objc private func goToRegisterPlaceViewController() {
+        self.navigationController?.pushViewController(RegisterPlaceViewController(), animated: true)
     }
 }
