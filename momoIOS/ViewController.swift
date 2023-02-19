@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         self.otherButton.addTarget(self, action: #selector(goToOtherViewController), for: .touchUpInside)
         self.adminButton.addTarget(self, action: #selector(goToAdminViewController), for: .touchUpInside)
         self.registerPlaceButton.addTarget(self, action: #selector(goToRegisterPlaceViewController), for: .touchUpInside)
-        self.newNextersButton.addTarget(self, action: #selector(goToNewNexterViewController), for: .touchUpInside)
+        self.newNextersButton.addTarget(self, action: #selector(goToNewNextersViewController), for: .touchUpInside)
         self.moimSettingButton.addTarget(self, action: #selector(goToMoimSettingViewController), for: .touchUpInside)
     }
     
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(AdminSessionTableViewController(), animated: true)
     }
     
-    @objc private func goToNewNexterViewController() {
+    @objc private func goToNewNextersViewController() {
         self.navigationController?.pushViewController(InputMoimYearController(), animated: true)
     }
     
