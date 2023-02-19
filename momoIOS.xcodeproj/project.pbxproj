@@ -27,6 +27,8 @@
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
 		BF088BC5299A10B100A63A5B /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */; };
 		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
+		BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */; };
+		BF088BCA299A188900A63A5B /* InputSecurityCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */; };
 		BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */; };
 		BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */; };
 		BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7F29976F9300B5889D /* CommonTextField.swift */; };
@@ -80,6 +82,8 @@
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
 		BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
 		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
+		BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMoimYearViewController.swift; sourceTree = "<group>"; };
+		BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSecurityCodeViewController.swift; sourceTree = "<group>"; };
 		BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
 		BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTitleLabel.swift; sourceTree = "<group>"; };
 		BF405C7F29976F9300B5889D /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
@@ -266,7 +270,9 @@
 			isa = PBXGroup;
 			children = (
 				BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */,
+				BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */,
 				BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */,
+				BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */,
 			);
 			path = MoimManagement;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */,
 				3ABBF74829975801004D4D0B /* NotActiveSessionCell.swift in Sources */,
 				3ABBF75229975EDA004D4D0B /* AdminSessionTableViewController.swift in Sources */,
+				BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */,
 				E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */,
 				BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */,
 				3ABBF75129975EDA004D4D0B /* AdminSessionCell.swift in Sources */,
@@ -519,6 +526,7 @@
 				3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */,
 				BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */,
 				3ABEDB7129976EF100F9BF1C /* UINavigationController+Extension.swift in Sources */,
+				BF088BCA299A188900A63A5B /* InputSecurityCodeViewController.swift in Sources */,
 				3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
