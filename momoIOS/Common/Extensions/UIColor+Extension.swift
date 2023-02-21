@@ -23,4 +23,8 @@ extension UIColor {
         self.init(red: (hex >> 16) & 0xFF, green: (hex >> 8) & 0xFF,
                   blue: hex & 0xFF, alpha: alpha)
     }
+    
+    static let main = UIColor(hex: 0x946BEA)
+    static let gray800 = UIColor(hex: 0x222222)
+    static let gray700 = UIColor(hex: 0x4F505C)
 }

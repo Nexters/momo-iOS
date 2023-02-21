@@ -12,15 +12,15 @@ import SnapKit
 class AdminSessionCell: UITableViewCell {
     let mainView = UIView()
     let sessionWeekLabel = UILabel()
-    let sessionDdayLayout = UIView()
-    let sessionDdayLabel = UILabel()
+    let sessionDdayLabel = PaddingLabel(radius: 8, color: .main)
     let sessionDateLabel = UILabel()
     let rightArrowImg = UIImageView()
-    let sessionKeyworkLabel = UILabel()
+    let sessionKeyworkLabel = PaddingLabel(radius: 4, color: UIColor(hex: 0xF6F6F6))
     let sessionDetailLabel = UILabel()
     let cellHeight = UILabel()
     let checkCodeLayout = UIView()
     let checkCodeLabel = UILabel()
+    let checkLockImg = UIImageView()
      
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "AdminSessionCell")
@@ -32,40 +32,39 @@ class AdminSessionCell: UITableViewCell {
     
     private func setBaseView() {
         self.contentView.addSubviews(mainView)
-        mainView.layer.cornerRadius = 13
-        mainView.backgroundColor = UIColor(hex: 0xF5F5F5)
+        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.mainView.backgroundColor = .white
         
-        self.mainView.addSubviews(sessionWeekLabel, sessionDdayLayout, sessionDdayLabel, sessionDateLabel, rightArrowImg, sessionKeyworkLabel, sessionDetailLabel, cellHeight)
+        self.mainView.addSubviews(sessionWeekLabel, sessionDdayLabel, sessionDateLabel, rightArrowImg, sessionKeyworkLabel, sessionDetailLabel, cellHeight)
         sessionWeekLabel.text = "1주차"
-        sessionWeekLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        sessionWeekLabel.textColor = .gray800
+        sessionWeekLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
-        sessionDdayLayout.layer.cornerRadius = 6
-        sessionDdayLayout.backgroundColor = UIColor(hex: 0x7087FF)
-        
-        sessionDdayLabel.text = "D-2"
+        sessionDdayLabel.text = "Today"
         sessionDdayLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         sessionDdayLabel.textColor = .white
         
         sessionDateLabel.text = "2023.01.07"
-        sessionDateLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        sessionDateLabel.textColor = .gray800
+        sessionDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
         rightArrowImg.image = UIImage(systemName: "arrow.right")
-        rightArrowImg.tintColor = UIColor(hex: 0x9F9F9F)
+        rightArrowImg.tintColor = UIColor(hex: 0797979)
         
-        sessionKeyworkLabel.text = "#기획 #MVP #와이어프레임"
-        sessionKeyworkLabel.textColor = UIColor(hex: 0x717171)
+        sessionKeyworkLabel.text = "우리 조를 구성해봐요!"
+        sessionKeyworkLabel.textColor = .gray800
         sessionKeyworkLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
         sessionDetailLabel.text = "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!"
         sessionDetailLabel.numberOfLines = 0
         sessionDetailLabel.textAlignment = .justified
-        sessionDetailLabel.textColor = UIColor(hex: 0x717171)
-        sessionDetailLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        sessionDetailLabel.textColor = .gray700
+        sessionDetailLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
     }
 
     private func setBaseConstraints() {
         mainView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.leading.trailing.equalToSuperview()
             make.top.bottom.equalToSuperview().inset(6)
         }
 
@@ -75,34 +74,28 @@ class AdminSessionCell: UITableViewCell {
         }
 
         sessionDdayLabel.snp.makeConstraints { make in
-            make.center.equalTo(sessionDdayLayout)
-        }
-
-        sessionDdayLayout.snp.makeConstraints { make in
             make.centerY.equalTo(sessionWeekLabel)
             make.leading.equalTo(sessionWeekLabel.snp.trailing).offset(8)
-            make.width.greaterThanOrEqualTo(sessionDdayLabel.intrinsicContentSize.width + 22)
-            make.height.equalTo(28)
         }
-
+        
         sessionDateLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(40)
+            make.trailing.equalToSuperview().inset(44)
             make.centerY.equalTo(sessionWeekLabel)
         }
 
         rightArrowImg.snp.makeConstraints { make in
             make.size.equalTo(15)
             make.centerY.equalTo(sessionDateLabel)
-            make.right.equalToSuperview().inset(20)
+            make.right.equalToSuperview().inset(27)
         }
 
         sessionKeyworkLabel.snp.makeConstraints { make in
-            make.top.equalTo(sessionWeekLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(sessionWeekLabel.snp.bottom).offset(13)
+            make.leading.equalToSuperview().inset(20)
         }
 
         sessionDetailLabel.snp.makeConstraints { make in
-            make.top.equalTo(sessionKeyworkLabel.snp.bottom).offset(8)
+            make.top.equalTo(sessionKeyworkLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(20)
         }
     
@@ -114,8 +107,9 @@ class AdminSessionCell: UITableViewCell {
     }
     
     func setCheckCodeView() {
-        mainView.addSubviews(checkCodeLayout, checkCodeLabel)
+        mainView.addSubviews(checkCodeLayout, checkCodeLabel, checkLockImg)
         
+        checkCodeLayout.addSubviews(checkCodeLabel, checkLockImg)
         cellHeight.snp.remakeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(checkCodeLayout.snp.top)
@@ -124,24 +118,64 @@ class AdminSessionCell: UITableViewCell {
         }
         
         checkCodeLayout.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(56)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().inset(12)
+            make.height.equalTo(60)
         }
-        checkCodeLayout.layer.masksToBounds = true
-        checkCodeLayout.layer.cornerRadius = 13
-        checkCodeLayout.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        checkCodeLayout.backgroundColor = UIColor(hex: 0x9272EC)
+        checkCodeLayout.backgroundColor = .main
         
         checkCodeLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(checkCodeLayout)
-            make.leading.equalTo(checkCodeLayout).offset(20)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
         }
         checkCodeLabel.text = "출석체크 코드 8237"
-        checkCodeLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        checkCodeLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(500))
         checkCodeLabel.textColor = .white
+        
+        checkLockImg.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.width.equalTo(52)
+            make.height.equalTo(36)
+            make.centerY.equalToSuperview()
+        }
+        checkLockImg.image = UIImage(named: "Lock")
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class PaddingLabel: UILabel {
+    var topInset: CGFloat = 4.0
+    var bottomInset: CGFloat = 4.0
+    var leftInset: CGFloat = 10.0
+    var rightInset: CGFloat = 10.0
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("not implement required init?(coder: NSCoder)")
+    }
+
+    convenience init(radius: CGFloat, color: UIColor) {
+        self.init(frame: .zero)
+        self.backgroundColor = color
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+    }
+    
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+        super.drawText(in: rect.inset(by: insets))
+    }
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + leftInset + rightInset, height: size.height + topInset + bottomInset)
+    }
+    override var bounds: CGRect {
+        didSet { preferredMaxLayoutWidth = bounds.width - (leftInset + rightInset) }
     }
 }
