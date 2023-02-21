@@ -18,7 +18,7 @@ class RegisterPlaceViewController: UIViewController {
     private let searchGuideLabel: UILabel = {
         let label = UILabel()
         label.text = "도로명이나 지역명을 이용해서 검색해보세요.\n건물번호, 번지를 입력하시면 정확하게 검색됩니다."
-        label.font = .systemFont(ofSize: 16, weight: .light)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .rgba(138, 138, 138, 1)
         label.numberOfLines = 0
         return label
@@ -50,12 +50,7 @@ class RegisterPlaceViewController: UIViewController {
     // MARK: - Helpers
     
     private func setupCustomNav() {
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .rgba(24, 24, 24, 0.16)
-        appearance.backgroundColor = .white
-        
         let navBar = self.navigationController?.navigationBar
-        navBar?.scrollEdgeAppearance = appearance
         navBar?.tintColor = .black
         
         self.navigationItem.hidesBackButton = true
@@ -63,20 +58,36 @@ class RegisterPlaceViewController: UIViewController {
         
         let title = UILabel()
         title.text = "장소등록"
-        title.font = .systemFont(ofSize: 16, weight: .semibold)
+        title.font = .systemFont(ofSize: 16)
         self.navigationItem.titleView = title
     }
     
     private func setupSearchArea() {
         searchBar.delegate = self
-        searchBar.placeholder = "검색"
-        searchBar.setImage(UIImage(), for: .search, state: .normal)
-        searchBar.searchTextField.backgroundColor = .clear
+        
+        /// searchBar의 배경색 지정
+        searchBar.backgroundColor = .rgba(248, 248, 249, 1)
+        
+        /// default border를 없애고 searchBar 내 textField 배경색 지정
+        searchBar.searchTextField.borderStyle = .none
+        searchBar.searchTextField.backgroundColor = .rgba(248, 248, 249, 1)
+        searchBar.searchBarStyle = .minimal
+        
+        /// placeholder와 text 속성 설정
+        searchBar.searchTextField.font = .systemFont(ofSize: 14, weight: .medium)
         searchBar.searchTextField.textColor = .black
+        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "검색",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.rgba(179, 182, 197, 1),
+                         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .medium)])
+        // TODO: - placeholder의 foregroundColor는 GUI의 gray500, 추후 extension에 추가되면 수정
+        
+        /// 이외 속성들 설정
+        searchBar.setImage(UIImage(), for: .search, state: .normal)
         searchBar.searchTextField.clearButtonMode = .never
         searchBar.layer.borderWidth = 1
         searchBar.layer.cornerRadius = 8
-        searchBar.layer.borderColor = UIColor.rgba(230, 230, 230, 1).cgColor
+        searchBar.layer.borderColor = UIColor.clear.cgColor
         
         view.addSubviews(searchBar, searchIcon)
         searchIcon.image = searchIcon.image?.withRenderingMode(.alwaysTemplate)
@@ -153,8 +164,8 @@ extension RegisterPlaceViewController: GMSAutocompleteTableDataSourceDelegate {
 
     func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWith place: GMSPlace) {
         // Do something with the selected place.
-        print("\(place)")
-
+        print("\(place.formattedAddress)")
+        
         for sub in self.view.subviews {
             if let subview = sub as? UITableView {
                 subview.removeFromSuperview()
@@ -162,7 +173,7 @@ extension RegisterPlaceViewController: GMSAutocompleteTableDataSourceDelegate {
             }
         }
         self.searchBar.endEditing(true)
-        self.searchBar.text = ""
+        self.searchBar.text = "" /// Notes: 장소를 선택한 후 UISearchBar의 text를 비워주지 않으면 placeholder가 검색어로 바뀜.
     }
 
     func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {

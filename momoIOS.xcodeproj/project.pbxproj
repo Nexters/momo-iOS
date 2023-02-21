@@ -26,9 +26,9 @@
 		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
 		BF088BC5299A10B100A63A5B /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */; };
-		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
 		BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */; };
 		BF088BCA299A188900A63A5B /* InputSecurityCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */; };
+		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
 		BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */; };
 		BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */; };
 		BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7F29976F9300B5889D /* CommonTextField.swift */; };
@@ -81,9 +81,9 @@
 		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
 		BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
-		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
 		BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMoimYearViewController.swift; sourceTree = "<group>"; };
 		BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSecurityCodeViewController.swift; sourceTree = "<group>"; };
+		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
 		BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
 		BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTitleLabel.swift; sourceTree = "<group>"; };
 		BF405C7F29976F9300B5889D /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
