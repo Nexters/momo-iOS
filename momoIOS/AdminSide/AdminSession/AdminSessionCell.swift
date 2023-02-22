@@ -49,7 +49,7 @@ class AdminSessionCell: UITableViewCell {
         sessionDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         
         rightArrowImg.image = UIImage(systemName: "arrow.right")
-        rightArrowImg.tintColor = UIColor(hex: 0797979)
+        rightArrowImg.tintColor = UIColor(hex: 0x0797979)
         
         sessionKeyworkLabel.text = "우리 조를 구성해봐요!"
         sessionKeyworkLabel.textColor = .gray800
