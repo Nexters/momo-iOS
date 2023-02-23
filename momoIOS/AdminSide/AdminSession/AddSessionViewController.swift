@@ -168,24 +168,13 @@ class AddSessionViewController: UIViewController {
 // MARK: - event 처리 용 extension
 extension AddSessionViewController {
     @objc func didTapDeleteButton(_ sender: UIButton) {
-        let absenceModal = AddSessionAlertViewController()
-        absenceModal.setTitleLabel(title: "세션을 삭제하시나요?", description: "삭제하신다면 세션 내용은 지워지며,\n다시 새로 등록하셔야 합니다.", leftBtnTitle: "취소", rightBtnTitle: "삭제")
-        absenceModal.modalPresentationStyle = .overFullScreen
-        absenceModal.confirmClosure = { [weak self] in
-            // MARK: 삭제 로직 추가
-            self?.navigationController?.popViewController(animated: true)
-        }
-        self.present(absenceModal, animated: true)
+        // MARK: 삭제 로직 추가 및 custom alert vc
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func didTapBackButton(_ sender: UIButton) {
-        let absenceModal = AddSessionAlertViewController()
-        absenceModal.setTitleLabel(title: "저장하지 않고 나가시나요?", description: "나가신다면 작성한 내용은 저장되지 않습니다.", leftBtnTitle: "취소", rightBtnTitle: "나가기")
-        absenceModal.confirmClosure = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        absenceModal.modalPresentationStyle = .overFullScreen
-        self.present(absenceModal, animated: true)
+        // MARK: custom alert vc
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func didTapTimePickerBtn(_ sender: UIButton) {
