@@ -47,6 +47,6 @@ func setupPushHelpButton(helpType: String) -> UIButton {
 func setupUIStackView(_ views: [UIView]) -> UIStackView {
     let container = UIStackView(arrangedSubviews: views)
     container.axis = .vertical
-    container.spacing = 5
+    container.spacing = 10
     return container
 }

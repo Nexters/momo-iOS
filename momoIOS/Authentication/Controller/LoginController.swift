@@ -11,6 +11,7 @@ import SnapKit
 class LoginController: UIViewController {
     // MARK: - Properties
     
+    // logo area
     private lazy var welcomeTitle = CommonTitleLabel(labelText: "간편한 출석체크")
     private lazy var logoTitle: UILabel = {
         let label = UILabel()
@@ -20,6 +21,7 @@ class LoginController: UIViewController {
         return label
     }()
     
+    // email area
     private lazy var emailLabel = setupAreaLabel(text: "이메일")
     private lazy var emailTextField = CommonTextField(placeholderText: "넥스터즈 가입 시 메일주소를 입력해주세요")
     private let validEmailFormatLabel: UILabel = {
@@ -30,13 +32,13 @@ class LoginController: UIViewController {
         return label
     }()
     
+    // password area
     private lazy var passwordLabel = setupAreaLabel(text: "비밀번호")
     private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
     
+    // button area
     private let loginButton = CommonActionButton(buttonTitle: "로그인   →")
-    
     private let pushRegistrationViewButton = pushAnotherViewButton(subtitle: "회원가입이 필요한가요?", title: "회원가입")
-    
     private let pushHelpLoginButton = setupPushHelpButton(helpType: "회원가입")
     
     // MARK: - Lifecycles
@@ -44,6 +46,8 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        passwordTextField.delegate = self
+        
         setupLayout()
         
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange(_:)), for: .editingChanged)
@@ -111,11 +115,13 @@ class LoginController: UIViewController {
     // MARK: - Helpers
     
     func setupViews() {
-        emailTextField.addLeftPaddingToPlaceholder()
-        passwordTextField.addLeftPaddingToPlaceholder()
+        emailTextField.addLeftPadding()
+        passwordTextField.addLeftPadding()
     }
     
     func setupLayout() {
+        setupViews()
+        
         let emailFieldStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         emailFieldStack.axis = .vertical
         emailFieldStack.spacing = 10
@@ -132,7 +138,7 @@ class LoginController: UIViewController {
         
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.left.equalToSuperview().offset(22)
+            make.left.equalToSuperview().offset(24)
         }
         
         logoTitle.snp.makeConstraints { make in
@@ -164,5 +170,17 @@ class LoginController: UIViewController {
             make.top.equalTo(loginButton.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
         }
+    }
+}
+
+extension LoginController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let maxLength: Int = 20
+            
+        if text.count >= maxLength && range.length == 0 && range.location <= maxLength {
+            return false
+        }
+        return true
     }
 }
