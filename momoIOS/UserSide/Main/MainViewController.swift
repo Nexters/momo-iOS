@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
         self.tableView.register(MainSessionTimeCell.self, forCellReuseIdentifier: "MainSessionTimeCell")
         self.tableView.register(MainSessionDetailCell.self, forCellReuseIdentifier: "MainSessionDetailCell")
         self.tableView.register(MainSessionInfoCell.self, forCellReuseIdentifier: "MainSessionInfoCell")
+        self.tableView.register(MainSessionNoInfoCell.self, forCellReuseIdentifier: "MainSessionNoInfoCell")
         self.tableView.register(MainSessionAbsentCell.self, forCellReuseIdentifier: "MainSessionAbsentCell")
     }
     
@@ -84,7 +85,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -109,6 +110,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             return tableView.dequeueReusableCell(withIdentifier: "MainSessionInfoCell") ?? UITableViewCell()
         case 5:
+            return tableView.dequeueReusableCell(withIdentifier: "MainSessionNoInfoCell") ?? UITableViewCell()
+        case 6:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainSessionAbsentCell") as? MainSessionAbsentCell else {
                 return UITableViewCell()
             }
