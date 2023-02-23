@@ -138,7 +138,7 @@ class AdminSessionCell: UITableViewCell {
             make.height.equalTo(36)
             make.centerY.equalToSuperview()
         }
-        checkLockImg.image = UIImage(named: "Lock")
+        checkLockImg.image = UIImage(named: "lock")
     }
     
     required init?(coder: NSCoder) {

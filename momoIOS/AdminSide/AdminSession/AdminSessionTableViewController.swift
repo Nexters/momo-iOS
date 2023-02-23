@@ -42,7 +42,7 @@ class AdminSessionTableViewController: UIViewController {
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         spacer.width = 20
         let logo = UIButton()
-        logo.setImage(UIImage(named: "NextersLogo"), for: .normal)
+        logo.setImage(UIImage(named: "nextersLogoBlack"), for: .normal)
         logo.adjustsImageWhenHighlighted = false
         let title = UIBarButtonItem(customView: logo)
         
