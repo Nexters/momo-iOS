@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import PhotosUI
 
 // MARK: - 어드민 세션 등록 뷰 컨트롤러
 class AddSessionViewController: UIViewController {
@@ -158,7 +157,6 @@ class AddSessionViewController: UIViewController {
         
         startTimeAlert.addAction(startCancel)
         startTimeAlert.addAction(next)
-        
         endTimeAlert.addAction(confirm)
         endTimeAlert.addAction(endCancel)
         
@@ -268,9 +266,9 @@ extension AddSessionViewController: UITextViewDelegate, UITextFieldDelegate {
 
 // MARK: - 이미지 피커 컨트롤러 용 extension
 extension AddSessionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
-        var newImage: UIImage? = nil
+        var newImage: UIImage?
         
         if let possibleImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             newImage = possibleImage
