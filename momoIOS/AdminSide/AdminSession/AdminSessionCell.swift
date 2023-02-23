@@ -145,37 +145,3 @@ class AdminSessionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-class PaddingLabel: UILabel {
-    var topInset: CGFloat = 4.0
-    var bottomInset: CGFloat = 4.0
-    var leftInset: CGFloat = 10.0
-    var rightInset: CGFloat = 10.0
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("not implement required init?(coder: NSCoder)")
-    }
-
-    convenience init(radius: CGFloat, color: UIColor) {
-        self.init(frame: .zero)
-        self.backgroundColor = color
-        self.clipsToBounds = true
-        self.layer.cornerRadius = radius
-    }
-    
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        super.drawText(in: rect.inset(by: insets))
-    }
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + leftInset + rightInset, height: size.height + topInset + bottomInset)
-    }
-    override var bounds: CGRect {
-        didSet { preferredMaxLayoutWidth = bounds.width - (leftInset + rightInset) }
-    }
-}
