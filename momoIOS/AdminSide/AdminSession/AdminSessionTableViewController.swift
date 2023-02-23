@@ -21,6 +21,8 @@ class AdminSessionTableViewController: UIViewController {
     }
     
     private func setTableView() {
+        self.tableView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.tableView.separatorStyle = .none
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(AdminSessionCell.self, forCellReuseIdentifier: "AdminSessionCell")
@@ -31,17 +33,36 @@ class AdminSessionTableViewController: UIViewController {
         self.tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        self.tableView.separatorStyle = .none
     }
     
     private func setNavCustom() {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.hidesBackButton = true
-        let title = UIBarButtonItem(title: "넥스터즈", style: .plain, target: nil, action: nil)
-        let addSession = UIBarButtonItem(title: "세션 등록", style: .plain, target: self, action: #selector(didTapAddSessionButton))
         
-        self.navigationItem.leftBarButtonItem = title
-        self.navigationItem.rightBarButtonItem = addSession
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = 20
+        let logo = UIButton()
+        logo.setImage(UIImage(named: "nextersLogoBlack"), for: .normal)
+        logo.adjustsImageWhenHighlighted = false
+        let title = UIBarButtonItem(customView: logo)
+        
+        // MARK: - UIButton extension에 넣어두기
+        let addCustomView = UIButton()
+        addCustomView.setTitle("세션 등록", for: .normal)
+        addCustomView.setTitleColor(UIColor.gray800, for: .normal)
+        addCustomView.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
+        addCustomView.setImage(UIImage(named: "addSessionButton"), for: .normal)
+        addCustomView.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
+        addCustomView.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        addCustomView.addTarget(self, action: #selector(didTapAddSessionButton), for: .touchUpInside)
+        addCustomView.sizeToFit()
+    
+        let addsessions = UIBarButtonItem(customView: addCustomView)
+        addsessions.target = self
+        addsessions.action = #selector(didTapAddSessionButton)
+        
+        self.navigationItem.leftBarButtonItems = [spacer, title]
+        self.navigationItem.rightBarButtonItem = addsessions
     }
     
     @objc func didTapAddSessionButton(_ sender: UIBarButtonItem) {
@@ -62,7 +83,7 @@ extension AdminSessionTableViewController: UITableViewDelegate, UITableViewDataS
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdminSessionCell") as? AdminSessionCell else {return UITableViewCell()}
-            cell.sessionKeyworkLabel.text = ""
+            cell.sessionKeyworkLabel.isHidden = true
             cell.sessionWeekLabel.text = "1주차"
             cell.sessionDetailLabel.text = ""
             return cell
@@ -78,7 +99,7 @@ extension AdminSessionTableViewController: UITableViewDelegate, UITableViewDataS
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdminSessionCell") as? AdminSessionCell else {return UITableViewCell()}
-            cell.sessionDdayLabel.text = "today"
+            cell.sessionDdayLabel.text = "D-2"
             cell.sessionWeekLabel.text = "4주차"
             cell.setCheckCodeView()
             return cell
@@ -92,6 +113,6 @@ extension AdminSessionTableViewController: UITableViewDelegate, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160.0
+        return 64.0
     }
 }
