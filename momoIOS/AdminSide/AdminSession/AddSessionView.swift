@@ -221,7 +221,7 @@ class AddSessionView {
     
     func setSessionImage(image: UIImage?) {
         scrollView.contentLayoutGuide.snp.updateConstraints { make in
-            make.height.equalTo(1250)
+            make.height.equalTo(1270)
         }
         sessionImgView.image = image
         
