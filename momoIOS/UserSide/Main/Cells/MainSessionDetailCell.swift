@@ -9,58 +9,71 @@ import UIKit
 
 // MARK: - 메인 세션 내용 정보 cell
 class MainSessionDetailCell: UITableViewCell {
-    let sessionMessageLayout = UIView()
-    let sessionMessageTitle = UILabel()
+    let titleLabel = UILabel()
+    let topLine = UIView()
+    let sessionMessageTitle = PaddingLabel(radius: 4, color: UIColor(hex: 0xF8F8F9), verticalInset: 10, horizontalInset: 13)
     let sessionMessageContent = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "MainSessionDetailCell")
+        self.selectionStyle = .none
+        
         self.initViews()
         self.setConstraints()
     }
     
     private func initViews() {
-        self.contentView.addSubview(sessionMessageLayout)
-        sessionMessageLayout.layer.cornerRadius = 12
-        sessionMessageLayout.backgroundColor = .systemGray5
-        sessionMessageLayout.addSubviews(sessionMessageTitle, sessionMessageContent)
+        self.contentView.addSubviews(titleLabel, topLine, sessionMessageTitle, sessionMessageContent)
         
-        sessionMessageTitle.text = "#기획 #MVP #와이어프레임"
-        sessionMessageTitle.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        sessionMessageTitle.textColor = UIColor(hex: 0x717171)
+        titleLabel.text = "무엇을 하나요?"
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(600))
+        titleLabel.textColor = .gray800
+        
+        topLine.backgroundColor = UIColor(hex: 0xEEEEEE)
+        
+        sessionMessageTitle.text = "1주차, 우리 조를 구성해봐요!"
+        sessionMessageTitle.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        sessionMessageTitle.textColor = UIColor(hex: 0x3A3232)
         sessionMessageTitle.textAlignment = .left
         sessionMessageTitle.numberOfLines = 0
         
-        sessionMessageContent.text = "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!"
-        sessionMessageContent.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        sessionMessageContent.textColor = UIColor(hex: 0x717171)
-        sessionMessageContent.textAlignment = .justified
+        setAttrString(str: "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!")
         sessionMessageContent.numberOfLines = 0
+    }
+    
+    func setAttrString(str: String) {
+        let attrStr = NSMutableAttributedString(string: str)
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineSpacing = 4
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor.gray700, .paragraphStyle: paragraph], range: NSRange(location: 0, length: str.count))
+        sessionMessageContent.attributedText = attrStr
     }
     
     private func setConstraints() {
         self.contentView.snp.makeConstraints { make in
-            make.height.equalTo(150)
-            make.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(228)
         }
         
-        sessionMessageLayout.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(26)
-            make.trailing.equalToSuperview().offset(-26)
-            make.height.equalTo(123)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(24)
+        }
+        
+        topLine.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
         }
         
         sessionMessageTitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(19)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(topLine.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(24)
         }
         
         sessionMessageContent.snp.makeConstraints { make in
-            make.top.equalTo(sessionMessageTitle.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(sessionMessageTitle.snp.bottom).offset(26)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
     }
     
