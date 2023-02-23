@@ -17,8 +17,8 @@ class MoimSettingCell: UITableViewCell {
     lazy var settingTitle: UILabel = {
         let label = UILabel()
         label.text = "설정"
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .rgba(56, 56, 56, 1)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .gray800
         return label
     }()
     
