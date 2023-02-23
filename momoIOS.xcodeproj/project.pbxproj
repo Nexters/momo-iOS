@@ -20,6 +20,7 @@
 		3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */; };
 		3ABEDB742997719000F9BF1C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB732997719000F9BF1C /* String+Extension.swift */; };
 		3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */; };
+		3AD90AB729A7439000E8AC71 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD90AB629A7439000E8AC71 /* UIFont+Extension.swift */; };
 		87F8DFFA60C924D9501841E5 /* libPods-momoIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E45B17EF748C61E8DABEACD4 /* libPods-momoIOS.a */; };
 		BF0408632987B3AA00F1129B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0408622987B3AA00F1129B /* LoginController.swift */; };
 		BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086A2987E34800F1129B /* AuthCommonConstants.swift */; };
@@ -74,6 +75,16 @@
 		3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		3ABEDB732997719000F9BF1C /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		3AD90AB629A7439000E8AC71 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		3AD90AB929A7491C00E8AC71 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		3AD90ABA29A7491D00E8AC71 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		3AD90ABB29A7491D00E8AC71 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		3AD90ABC29A7491D00E8AC71 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		3AD90ABD29A7491D00E8AC71 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		3AD90ABE29A7491D00E8AC71 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		3AD90ABF29A7491D00E8AC71 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		3AD90AC029A7491D00E8AC71 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		3AD90AC129A7491D00E8AC71 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		8273295DD5293F3ED48138F8 /* Pods-momoIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momoIOS.release.xcconfig"; path = "Target Support Files/Pods-momoIOS/Pods-momoIOS.release.xcconfig"; sourceTree = "<group>"; };
 		AADB49F93EF973F8B0D3AD5E /* Pods-momoIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momoIOS.debug.xcconfig"; path = "Target Support Files/Pods-momoIOS/Pods-momoIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		BF0408622987B3AA00F1129B /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -141,6 +152,7 @@
 		3ABBF73F29975082004D4D0B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3AD90AB829A748ED00E8AC71 /* Fonts */,
 				E8207930298A163400B36FC9 /* Extensions */,
 				3ABBF742299750A4004D4D0B /* UI */,
 			);
@@ -212,6 +224,22 @@
 				BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */,
 			);
 			path = AdminSession;
+			sourceTree = "<group>";
+		};
+		3AD90AB829A748ED00E8AC71 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3AD90ABF29A7491D00E8AC71 /* Pretendard-Black.otf */,
+				3AD90ABE29A7491D00E8AC71 /* Pretendard-Bold.otf */,
+				3AD90ABC29A7491D00E8AC71 /* Pretendard-ExtraBold.otf */,
+				3AD90AC029A7491D00E8AC71 /* Pretendard-ExtraLight.otf */,
+				3AD90ABB29A7491D00E8AC71 /* Pretendard-Light.otf */,
+				3AD90AC129A7491D00E8AC71 /* Pretendard-Medium.otf */,
+				3AD90ABD29A7491D00E8AC71 /* Pretendard-Regular.otf */,
+				3AD90AB929A7491C00E8AC71 /* Pretendard-SemiBold.otf */,
+				3AD90ABA29A7491D00E8AC71 /* Pretendard-Thin.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		59A22CA9F5D6697459D41317 /* Pods */ = {
@@ -298,6 +326,7 @@
 				3ABEDB6F29976EF100F9BF1C /* UINavigationController+Extension.swift */,
 				BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */,
 				E8207931298A163400B36FC9 /* UIView+Extension.swift */,
+				3AD90AB629A7439000E8AC71 /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -527,6 +556,7 @@
 				BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */,
 				3ABEDB7129976EF100F9BF1C /* UINavigationController+Extension.swift in Sources */,
 				BF088BCA299A188900A63A5B /* InputSecurityCodeViewController.swift in Sources */,
+				3AD90AB729A7439000E8AC71 /* UIFont+Extension.swift in Sources */,
 				3ABEDB7229976EF100F9BF1C /* Optional+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
