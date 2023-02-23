@@ -9,6 +9,7 @@ import SnapKit
 
 // MARK: - 메인 세션 정보가 없을 때의 cell
 class MainSessionNoInfoCell: UITableViewCell {
+    let mainView = UIView()
     let titleLabel = UILabel()
     let titleLine = UIView()
     let sessionNoInfoImage = UIImageView()
@@ -24,9 +25,17 @@ class MainSessionNoInfoCell: UITableViewCell {
     private func initViews() {
         self.contentView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(314)
+            make.height.equalTo(326)
         }
-        self.contentView.addSubviews(titleLabel, titleLine, sessionNoInfoImage, noInfoMessageLabel)
+        self.contentView.addSubview(mainView)
+        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+
+        mainView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        mainView.backgroundColor = .white
+        mainView.addSubviews(titleLabel, titleLine, sessionNoInfoImage, noInfoMessageLabel)
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
