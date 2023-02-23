@@ -15,24 +15,31 @@ func pushAnotherViewButton(subtitle: String, title: String) -> UIButton {
     let button = UIButton(type: .system)
     let attributedTitle = NSMutableAttributedString(
         string: subtitle,
-        attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                     NSAttributedString.Key.foregroundColor: UIColor.gray])
+        attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .medium),
+                     NSAttributedString.Key.foregroundColor: UIColor.rgba(97, 97, 97, 1)])
     attributedTitle.append(NSAttributedString(
         string: "  \(title)",
-        attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+        attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .medium),
                      NSAttributedString.Key.foregroundColor: UIColor.black]))
     button.setAttributedTitle(attributedTitle, for: .normal)
     return button
 }
 
 // MARK: - Methods
+func setupAreaLabel(text: String) -> UILabel {
+    let label = UILabel()
+    label.text = "\(text)"
+    label.textColor = .rgba(86, 86, 86, 1)
+    label.font = .systemFont(ofSize: 16, weight: .medium)
+    return label
+}
 
-func setupPushHelpLoginButton() -> UIButton {
+func setupPushHelpButton(helpType: String) -> UIButton {
     let button = UIButton(type: .system)
     let attributedTitle = NSMutableAttributedString(
-        string: "로그인에 문제가 있나요?",
+        string: "\(helpType)에 문제가 있나요?",
         attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                     NSAttributedString.Key.foregroundColor: UIColor.gray])
+                     NSAttributedString.Key.foregroundColor: UIColor.rgba(153, 153, 153, 1)])
     button.setAttributedTitle(attributedTitle, for: .normal)
     return button
 }

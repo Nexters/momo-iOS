@@ -11,17 +11,33 @@ import SnapKit
 class LoginController: UIViewController {
     // MARK: - Properties
     
-    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간단한 출석체크,\n모두모여에서")
-    private lazy var emailTextField = CommonTextField(placeholderText: "이메일을 입력해주세요")
-    private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
-    
-    private let loginButton = CommonActionButton(buttonTitle: "로그인")
-    
-    private let pushRegistrationViewButton: UIButton = {
-        return pushAnotherViewButton(subtitle: "회원가입이 필요하다면?", title: "가입하기")
+    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간편한 출석체크")
+    private lazy var logoTitle: UILabel = {
+        let label = UILabel()
+        label.text = "MDMY"
+        label.font = .systemFont(ofSize: 34, weight: .semibold)
+        label.textColor = .black
+        return label
     }()
     
-    private let pushHelpLoginButton = setupPushHelpLoginButton()
+    private lazy var emailLabel = setupAreaLabel(text: "이메일")
+    private lazy var emailTextField = CommonTextField(placeholderText: "넥스터즈 가입 시 메일주소를 입력해주세요")
+    private let validEmailFormatLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .warning
+        return label
+    }()
+    
+    private lazy var passwordLabel = setupAreaLabel(text: "비밀번호")
+    private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
+    
+    private let loginButton = CommonActionButton(buttonTitle: "로그인   →")
+    
+    private let pushRegistrationViewButton = pushAnotherViewButton(subtitle: "회원가입이 필요한가요?", title: "회원가입")
+    
+    private let pushHelpLoginButton = setupPushHelpButton(helpType: "회원가입")
     
     // MARK: - Lifecycles
     
@@ -29,6 +45,9 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        
+        emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
         pushRegistrationViewButton.addTarget(self, action: #selector(handlePushRegistrationView), for: .touchUpInside)
         pushHelpLoginButton.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
@@ -38,6 +57,42 @@ class LoginController: UIViewController {
     }
     
     // MARK: - Selectors
+    
+    func isValidEmail(email: String) -> Bool {
+           let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+           return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: email)
+    }
+    
+    @objc private func emailTextFieldDidChange(_ textField: UITextField) {
+        guard let email = textField.text else { return }
+        
+        if !isValidEmail(email: email) {
+            if email.count == 0 {
+                validEmailFormatLabel.text = ""
+                emailTextField.layer.borderWidth = 0
+            } else {
+                validEmailFormatLabel.text = "이메일 형식을 확인해주세요"
+                emailTextField.layer.borderWidth = 1
+                emailTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
+            }
+        } else {
+            validEmailFormatLabel.text = ""
+            emailTextField.layer.borderWidth = 1
+            emailTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+        }
+    }
+    
+    @objc private func passwordTextFieldDidChange(_ textField: UITextField) {
+        guard let password = textField.text else { return }
+        
+        if password.count == 0 {
+            passwordTextField.layer.borderWidth = 0
+        } else {
+            passwordTextField.layer.borderWidth = 1
+            passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+        }
+        
+    }
     
     @objc func handlePushRegistrationView() {
         self.dismiss(animated: true)
@@ -55,30 +110,59 @@ class LoginController: UIViewController {
     
     // MARK: - Helpers
     
+    func setupViews() {
+        emailTextField.addLeftPaddingToPlaceholder()
+        passwordTextField.addLeftPaddingToPlaceholder()
+    }
+    
     func setupLayout() {
-        let fieldStack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
-        fieldStack.axis = .vertical
-        fieldStack.spacing = 15
+        let emailFieldStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
+        emailFieldStack.axis = .vertical
+        emailFieldStack.spacing = 10
+        
+        let passwordFieldStack = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
+        passwordFieldStack.axis = .vertical
+        passwordFieldStack.spacing = 10
         
         let helpStack = UIStackView(arrangedSubviews: [pushRegistrationViewButton, pushHelpLoginButton])
         helpStack.axis = .vertical
-        helpStack.spacing = 30
+        helpStack.spacing = 40
         
-        view.addSubviews(welcomeTitle, fieldStack, helpStack)
+        view.addSubviews(welcomeTitle, logoTitle, emailFieldStack, validEmailFormatLabel, passwordFieldStack, loginButton, helpStack)
         
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.left.equalTo(view).offset(20)
+            make.left.equalToSuperview().offset(22)
         }
         
-        fieldStack.snp.makeConstraints { make in
-            make.top.equalTo(welcomeTitle.snp.bottom).offset(50)
-            make.left.right.equalToSuperview().inset(20)
+        logoTitle.snp.makeConstraints { make in
+            make.top.equalTo(welcomeTitle.snp.bottom).offset(12)
+            make.left.equalToSuperview().offset(22)
+        }
+        
+        emailFieldStack.snp.makeConstraints { make in
+            make.top.equalTo(logoTitle.snp.bottom).offset(50)
+            make.left.right.equalToSuperview().inset(24)
+        }
+        
+        validEmailFormatLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailFieldStack.snp.bottom).offset(4)
+            make.left.equalToSuperview().offset(29)
+        }
+        
+        passwordFieldStack.snp.makeConstraints { make in
+            make.top.equalTo(emailFieldStack.snp.bottom).offset(32)
+            make.left.right.equalToSuperview().inset(24)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordFieldStack.snp.bottom).offset(24)
+            make.left.right.equalToSuperview().inset(24)
         }
         
         helpStack.snp.makeConstraints { make in
-            make.top.equalTo(fieldStack.snp.bottom).offset(20)
-            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(loginButton.snp.bottom).offset(40)
+            make.centerX.equalToSuperview()
         }
     }
 }

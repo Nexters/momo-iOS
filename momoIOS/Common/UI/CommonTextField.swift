@@ -25,7 +25,7 @@ class CommonTextField: UITextField {
     convenience init(placeholderText: String, isSecure: Bool = false) {
         self.init(frame: .zero)
         self.placeholder = placeholderText
-        self.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        self.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray500])
         self.isSecureTextEntry = isSecure
     }
 
@@ -34,8 +34,17 @@ class CommonTextField: UITextField {
         self.snp.makeConstraints { make in
             make.height.equalTo(55)
         }
-        self.borderStyle = .roundedRect
+        self.backgroundColor = .rgba(248, 248, 249, 1)
+        self.layer.cornerRadius = 8
         self.font = UIFont.systemFont(ofSize: 16)
-        self.textColor = .black
+        self.textColor = .gray700
+    }
+}
+
+extension CommonTextField {
+    func addLeftPaddingToPlaceholder() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
     }
 }

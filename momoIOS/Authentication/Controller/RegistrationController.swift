@@ -11,7 +11,7 @@ import SnapKit
 class RegistrationController: UIViewController {
     // MARK: - Properties
     
-    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간단한 출석체크,\n모두모여에서")
+    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간편한 출석체크")
     
     private lazy var emailTextField = CommonTextField(placeholderText: "이메일을 입력해주세요")
     
@@ -51,7 +51,7 @@ class RegistrationController: UIViewController {
     
     private let fieldStack = UIStackView()
     private let helpStack = UIStackView()
-    private let pushHelpLoginButton = setupPushHelpLoginButton()
+    private let pushHelpLoginButton = setupPushHelpButton(helpType: "로그인")
     
     // MARK: - Lifecycles
     
