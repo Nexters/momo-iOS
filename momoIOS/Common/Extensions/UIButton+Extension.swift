@@ -29,38 +29,34 @@ extension UIButton {
     }
     
     func configurate(
-        bgColor: UIColor = .clear,
+        bgColor: UIColor? = nil,
         strokeColor: UIColor? = nil,
-        strokeWidth: CGFloat = 0,
-        cornerRadius: CGFloat = 0,
+        strokeWidth: CGFloat? = nil,
+        cornerRadius: CGFloat? = nil,
         edgeInsets: NSDirectionalEdgeInsets? = nil
     ) {
         if #available(iOS 15.0, *) {
             var configuration = self.configuration ?? .plain()
-            configuration.background.backgroundColor = bgColor
-            configuration.background.strokeColor = strokeColor
-            configuration.background.strokeWidth = strokeWidth
-            configuration.background.cornerRadius = cornerRadius
-            edgeInsets.map {
-                configuration.contentInsets = $0
-            }
+            bgColor.map { configuration.background.backgroundColor = $0 }
+            strokeColor.map { configuration.background.strokeColor = $0 }
+            strokeWidth.map { configuration.background.strokeWidth = $0 }
+            cornerRadius.map { configuration.background.cornerRadius = $0 }
+            edgeInsets.map { configuration.contentInsets = $0 }
             self.configuration = configuration
         } else {
-            self.backgroundColor = bgColor
-            self.layer.cornerRadius = cornerRadius
-            self.layer.borderWidth = strokeWidth
-            self.layer.borderColor = strokeColor?.cgColor
-            edgeInsets.map {
-                self.contentEdgeInsets = .init(top: $0.top, left: $0.leading, bottom: $0.bottom, right: $0.trailing)
-            }
+            bgColor.map { self.backgroundColor = $0 }
+            strokeColor.map { self.layer.borderColor = $0.cgColor }
+            strokeWidth.map { self.layer.borderWidth = $0 }
+            cornerRadius.map { self.layer.cornerRadius = $0 }
+            edgeInsets.map { self.contentEdgeInsets = .init(top: $0.top, left: $0.leading, bottom: $0.bottom, right: $0.trailing) }
         }
     }
     
     func configurate(
         bgColor: UIColor = .clear,
         strokeColor: UIColor? = nil,
-        strokeWidth: CGFloat = 0,
-        cornerRadius: CGFloat = 0,
+        strokeWidth: CGFloat? = nil,
+        cornerRadius: CGFloat? = nil,
         padding: CGFloat? = nil
     ) {
         let edgeInsets = padding.map { NSDirectionalEdgeInsets(top: $0, leading: $0, bottom: $0, trailing: $0) }
