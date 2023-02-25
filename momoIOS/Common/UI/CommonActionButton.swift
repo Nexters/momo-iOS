@@ -29,9 +29,9 @@ class CommonActionButton: UIButton {
     // MARK: - Helpers
     private func setupButton() {
         self.setTitleColor(UIColor.white, for: .normal)
-        self.backgroundColor = defaultButtonColor
-        self.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        self.backgroundColor = .main
+        self.heightAnchor.constraint(equalToConstant: 60).isActive = true
         self.layer.cornerRadius = 8
-        self.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        self.titleLabel?.font = .body18
     }
 }

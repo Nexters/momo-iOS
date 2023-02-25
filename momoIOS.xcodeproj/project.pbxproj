@@ -46,6 +46,7 @@
 		BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */; };
 		BFC2E404299E5A9A001D1E34 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC2E403299E5A9A001D1E34 /* API.plist */; };
 		BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */; };
+		BFF7EE1F29A9DF37002E292F /* JobButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF7EE1E29A9DF37002E292F /* JobButtonView.swift */; };
 		E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */; };
 		E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */; };
 		E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */; };
@@ -114,6 +115,7 @@
 		BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		BFC2E403299E5A9A001D1E34 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "momo++Bundle.swift"; sourceTree = "<group>"; };
+		BFF7EE1E29A9DF37002E292F /* JobButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobButtonView.swift; sourceTree = "<group>"; };
 		E45B17EF748C61E8DABEACD4 /* libPods-momoIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momoIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionDetailCell.swift; sourceTree = "<group>"; };
 		E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionTimeCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				BF0408622987B3AA00F1129B /* LoginController.swift */,
 				BF04086C2987E38C00F1129B /* RegistrationController.swift */,
 				BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */,
+				BFF7EE1E29A9DF37002E292F /* JobButtonView.swift */,
 				BF04086A2987E34800F1129B /* AuthCommonConstants.swift */,
 				BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */,
 			);
@@ -534,6 +537,7 @@
 				E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */,
 				BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */,
 				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
+				BFF7EE1F29A9DF37002E292F /* JobButtonView.swift in Sources */,
 				BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */,
 				BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */,
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,

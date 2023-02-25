@@ -9,60 +9,69 @@ import UIKit
 import SnapKit
 
 class RegistrationController: UIViewController {
+    
     // MARK: - Properties
-    
-    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간단한 출석체크,\n모두모여에서")
-    
-    private lazy var emailTextField = CommonTextField(placeholderText: "이메일을 입력해주세요")
-    
-    private let validEmailFormatLabel: UILabel = {
-        let label = UILabel()
-        label.text = "넥스터즈 가입 메일주소를 입력해주세요"
-        label.font = .systemFont(ofSize: 13)
-        return label
-    }()
-    
-    private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
-    
-    private let validPasswordFormatLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .systemFont(ofSize: 13)
-        label.textColor = .rgba(255, 38, 38, 1)
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private lazy var checkPasswordTextField = CommonTextField(placeholderText: "비밀번호를 재입력해주세요", isSecure: true)
-    
-    private let confirmPasswordLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .systemFont(ofSize: 13)
-        label.textColor = .rgba(255, 38, 38, 1)
-        return label
-    }()
-    
-    private let registrationButton = CommonActionButton(buttonTitle: "가입하기")
-    
-    private let pushLoginViewButton: UIButton = {
-        return pushAnotherViewButton(subtitle: "이미 가입했다면?", title: "로그인하기")
-    }()
     
     private let fieldStack = UIStackView()
     private let helpStack = UIStackView()
     
+    // logo area
+    private lazy var welcomeTitle = CommonTitleLabel(labelText: "간편한 출석체크")
+    private lazy var logoImage: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 139, height: 41))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "MDMY")
+        return imageView
+    }()
+    
+    // email area
+    private lazy var emailLabel = setupAreaLabel(text: "이메일")
+    private lazy var emailTextField = CommonTextField(placeholderText: "넥스터즈 가입 시 메일주소를 입력해주세요")
+    private let validEmailFormatLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = .body14
+        label.textColor = .warning
+        return label
+    }()
+    
+    // password area
+    private lazy var passwordLabel = setupAreaLabel(text: "비밀번호")
+    private lazy var passwordTextField = CommonTextField(placeholderText: "비밀번호를 입력해주세요", isSecure: true)
+    private lazy var checkPasswordTextField = CommonTextField(placeholderText: "비밀번호를 재입력해주세요", isSecure: true)
+    private let validPasswordFormatLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = .body14
+        label.textColor = .warning
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    // button area
+    private let registrationButton = CommonActionButton(buttonTitle: "가입하기   →")
+    private let pushLoginViewButton: UIButton = {
+        return pushAnotherViewButton(subtitle: "이미 가입했다면?", title: "로그인하기")
+    }()
+    private let pushHelpLoginButton = setupPushHelpButton(helpType: "로그인")
+    
     // MARK: - Lifecycles
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
+        passwordTextField.delegate = self
+        checkPasswordTextField.delegate = self
+        
         self.setupTargets()
         self.setupLayout()
         self.registrationButton.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         self.pushLoginViewButton.addTarget(self, action: #selector(handlePushLoginView), for: .touchUpInside)
-        pushHelpLogin.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
+        pushHelpLoginButton.addTarget(self, action: #selector(handlePushHelpLogin), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -81,14 +90,20 @@ class RegistrationController: UIViewController {
         
         if !isValidEmail(email: email) {
             if email.count == 0 {
-                validEmailFormatLabel.text = "넥스터즈 가입 메일주소를 입력해주세요"
-                validEmailFormatLabel.textColor = .black
+                validEmailFormatLabel.text = ""
+                emailTextField.layer.borderWidth = 0
+                emailTextField.backgroundColor = .textbox1
             } else {
                 validEmailFormatLabel.text = "이메일 형식을 확인해주세요"
-                validEmailFormatLabel.textColor = .rgba(255, 38, 38, 1)
+                emailTextField.layer.borderWidth = 1
+                emailTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                emailTextField.backgroundColor = UIColor(hex: 0xF8F8F8)
             }
         } else {
             validEmailFormatLabel.text = ""
+            emailTextField.layer.borderWidth = 1
+            emailTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
+            emailTextField.backgroundColor = .textbox2
         }
     }
     
@@ -99,26 +114,59 @@ class RegistrationController: UIViewController {
     
     @objc private func passwordTextFieldDidChange(_ textField: UITextField) {
         guard let password = textField.text else { return }
+        validPasswordFormatLabel.text = ""
         
-        if !isValidPassword(password: password) {
-            if password.count == 0 {
-                confirmPasswordLabel.text = ""
-            } else {
-                validPasswordFormatLabel.text = "비밀번호 형식을 확인해주세요\n알파벳+숫자 필수 포함, 특수문자 가능 (8~20자)"
-            }
+        if password.isEmpty {
+            passwordTextField.layer.borderWidth = 0
+            passwordTextField.backgroundColor = .textbox1
         } else {
-            validPasswordFormatLabel.text = ""
+            if !isValidPassword(password: password) {
+                validPasswordFormatLabel.text = "영문, 숫자를 포함한 8자리 이상 비밀번호를 입력해주세요"
+                passwordTextField.layer.borderWidth = 1
+                passwordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                passwordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
+            } else {
+                passwordTextField.layer.borderWidth = 1
+                passwordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
+                passwordTextField.backgroundColor = .textbox2
+            }
         }
+        
+        /// passwordTextField를 새로 입력하면 checkPasswordTextField를 다시 입력하도록 합니다
+        checkPasswordTextField.text?.removeAll()
+        checkPasswordTextField.layer.borderWidth = 0
     }
     
-    @objc private func confirmPassword(_ textField: UITextField) {
+    @objc private func checkPasswordTextFieldDidChange(_ textField: UITextField) {
+        guard let checkPassword = textField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard let checkPassword = checkPasswordTextField.text else { return }
         
-        if password == checkPassword {
-            confirmPasswordLabel.text = ""
-        } else {
-            confirmPasswordLabel.text = "비밀번호가 일치하지 않습니다."
+        if !isValidPassword(password: checkPassword) {
+            validPasswordFormatLabel.text = "영문, 숫자를 포함한 8자리 이상 비밀번호를 입력해주세요"
+            passwordTextField.layer.borderWidth = 1
+            passwordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+            passwordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
+            checkPasswordTextField.layer.borderWidth = 1
+            checkPasswordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+            checkPasswordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
+        } else { // valid
+            if password == checkPassword {
+                validPasswordFormatLabel.text = ""
+                passwordTextField.layer.borderWidth = 1
+                passwordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
+                passwordTextField.backgroundColor = .textbox2
+                checkPasswordTextField.layer.borderWidth = 1
+                checkPasswordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
+                checkPasswordTextField.backgroundColor = .textbox2
+            } else { // but incosistent
+                validPasswordFormatLabel.text = "비밀번호가 일치하지 않습니다"
+                passwordTextField.layer.borderWidth = 1
+                passwordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                passwordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
+                checkPasswordTextField.layer.borderWidth = 1
+                checkPasswordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                checkPasswordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
+            }
         }
     }
     
@@ -147,53 +195,71 @@ class RegistrationController: UIViewController {
     
     private func setupTargets() {
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange(_:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
-        checkPasswordTextField.addTarget(self, action: #selector(confirmPassword(_:)), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
+        checkPasswordTextField.addTarget(self, action: #selector(checkPasswordTextFieldDidChange(_:)), for: .editingChanged)
     }
     
     private func setupEmailContainerView() -> UIStackView {
-        return setupUIStackView([emailTextField, validEmailFormatLabel])
+        return setupUIStackView([emailLabel, emailTextField, validEmailFormatLabel])
     }
     
     private func setupPasswordTextFieldView() -> UIStackView {
-        return setupUIStackView([passwordTextField, validPasswordFormatLabel])
-    }
-    
-    private func setupCheckPasswordTextFieldView() -> UIStackView {
-        return setupUIStackView([checkPasswordTextField, confirmPasswordLabel])
+        return setupUIStackView([passwordLabel, passwordTextField, checkPasswordTextField, validPasswordFormatLabel])
     }
     
     private func setupViews() {
         let emailContainerView = setupEmailContainerView()
         let passwordContainerView = setupPasswordTextFieldView()
-        let checkPasswordContainerView = setupCheckPasswordTextFieldView()
         
-        fieldStack.addArrangedSubviews(emailContainerView, passwordContainerView, checkPasswordContainerView, registrationButton)
+        fieldStack.addArrangedSubviews(emailContainerView, passwordContainerView)
         fieldStack.axis = .vertical
         fieldStack.spacing = 10
         
-        helpStack.addArrangedSubviews(pushLoginViewButton, pushHelpLogin)
+        helpStack.addArrangedSubviews(pushLoginViewButton, pushHelpLoginButton)
         helpStack.axis = .vertical
-        helpStack.spacing = 30
+        helpStack.spacing = 40
         
-        view.addSubviews(welcomeTitle, fieldStack, helpStack)
+        view.addSubviews(welcomeTitle, logoImage, fieldStack, registrationButton, helpStack)
     }
     
     private func setupLayout() {
         setupViews()
+        
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.left.equalTo(view).offset(20)
+            make.leading.equalToSuperview().offset(24)
+        }
+        
+        logoImage.snp.makeConstraints { make in
+            make.top.equalTo(welcomeTitle.snp.bottom).offset(12)
+            make.leading.equalToSuperview().offset(22)
         }
         
         fieldStack.snp.makeConstraints { make in
-            make.top.equalTo(welcomeTitle.snp.bottom).offset(50)
-            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(logoImage.snp.bottom).offset(47)
+            make.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
+        registrationButton.snp.makeConstraints { make in
+            make.top.equalTo(fieldStack.snp.bottom).offset(32)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
 
         helpStack.snp.makeConstraints { make in
-            make.top.equalTo(fieldStack.snp.bottom).offset(20)
-            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(registrationButton.snp.bottom).offset(40)
+            make.centerX.equalToSuperview()
         }
+    }
+}
+
+extension RegistrationController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let maxLength: Int = 20
+            
+        if text.count >= maxLength && range.length == 0 && range.location <= maxLength {
+            return false
+        }
+        return true
     }
 }
