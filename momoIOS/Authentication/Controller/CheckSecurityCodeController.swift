@@ -14,7 +14,7 @@ class CheckSecurityCodeController: UIViewController {
     private lazy var guidePhrase: UILabel = {
         let label = UILabel()
         label.text = "보안코드를 모를 경우 운영진에게 문의해주세요"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .body16
         label.textColor = .gray600
         return label
     }()
@@ -105,13 +105,15 @@ class CheckSecurityCodeController: UIViewController {
     private func setupNavCustom() {
         let navBar = self.navigationController?.navigationBar
         navBar?.isHidden = false
-        navBar?.tintColor = .black
+        navBar?.tintColor = .gray800
         navBar?.backIndicatorImage = UIImage(systemName: "arrow.left")
         navBar?.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left")
         navBar?.topItem?.title = ""
         
         let title = UILabel()
         title.text = "회원가입"
+        title.textColor = .gray800
+        title.font = .body16
         self.navigationItem.titleView = title
     }
     

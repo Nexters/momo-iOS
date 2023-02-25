@@ -28,7 +28,7 @@ class CommonTextField: UITextField {
         self.attributedPlaceholder = NSAttributedString(
             string: placeholderText,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray500,
-                         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .medium)
+                         NSAttributedString.Key.font: UIFont.body14
                         ])
         self.isSecureTextEntry = isSecure
     }
@@ -45,9 +45,9 @@ class CommonTextField: UITextField {
         self.snp.makeConstraints { make in
             make.height.equalTo(55)
         }
-        self.backgroundColor = .rgba(248, 248, 249, 1)
+        self.backgroundColor = .textbox1
         self.layer.cornerRadius = 8
-        self.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        self.font = .body14
         self.textColor = .gray700
         self.addLeftPadding()
     }

@@ -26,7 +26,7 @@ class LoginController: UIViewController {
     private let validEmailFormatLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .body14
         label.textColor = .warning
         return label
     }()
@@ -73,15 +73,18 @@ class LoginController: UIViewController {
             if email.count == 0 {
                 validEmailFormatLabel.text = ""
                 emailTextField.layer.borderWidth = 0
+                emailTextField.backgroundColor = .textbox1
             } else {
                 validEmailFormatLabel.text = "이메일 형식을 확인해주세요"
                 emailTextField.layer.borderWidth = 1
                 emailTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
+                emailTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
             }
         } else {
             validEmailFormatLabel.text = ""
             emailTextField.layer.borderWidth = 1
             emailTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            emailTextField.backgroundColor = .textbox2
         }
     }
     
@@ -90,9 +93,11 @@ class LoginController: UIViewController {
         
         if password.count == 0 {
             passwordTextField.layer.borderWidth = 0
+            passwordTextField.backgroundColor = .textbox1
         } else {
             passwordTextField.layer.borderWidth = 1
             passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            passwordTextField.backgroundColor = .textbox2
         }
         
     }

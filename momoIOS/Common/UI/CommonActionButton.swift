@@ -32,6 +32,6 @@ class CommonActionButton: UIButton {
         self.backgroundColor = .main
         self.heightAnchor.constraint(equalToConstant: 60).isActive = true
         self.layer.cornerRadius = 8
-        self.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        self.titleLabel?.font = .body18
     }
 }

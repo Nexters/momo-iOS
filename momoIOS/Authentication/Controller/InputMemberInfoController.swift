@@ -82,19 +82,23 @@ class InputMemberInfoController: UIViewController {
             selectedButtonTag = 1
             designerButton.backgroundColor = .rgba(237, 234, 255, 1)
             designerButton.layer.borderColor = UIColor.main.cgColor
-            designerButton.jobLabel.textColor = .main
+            designerButton.layer.borderWidth = 2
+            designerButton.jobLabel.textColor = .rgba(132, 112, 255, 1)
             
             developerButton.backgroundColor = .white
             developerButton.layer.borderColor = UIColor.pastbox.cgColor
+            developerButton.layer.borderWidth = 1
             developerButton.jobLabel.textColor = .gray500
         } else { // developer
             selectedButtonTag = 2
             developerButton.backgroundColor = .rgba(237, 234, 255, 1)
             developerButton.layer.borderColor = UIColor.main.cgColor
-            developerButton.jobLabel.textColor = .main
+            developerButton.layer.borderWidth = 2
+            developerButton.jobLabel.textColor = .rgba(132, 112, 255, 1)
             
             designerButton.backgroundColor = .white
             designerButton.layer.borderColor = UIColor.pastbox.cgColor
+            designerButton.layer.borderWidth = 1
             designerButton.jobLabel.textColor = .gray500
         }
     }

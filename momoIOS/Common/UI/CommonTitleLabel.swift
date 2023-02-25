@@ -30,7 +30,7 @@ class CommonTitleLabel: UILabel {
     
     private func setupLabel() {
         self.numberOfLines = 0
-        self.font = .systemFont(ofSize: 28, weight: .semibold)
+        self.font = .pretendard(size: 28, weight: .w600)
         self.textColor = .gray800
     }
 }

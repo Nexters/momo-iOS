@@ -16,7 +16,7 @@ class JobButtonView: UIView {
         let label = UILabel()
         label.text = ""
         label.textColor = .gray500
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .body16
         return label
     }()
     
@@ -39,7 +39,7 @@ class JobButtonView: UIView {
         
         self.layer.masksToBounds = true
         self.layer.borderColor = jobTag == 1 ? UIColor.main.cgColor : UIColor.pastbox.cgColor
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 2
         self.layer.cornerRadius = 8
         self.tag = tag
     }
