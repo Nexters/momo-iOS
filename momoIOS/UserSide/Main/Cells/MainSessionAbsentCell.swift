@@ -24,14 +24,10 @@ class MainSessionAbsentCell: UITableViewCell {
     private func initViews() {
         self.contentView.addSubviews(topLine, sessionAbsentBtn)
 
-        sessionAbsentBtn.setTitle("해당 세션 참여가 어려워요", for: .normal)
-        sessionAbsentBtn.setTitleColor(.gray600, for: .normal)
-        sessionAbsentBtn.semanticContentAttribute = .forceRightToLeft
-        sessionAbsentBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
-        sessionAbsentBtn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        sessionAbsentBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
-        sessionAbsentBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
-        sessionAbsentBtn.tintColor = .gray600
+        topLine.backgroundColor = UIColor(hex: 0xEEEEEE)
+        
+        sessionAbsentBtn.setTitle("해당 세션 참여가 어려워요", font: .body16, color: .gray600)
+        sessionAbsentBtn.setImage(UIImage(systemName: "chevron.right"), tintColor: .gray600, padding: 15, direction: .trailing)
         sessionAbsentBtn.addTarget(self, action: #selector(didTapSessionAbsentBtn), for: .touchUpInside)
     }
     
@@ -46,12 +42,11 @@ class MainSessionAbsentCell: UITableViewCell {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
-        topLine.backgroundColor = UIColor(hex: 0xEEEEEE)
         
         sessionAbsentBtn.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(topLine.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
-    
     }
     
     required init?(coder: NSCoder) {
@@ -62,4 +57,3 @@ class MainSessionAbsentCell: UITableViewCell {
         self.seesionAbsentBtnAction?()
     }
 }
-

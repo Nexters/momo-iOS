@@ -28,7 +28,7 @@ class MainSessionNoInfoCell: UITableViewCell {
             make.height.equalTo(326)
         }
         self.contentView.addSubview(mainView)
-        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.contentView.backgroundColor = .background
 
         mainView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
@@ -43,7 +43,7 @@ class MainSessionNoInfoCell: UITableViewCell {
         }
         titleLabel.text = "상세정보"
         titleLabel.textColor = .gray800
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(600))
+        titleLabel.font = .title20
         
         titleLine.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
@@ -66,7 +66,7 @@ class MainSessionNoInfoCell: UITableViewCell {
         }
         noInfoMessageLabel.text = "상세정보가 업데이트 될 예정이에요"
         noInfoMessageLabel.textColor = .gray600
-        noInfoMessageLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
+        noInfoMessageLabel.font = .body16
     }
     
     required init?(coder: NSCoder) {

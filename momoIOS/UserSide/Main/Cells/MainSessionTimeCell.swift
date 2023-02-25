@@ -11,7 +11,7 @@ import SnapKit
 class MainSessionTimeCell: UITableViewCell {
     let sessionWeekLabel = UILabel()
     let sessionDateLabel = UILabel()
-    let sessionDdayLabel = PaddingLabel(radius: 8, color: .main)
+    let sessionDdayLabel = PaddingLabel(radius: 8, color: .main, verticalInset: 4, horizontalInset: 9)
     let bottomLine = UIView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -27,15 +27,15 @@ class MainSessionTimeCell: UITableViewCell {
         
         sessionWeekLabel.text = "1주차"
         sessionWeekLabel.textColor = .gray800
-        sessionWeekLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight(600))
+        sessionWeekLabel.font = .pretendard(size: 28, weight: .w600)
         
         sessionDateLabel.text = "23.01.07 토요일 Pm 1:00"
         sessionDateLabel.textColor = UIColor(hex: 0x222222, alpha: 0.6)
-        sessionDateLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(500))
+        sessionDateLabel.font = .body14
         
         sessionDdayLabel.text = "D-3"
         sessionDdayLabel.textColor = .white
-        sessionDdayLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(500))
+        sessionDdayLabel.font = .pretendard(size: 14, weight: .w600)
         
         bottomLine.backgroundColor = UIColor(hex: 0x000000, alpha: 0.1)
     }

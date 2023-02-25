@@ -21,7 +21,7 @@ class AdminSessionTableViewController: UIViewController {
     }
     
     private func setTableView() {
-        self.tableView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.tableView.backgroundColor = .background
         self.tableView.separatorStyle = .none
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -39,29 +39,18 @@ class AdminSessionTableViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.hidesBackButton = true
         
-        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spacer.width = 20
         let logo = UIButton()
         logo.setImage(UIImage(named: "nextersLogoBlack"), for: .normal)
         logo.adjustsImageWhenHighlighted = false
         let title = UIBarButtonItem(customView: logo)
         
-        // MARK: - UIButton extension에 넣어두기
         let addCustomView = UIButton()
-        addCustomView.setTitle("세션 등록", for: .normal)
-        addCustomView.setTitleColor(UIColor.gray800, for: .normal)
-        addCustomView.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
-        addCustomView.setImage(UIImage(named: "addSessionButton"), for: .normal)
-        addCustomView.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: -10)
-        addCustomView.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        addCustomView.setTitle("세션등록", font: .body16, color: .gray800)
+        addCustomView.setImage(UIImage(named: "addSessionButton"), tintColor: .clear, padding: 10, direction: .leading)
         addCustomView.addTarget(self, action: #selector(didTapAddSessionButton), for: .touchUpInside)
-        addCustomView.sizeToFit()
-    
         let addsessions = UIBarButtonItem(customView: addCustomView)
-        addsessions.target = self
-        addsessions.action = #selector(didTapAddSessionButton)
         
-        self.navigationItem.leftBarButtonItems = [spacer, title]
+        self.navigationItem.leftBarButtonItem = title
         self.navigationItem.rightBarButtonItem = addsessions
     }
     
@@ -74,7 +63,7 @@ extension AdminSessionTableViewController: UITableViewDelegate, UITableViewDataS
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }

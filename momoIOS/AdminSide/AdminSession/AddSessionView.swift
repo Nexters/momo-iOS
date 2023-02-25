@@ -22,7 +22,7 @@ class AddSessionView {
     let limitLabel = UILabel()
     let countLabel = UILabel()
     
-    let weekBtn = KeyButton(title: "1주차", tintColor: UIColor(hex: 0x4F505C))
+    let weekBtn = KeyButton(title: "1주차", tintColor: .gray700)
     let keywordTxtField = KeyTextField(placeHolder: "세션을 대표하는 키워드를 입력해주세요")
     let detailTxtField = KeyTextView(placeHolder: "세션을 대표하는 정보를 입력해주세요")
     let dateBtn = KeyButton(title: "날짜")
@@ -63,43 +63,33 @@ class AddSessionView {
         mainView.addSubviews(weekLabel, weekBtn, keywordLabel, detailLabel, timeLabel, placeLabel, sessionImgLabel, limitLabel, countLabel, keywordTxtField, detailTxtField, dateBtn, timeBtn, placeBtn, addressTxtField, sessionImgView, sessionImgBtn, registerBtn)
         
         weekBtn.addSubview(downImg)
-        downImg.tintColor = UIColor(hex: 0x4F505C)
+        downImg.tintColor = .gray700
         
         limitLabel.text = "자/ 300자"
-        limitLabel.textColor = UIColor(hex: 0xB3B6C5)
-        limitLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(500))
+        limitLabel.textColor = .gray500
+        limitLabel.font = .body14
         
         countLabel.text = "0"
-        countLabel.textColor = UIColor(hex: 0xB3B6C5)
-        countLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(500))
+        countLabel.textColor = .gray500
+        countLabel.font = .body14
         
         sessionImgView.contentMode = .scaleAspectFit
         
         placeBtn.addSubview(rightImg)
-        rightImg.tintColor = UIColor(hex: 0xB3B6C5)
+        rightImg.tintColor = .gray500
         
-        sessionImgBtn.setTitle("이미지 추가하기", for: .normal)
-        sessionImgBtn.setTitleColor(UIColor(hex: 0x727484), for: .normal)
-        sessionImgBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(500))
-        sessionImgBtn.layer.cornerRadius = 8
-        sessionImgBtn.backgroundColor = UIColor(hex: 0xE7E8EC)
-        sessionImgBtn.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-        sessionImgBtn.semanticContentAttribute = .forceRightToLeft
-        sessionImgBtn.tintColor = UIColor(hex: 0x727484)
-        sessionImgBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
-        sessionImgBtn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 7)
+        sessionImgBtn.setTitle("이미지 추가하기", font: .body18, color: .gray600)
+        sessionImgBtn.setImage(UIImage(systemName: "plus.circle.fill"), tintColor: .gray600, padding: 15, direction: .trailing)
+        sessionImgBtn.configurate(bgColor: .pastbox, strokeColor: nil, strokeWidth: 0, cornerRadius: 8, padding: 10)
         
-        registerBtn.setTitle("등록하기", size: 18, weight: UIFont.Weight(500), color: .white)
-        registerBtn.backgroundColor = UIColor(hex: 0x946BEA)
-        registerBtn.layer.cornerRadius = 8
+        registerBtn.setTitle("등록하기", font: .body18, color: .white)
+        registerBtn.configurate(bgColor: .main, strokeColor: nil, strokeWidth: 0, cornerRadius: 8, padding: 10)
         registerBtn.layer.shadowColor = UIColor(hex: 0x3D414F, alpha: 0.6).cgColor
         registerBtn.layer.masksToBounds = false
         registerBtn.layer.shadowOffset = CGSize(width: 0, height: 3)
         registerBtn.layer.shadowOpacity = 0.6
         
-        weekBtn.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
-        weekBtn.layer.borderWidth = 1
-        weekBtn.backgroundColor = UIColor(hex: 0xD5CCEE, alpha: 0.2)
+        weekBtn.configurate(bgColor: .textbox2, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
     }
     
     private func setConstraintsTop() {
@@ -247,13 +237,13 @@ class KeyLabel: UILabel {
         
         if title.contains("*") {
             let attrStr = NSMutableAttributedString(string: title)
-            attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500)), .foregroundColor: UIColor(hex: 0x4F505C)], range: NSRange(location: 0, length: title.count))
-            attrStr.addAttribute(.foregroundColor, value: UIColor(hex: 0xFF6464), range: (title as NSString).range(of: "*"))
+            attrStr.addAttributes([.font: UIFont.body16, .foregroundColor: UIColor.gray700], range: NSRange(location: 0, length: title.count))
+            attrStr.addAttribute(.foregroundColor, value: UIColor.warning, range: (title as NSString).range(of: "*"))
             self.attributedText = attrStr
         } else {
             self.text = title
-            self.textColor = UIColor(hex: 0x4F505C)
-            self.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
+            self.textColor = .gray700
+            self.font = .body16
         }
     }
 }
@@ -275,10 +265,10 @@ class KeyTextView: UITextView {
     convenience init(placeHolder: String) {
         self.init(frame: .zero)
         
-        let str = NSAttributedString(string: placeHolder, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor(hex: 0xB3B6C5)])
+        let str = NSAttributedString(string: placeHolder, attributes: [.font: UIFont.body14, .foregroundColor: UIColor.gray500])
         self.textAlignment = .justified
         self.attributedText = str
-        self.backgroundColor =  UIColor(hex: 0xF8F8F9)
+        self.backgroundColor =  .textbox1
         self.layer.cornerRadius = 8
         self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
     }
@@ -303,12 +293,12 @@ class KeyTextField: UITextField {
     convenience init(placeHolder: String) {
         self.init(frame: .zero)
         
-        let str = NSAttributedString(string: placeHolder, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor(hex: 0xB3B6C5)])
+        let str = NSAttributedString(string: placeHolder, attributes: [.font: UIFont.body14, .foregroundColor: UIColor.gray500])
         self.textAlignment = .left
         self.attributedPlaceholder = str
-        self.textColor = UIColor(hex: 0x4F505C)
-        self.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        self.backgroundColor = UIColor(hex: 0xF8F8F9)
+        self.textColor = .gray700
+        self.font = .body14
+        self.backgroundColor = .textbox1
         self.layer.cornerRadius = 8
         self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
         self.addTarget(self, action: #selector(didTFChanged), for: .editingChanged)
@@ -317,7 +307,7 @@ class KeyTextField: UITextField {
     @objc func didTFChanged(_ sender: UITextField) {
         UIView.animate(withDuration: 0.3, delay: 0, animations: {
             self.layer.borderWidth = 1
-            self.backgroundColor = UIColor(hex: 0xD5CCEE, alpha: 0.2)
+            self.backgroundColor = .textbox2
         })
     }
 }
@@ -331,20 +321,17 @@ class KeyButton: UIButton {
         fatalError("not implement required init?(coder: NSCoder)")
     }
 
-    convenience init(title: String, tintColor: UIColor = UIColor(hex: 0xB3B6C5)) {
+    convenience init(title: String, tintColor: UIColor = .gray500) {
         self.init(frame: .zero)
 
-        self.setTitle(title, size: 14, weight: .medium, color: tintColor)
+        self.setTitle(title, font: .body14, color: tintColor)
+        self.configurate(bgColor: .textbox1, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 0, cornerRadius: 8, padding: 16)
         self.contentHorizontalAlignment = .left
-        self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
-        self.backgroundColor =  UIColor(hex: 0xF8F8F9)
-        self.layer.cornerRadius = 8
     }
     
     func setBorderAnimation() {
         UIView.animate(withDuration: 0.3, delay: 0, animations: {
-            self.layer.borderWidth = 1
-            self.backgroundColor = UIColor(hex: 0xD5CCEE, alpha: 0.2)
+            self.configurate(bgColor: .textbox2, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
         })
     }
 }

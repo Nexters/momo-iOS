@@ -12,10 +12,10 @@ import SnapKit
 class AdminSessionCell: UITableViewCell {
     let mainView = UIView()
     let sessionWeekLabel = UILabel()
-    let sessionDdayLabel = PaddingLabel(radius: 8, color: .main)
+    let sessionDdayLabel = PaddingLabel(radius: 8, color: .main, verticalInset: 4, horizontalInset: 9)
     let sessionDateLabel = UILabel()
     let rightArrowImg = UIImageView()
-    let sessionKeyworkLabel = PaddingLabel(radius: 4, color: UIColor(hex: 0xF6F6F6))
+    let sessionKeyworkLabel = PaddingLabel(radius: 4, color: .background, verticalInset: 4, horizontalInset: 10)
     let sessionDetailLabel = UILabel()
     let cellHeight = UILabel()
     let checkCodeLayout = UIView()
@@ -32,34 +32,47 @@ class AdminSessionCell: UITableViewCell {
     
     private func setBaseView() {
         self.contentView.addSubviews(mainView)
-        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.contentView.backgroundColor = .background
         self.mainView.backgroundColor = .white
         
         self.mainView.addSubviews(sessionWeekLabel, sessionDdayLabel, sessionDateLabel, rightArrowImg, sessionKeyworkLabel, sessionDetailLabel, cellHeight)
         sessionWeekLabel.text = "1주차"
         sessionWeekLabel.textColor = .gray800
-        sessionWeekLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        sessionWeekLabel.font = .title20
         
         sessionDdayLabel.text = "Today"
-        sessionDdayLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        sessionDdayLabel.font = .pretendard(size: 14, weight: .w600)
         sessionDdayLabel.textColor = .white
         
         sessionDateLabel.text = "2023.01.07"
         sessionDateLabel.textColor = .gray800
-        sessionDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        sessionDateLabel.font = .body14
         
         rightArrowImg.image = UIImage(systemName: "arrow.right")
-        rightArrowImg.tintColor = UIColor(hex: 0x797979)
+        rightArrowImg.tintColor = .gray600
         
         sessionKeyworkLabel.text = "우리 조를 구성해봐요!"
         sessionKeyworkLabel.textColor = .gray800
-        sessionKeyworkLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        sessionKeyworkLabel.font = .body14
         
-        sessionDetailLabel.text = "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!"
+        setAttrString(str: "팀별로 구현할 서비스의 핵심 기능과 개발 일정을 구성원이 다 함께 기획합니다. 2달 간의 정규 활동을 통해 서비스를 런칭할 수 있도록 열정 가득한 시작을 함께해보세요!")
         sessionDetailLabel.numberOfLines = 0
-        sessionDetailLabel.textAlignment = .justified
-        sessionDetailLabel.textColor = .gray700
-        sessionDetailLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        checkCodeLayout.backgroundColor = UIColor(hex: 0xDFD0FF)
+        
+        checkCodeLabel.text = "출석체크 코드 8237"
+        checkCodeLabel.font = .body18
+        checkCodeLabel.textColor = .main
+        
+        checkLockImg.image = UIImage(named: "lock")
+    }
+    
+    func setAttrString(str: String) {
+        let attrStr = NSMutableAttributedString(string: str)
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineSpacing = 4
+        attrStr.addAttributes([.font: UIFont.body14, .foregroundColor: UIColor.gray700, .paragraphStyle: paragraph], range: NSRange(location: 0, length: str.count))
+        sessionDetailLabel.attributedText = attrStr
     }
 
     private func setBaseConstraints() {
@@ -86,7 +99,7 @@ class AdminSessionCell: UITableViewCell {
         rightArrowImg.snp.makeConstraints { make in
             make.size.equalTo(15)
             make.centerY.equalTo(sessionDateLabel)
-            make.right.equalToSuperview().inset(27)
+            make.trailing.equalToSuperview().inset(27)
         }
 
         sessionKeyworkLabel.snp.makeConstraints { make in
@@ -120,17 +133,13 @@ class AdminSessionCell: UITableViewCell {
         checkCodeLayout.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(12)
-            make.height.equalTo(60)
+            make.height.equalTo(72)
         }
-        checkCodeLayout.backgroundColor = .main
         
         checkCodeLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
         }
-        checkCodeLabel.text = "출석체크 코드 8237"
-        checkCodeLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(500))
-        checkCodeLabel.textColor = .white
         
         checkLockImg.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
@@ -138,7 +147,6 @@ class AdminSessionCell: UITableViewCell {
             make.height.equalTo(36)
             make.centerY.equalToSuperview()
         }
-        checkLockImg.image = UIImage(named: "lock")
     }
     
     required init?(coder: NSCoder) {
