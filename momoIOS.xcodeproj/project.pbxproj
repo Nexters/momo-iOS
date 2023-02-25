@@ -44,7 +44,6 @@
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
 		BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */; };
 		BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */; };
-		BFC2E404299E5A9A001D1E34 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFC2E403299E5A9A001D1E34 /* API.plist */; };
 		BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */; };
 		E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */; };
 		E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */; };
@@ -57,6 +56,8 @@
 		E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EE2984FE3200DC83C2 /* Alamofire */; };
 		E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83238F0298506A000DC83C2 /* MainViewController.swift */; };
 		E89F6DF329AA024C00602075 /* NotActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F6DF229AA024C00602075 /* NotActiveSessionView.swift */; };
+		E89F6DFD29AA2F4000602075 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = E89F6DFC29AA2F4000602075 /* API.plist */; };
+		E89F6DFF29AA373200602075 /* CommonWeekSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F6DFE29AA373200602075 /* CommonWeekSelectView.swift */; };
 		E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */; };
 		E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */; };
 		E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F42984FC23003D1AD0 /* ViewController.swift */; };
@@ -112,7 +113,6 @@
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
 		BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberInfoController.swift; sourceTree = "<group>"; };
 		BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
-		BFC2E403299E5A9A001D1E34 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "momo++Bundle.swift"; sourceTree = "<group>"; };
 		E45B17EF748C61E8DABEACD4 /* libPods-momoIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momoIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionDetailCell.swift; sourceTree = "<group>"; };
@@ -123,6 +123,8 @@
 		E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionNoInfoCell.swift; sourceTree = "<group>"; };
 		E83238F0298506A000DC83C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E89F6DF229AA024C00602075 /* NotActiveSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActiveSessionView.swift; sourceTree = "<group>"; };
+		E89F6DFC29AA2F4000602075 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
+		E89F6DFE29AA373200602075 /* CommonWeekSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWeekSelectView.swift; sourceTree = "<group>"; };
 		E8D5C3ED2984FC23003D1AD0 /* momoIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momoIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				3A72A20429A9E16500F2716A /* PaddingLabel.swift */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 				3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */,
+				E89F6DFE29AA373200602075 /* CommonWeekSelectView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -368,11 +371,11 @@
 				E8D5C3F92984FC25003D1AD0 /* Assets.xcassets */,
 				BFC2E405299E5B22001D1E34 /* momo++Bundle.swift */,
 				E8D5C3FE2984FC25003D1AD0 /* Info.plist */,
-				BFC2E403299E5A9A001D1E34 /* API.plist */,
 				3ABBF73F29975082004D4D0B /* Common */,
 				BF0408602987B3AA00F1129B /* Authentication */,
 				3ABBF746299754C0004D4D0B /* AdminSide */,
 				3ABBF745299754AA004D4D0B /* UserSide */,
+				E89F6DFC29AA2F4000602075 /* API.plist */,
 			);
 			path = momoIOS;
 			sourceTree = "<group>";
@@ -451,7 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D5C3FA2984FC25003D1AD0 /* Assets.xcassets in Resources */,
-				BFC2E404299E5A9A001D1E34 /* API.plist in Resources */,
+				E89F6DFD29AA2F4000602075 /* API.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +538,7 @@
 				BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */,
 				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
 				BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */,
+				E89F6DFF29AA373200602075 /* CommonWeekSelectView.swift in Sources */,
 				BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */,
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
 				3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */,

@@ -14,11 +14,11 @@ class RegisterPlaceViewController: UIViewController {
     
     // MARK: - Properties
     private let searchBar = UISearchBar()
-    private let searchIcon = UIImageView(image: UIImage(systemName: "magnifyingglass", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24, weight: .semibold)))
+    private let searchIcon = UIImageView(image: UIImage(systemName: "magnifyingglass", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold)))
     private let searchGuideLabel: UILabel = {
         let label = UILabel()
         label.text = "도로명이나 지역명을 이용해서 검색해보세요.\n건물번호, 번지를 입력하시면 정확하게 검색됩니다."
-        label.font = .systemFont(ofSize: 16, weight: .light)
+        label.font = .body16
         label.textColor = .rgba(138, 138, 138, 1)
         label.numberOfLines = 0
         return label
@@ -26,6 +26,7 @@ class RegisterPlaceViewController: UIViewController {
     
     private var resultTableView: UITableView!
     private var tableDataSource: GMSAutocompleteTableDataSource!
+    var didTapPlaceClosure: ((String) -> Void)?
     
     // MARK: - Lifecycles
     
@@ -42,13 +43,11 @@ class RegisterPlaceViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    
     @objc private func goBackToAddSessionVC() {
         self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Helpers
-    
     private func setupCustomNav() {
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .rgba(24, 24, 24, 0.16)
@@ -63,7 +62,7 @@ class RegisterPlaceViewController: UIViewController {
         
         let title = UILabel()
         title.text = "장소등록"
-        title.font = .systemFont(ofSize: 16, weight: .semibold)
+        title.font = .body16
         self.navigationItem.titleView = title
     }
     
@@ -152,17 +151,11 @@ extension RegisterPlaceViewController: GMSAutocompleteTableDataSourceDelegate {
     }
 
     func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWith place: GMSPlace) {
-        // Do something with the selected place.
-        print("\(place)")
-
-        for sub in self.view.subviews {
-            if let subview = sub as? UITableView {
-                subview.removeFromSuperview()
-                break
-            }
+        guard let point = place.formattedAddress else {
+            return
         }
-        self.searchBar.endEditing(true)
-        self.searchBar.text = ""
+        self.didTapPlaceClosure?(point)
+        self.navigationController?.popViewController(animated: true)
     }
 
     func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {

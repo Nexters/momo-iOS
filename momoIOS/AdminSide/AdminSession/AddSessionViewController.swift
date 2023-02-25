@@ -7,22 +7,25 @@
 
 import UIKit
 import SnapKit
+import Toast
 
 // MARK: - 어드민 세션 등록 뷰 컨트롤러
 class AddSessionViewController: UIViewController {
     let addSessionView = AddSessionView()
+    let weekSheet = CustomWeekSelectSheet()
     let imgPicker = UIImagePickerController()
     let dateAlert = UIAlertController()
     let startTimeAlert = UIAlertController()
     let endTimeAlert = UIAlertController()
+    private var weekSelected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setBaseView()
         setNavCustom()
         setDateAlertAction()
         setTimeAlertAction()
-        setImagePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,14 +84,28 @@ class AddSessionViewController: UIViewController {
     private func setBaseView() {
         self.view.backgroundColor = .white
         addSessionView.initViews(self.view)
+        
         addSessionView.dateBtn.addTarget(self, action: #selector(didTapDatePickerBtn), for: .touchUpInside)
         addSessionView.timeBtn.addTarget(self, action: #selector(didTapTimePickerBtn), for: .touchUpInside)
         addSessionView.placeBtn.addTarget(self, action: #selector(didTapSetPlaceBtn), for: .touchUpInside)
         addSessionView.sessionImgBtn.addTarget(self, action: #selector(didTapSessionImgBtn), for: .touchUpInside)
+        addSessionView.weekBtn.addTarget(self, action: #selector(didTapWeekSelectbtn), for: .touchUpInside)
+        addSessionView.registerBtn.addTarget(self, action: #selector(didTapRegisterBtn), for: .touchUpInside)
+        
         addSessionView.detailTxtField.delegate = self
         addSessionView.detailTxtField.delegate = self
         addSessionView.addressTxtField.delegate = self
         addSessionView.keywordTxtField.delegate = self
+        
+        self.view.addSubview(weekSheet)
+        weekSheet.selectClosure = { [weak self] week in
+            self?.addSessionView.weekBtn.setWeekText(week)
+        }
+        weekSheet.snp.makeConstraints { make in
+            make.top.equalTo(self.addSessionView.weekBtn.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(self.addSessionView.weekBtn)
+            make.height.equalTo(416)
+        }
     }
     
     private func setDateAlertAction() {
@@ -137,11 +154,11 @@ class AddSessionViewController: UIViewController {
         dateFormatter.dateFormat = "HH:mm"
         
         let startCancel = UIAlertAction(title: "취소", style: .cancel, handler: { [weak self] _ in
-            self?.addSessionView.timeBtn.titleLabel?.text?.removeAll()
+            self?.addSessionView.timeBtn.setTitle("시작시간~종료시간", font: .body14, color: .gray500)
         })
         
         let endCancel = UIAlertAction(title: "취소", style: .cancel, handler: { [weak self] _ in
-            self?.addSessionView.timeBtn.titleLabel?.text?.removeAll()
+            self?.addSessionView.timeBtn.setTitle("시작시간~종료시간", font: .body14, color: .gray500)
         })
         
         let next = UIAlertAction(title: "다음", style: .default, handler: { [weak self] _ in
@@ -202,11 +219,30 @@ extension AddSessionViewController {
     }
     
     @objc func didTapSetPlaceBtn(_ sender: UIButton) {
-        self.navigationController?.pushViewController(RegisterPlaceViewController(), animated: true)
+        let registerPlaceVC = RegisterPlaceViewController()
+        registerPlaceVC.didTapPlaceClosure = { [weak self] str in
+            self?.addSessionView.placeBtn.setTitle(str, font: .body14, color: .gray700)
+            self?.addSessionView.placeBtn.setBorderAnimation()
+        }
+        self.navigationController?.pushViewController(registerPlaceVC, animated: true)
     }
     
     @objc func didTapSessionImgBtn(_ sender: UIButton) {
         self.present(imgPicker, animated: true)
+    }
+    
+    @objc func didTapWeekSelectbtn(_ sender: UIButton) {
+        self.weekSheet.isHidden = false
+        self.weekSelected = true
+    }
+    
+    @objc func didTapRegisterBtn(_ sender: UIButton) {
+        
+        if self.addSessionView.dateBtn.titleLabel?.text != "날짜" && self.addSessionView.timeBtn.titleLabel?.text != "시작시간~종료시간" && self.weekSelected {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.view.makeToast("필수 항목을 입력하세요", duration: 2, position: .top)
+        }
     }
 }
 
