@@ -9,102 +9,23 @@ import UIKit
 import SnapKit
 
 class InputMemberInfoController: UIViewController {
-    // MARK: - set Properties
+    // MARK: - Properties
     
-    private func setLabel(text: String) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .black
-        return label
-    }
+    // name area
+    let nameLabel = setupAreaLabel(text: "이름을 입력해주세요")
+    private lazy var nameTextField = CommonTextField(placeholderText: "이름")
     
-    private func setInputNameView() -> UIView {
-        let view = UIView()
-        
-        let label = setLabel(text: "이름")
-        let textField = CommonTextField(placeholderText: "")
-        
-        view.addSubviews(label, textField)
-        label.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top)
-            make.left.right.equalToSuperview()
-        }
-        textField.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(15)
-            make.width.equalTo(view)
-        }
-        return view
-    }
+    // year area
+    let yearLabel = setupAreaLabel(text: "가입 기수를 입력해주세요")
+    private lazy var yearTextField = CommonTextField(placeholderText: "가입 기수")
     
-    private func setInputYearView() -> UIView {
-        let view = UIView()
-        
-        let titleLabel = setLabel(text: "기수")
-        let textField = CommonTextField(placeholderText: "")
-        let yearLabel = setLabel(text: "기")
-        
-        view.addSubviews(titleLabel, textField, yearLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top)
-            make.left.equalTo(view.snp.left)
-        }
-        textField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(15)
-            make.left.equalTo(view.snp.left)
-            make.width.equalTo(200)
-        }
-        yearLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(textField)
-            make.left.equalTo(textField.snp.right).offset(15)
-        }
-        return view
-    }
+    // job area
+    let jobLabel = setupAreaLabel(text: "직군을 선택해주세요")
     
-    private lazy var designerButton = setJobButton(jobName: "Designer", width: 200, tag: 1)
-    private lazy var developerButton = setJobButton(jobName: "Developer", width: 215, tag: 2)
-    
-    private func setInputJobView() -> UIView {
-        let view = UIView()
-        
-        let label = setLabel(text: "직군")
-        
-        view.addSubviews(label, designerButton, developerButton)
-        label.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top)
-            make.left.equalTo(view.snp.left)
-        }
-        designerButton.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(15)
-            make.left.equalTo(view.snp.left)
-        }
-        developerButton.snp.makeConstraints { make in
-            make.centerY.equalTo(designerButton)
-            make.left.equalTo(designerButton.snp.right).offset(15)
-        }
-        designerButton.addTarget(self, action: #selector(handleJobSelection), for: .touchUpInside)
-        developerButton.addTarget(self, action: #selector(handleJobSelection), for: .touchUpInside)
-        return view
-    }
-    
-    private func setJobButton(jobName: String, width: CGFloat, tag: Int) -> UIButton {
-        let button = UIButton()
-        
-        button.setTitle(jobName, for: .normal)
-        button.setTitleColor(.gray, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
-        button.contentEdgeInsets = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
-        
-        button.frame = CGRect(x: 0, y: 0, width: width, height: 30)
-        button.backgroundColor = .white
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 22
-        button.layer.borderWidth = 0.75
-        button.layer.borderColor = UIColor.gray.cgColor
-        
-        button.tag = tag
-        return button
-    }
+    private var jobButtonView = UIStackView()
+    private var selectedButtonTag: Int = 1
+    private lazy var designerButton = JobButtonView(frame: .zero, jobName: "Designer", jobTag: 1)
+    private lazy var developerButton = JobButtonView(frame: .zero, jobName: "Developer", jobTag: 2)
     
     private let completeButton = CommonActionButton(buttonTitle: "가입완료!")
     
@@ -127,49 +48,139 @@ class InputMemberInfoController: UIViewController {
     }
     
     // MARK: - Selectors
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        
+        if text.count > 0 {
+            textField.backgroundColor = .textbox2
+            textField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            textField.layer.borderWidth = 1
+        } else {
+            textField.backgroundColor = .textbox1
+            textField.layer.borderWidth = 0
+        }
+    }
     
-    @objc private func handleJobSelection(_ selectedButton: UIButton) {
-        if selectedButton.tag == 1 { // designer
-            designerButton.setTitleColor(.black, for: .normal)
-            designerButton.layer.borderColor = UIColor.black.cgColor
-            developerButton.setTitleColor(.gray, for: .normal)
-            developerButton.layer.borderColor = UIColor.gray.cgColor
+    @objc func textFieldDidFilled(_ textField: UITextField) {
+        guard let name = nameTextField.text else { return }
+        guard let year = yearTextField.text else { return }
+        
+        if name.count == 0 || year.count == 0 {
+            completeButton.backgroundColor = .gray600
+            completeButton.setTitleColor(UIColor.rgba(255, 255, 255, 0.4), for: .normal)
+            completeButton.isEnabled = false
+        } else {
+            completeButton.backgroundColor = .main
+            completeButton.setTitleColor(.white, for: .normal)
+            completeButton.isEnabled = true
+        }
+    }
+    
+    @objc private func handleJobSelection(sender: UITapGestureRecognizer) {
+        guard let view = sender.view as? JobButtonView else { return }
+        if view.jobTag == 1 { // designer
+            selectedButtonTag = 1
+            designerButton.backgroundColor = .rgba(237, 234, 255, 1)
+            designerButton.layer.borderColor = UIColor.main.cgColor
+            designerButton.jobLabel.textColor = .main
+            
+            developerButton.backgroundColor = .white
+            developerButton.layer.borderColor = UIColor.pastbox.cgColor
+            developerButton.jobLabel.textColor = .gray500
         } else { // developer
-            designerButton.setTitleColor(.gray, for: .normal)
-            designerButton.layer.borderColor = UIColor.gray.cgColor
-            developerButton.setTitleColor(.black, for: .normal)
-            developerButton.layer.borderColor = UIColor.black.cgColor
+            selectedButtonTag = 2
+            developerButton.backgroundColor = .rgba(237, 234, 255, 1)
+            developerButton.layer.borderColor = UIColor.main.cgColor
+            developerButton.jobLabel.textColor = .main
+            
+            designerButton.backgroundColor = .white
+            designerButton.layer.borderColor = UIColor.pastbox.cgColor
+            designerButton.jobLabel.textColor = .gray500
         }
     }
     
     // MARK: - Helpers
     
     private func setupCustomNav() {
+        let navBar = self.navigationController?.navigationBar
+        navBar?.isHidden = false
+        navBar?.tintColor = .black
+        navBar?.backIndicatorImage = UIImage(systemName: "arrow.left")
+        navBar?.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left")
+        navBar?.topItem?.title = ""
+        
         let title = UILabel()
         title.text = "회원정보입력"
         self.navigationItem.titleView = title
-        self.navigationItem.titleView?.tintColor = .black
+    }
+    
+    private func setupJobButtonView() {
+        jobButtonView.addArrangedSubviews(designerButton, developerButton)
+        jobButtonView.axis = .horizontal
+        jobButtonView.spacing = 15
+        
+        let designerTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleJobSelection(sender:)))
+        designerButton.addGestureRecognizer(designerTapGesture)
+        let developerTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleJobSelection(sender:)))
+        developerButton.addGestureRecognizer(developerTapGesture)
+        
+        designerButton.snp.makeConstraints { make in
+            make.height.equalTo(180)
+            make.width.equalTo((view.frame.width - 63) / 2)
+        }
+        
+        developerButton.snp.makeConstraints { make in
+            make.height.equalTo(180)
+            make.width.equalTo((view.frame.width - 63) / 2)
+        }
     }
     
     private func setupLayout() {
-        let inputViews = [setInputNameView(), setInputYearView(), setInputJobView()]
-        inputViews.forEach { view in
-            view.snp.makeConstraints { make in
-                make.height.greaterThanOrEqualTo(100)
-            }
-        }
+        yearTextField.keyboardType = .numberPad
+        self.setupJobButtonView()
+        view.addSubviews(nameLabel, nameTextField, yearLabel, yearTextField, jobLabel, jobButtonView, completeButton)
         
-        let fieldStack = UIStackView(arrangedSubviews: inputViews)
-        fieldStack.axis = .vertical
-        fieldStack.spacing = 20
+        completeButton.backgroundColor = .gray600
+        completeButton.setTitleColor(UIColor.rgba(255, 255, 255, 0.4), for: .normal)
+        completeButton.isEnabled = false
         
-        view.addSubviews(fieldStack, completeButton)
-        fieldStack.snp.makeConstraints { make in
+        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
+        yearTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
+        nameTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .allEditingEvents)
+        yearTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .allEditingEvents)
+        
+        nameLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.left.equalToSuperview().offset(24)
         }
+        
+        nameTextField.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
+        yearLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameTextField.snp.bottom).offset(25)
+            make.left.equalToSuperview().offset(24)
+        }
+        
+        yearTextField.snp.makeConstraints { make in
+            make.top.equalTo(yearLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
+        jobLabel.snp.makeConstraints { make in
+            make.top.equalTo(yearTextField.snp.bottom).offset(24)
+            make.left.equalToSuperview().offset(24)
+        }
+        
+        jobButtonView.snp.makeConstraints { make in
+            make.top.equalTo(jobLabel.snp.bottom).offset(14)
+            make.horizontalEdges.equalToSuperview().inset(24)
+        }
+        
         completeButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.snp.bottom).offset(-50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
             make.horizontalEdges.equalToSuperview().inset(20)
         }
     }
