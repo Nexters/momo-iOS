@@ -17,12 +17,11 @@ class RegistrationController: UIViewController {
     
     // logo area
     private lazy var welcomeTitle = CommonTitleLabel(labelText: "간편한 출석체크")
-    private lazy var logoTitle: UILabel = {
-        let label = UILabel()
-        label.text = "MDMY"
-        label.font = .systemFont(ofSize: 34, weight: .semibold)
-        label.textColor = .black
-        return label
+    private lazy var logoImage: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 139, height: 41))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "MDMY")
+        return imageView
     }()
     
     // email area
@@ -201,7 +200,7 @@ class RegistrationController: UIViewController {
         helpStack.axis = .vertical
         helpStack.spacing = 40
         
-        view.addSubviews(welcomeTitle, logoTitle, fieldStack, registrationButton, helpStack)
+        view.addSubviews(welcomeTitle, logoImage, fieldStack, registrationButton, helpStack)
     }
     
     private func setupLayout() {
@@ -212,13 +211,13 @@ class RegistrationController: UIViewController {
             make.left.equalToSuperview().offset(24)
         }
         
-        logoTitle.snp.makeConstraints { make in
+        logoImage.snp.makeConstraints { make in
             make.top.equalTo(welcomeTitle.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(22)
         }
         
         fieldStack.snp.makeConstraints { make in
-            make.top.equalTo(logoTitle.snp.bottom).offset(50)
+            make.top.equalTo(logoImage.snp.bottom).offset(50)
             make.left.right.equalToSuperview().inset(24)
         }
         
