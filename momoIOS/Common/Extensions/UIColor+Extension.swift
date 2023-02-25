@@ -39,8 +39,6 @@ extension UIColor {
     static let attendanceLate = UIColor(hex: 0xFFC531)
     /// 0xFF8B32
     static let noticeAbsance = UIColor(hex: 0xFF8B32)
-    /// 0xD5CCEE
-    static let stroke = UIColor(hex: 0xD5CCEE)
     
     // Text Color
     /// 0x222222

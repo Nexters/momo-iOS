@@ -71,7 +71,7 @@ final class MemberListViewController: UIViewController {
     
     // MARK: - Action
     @objc private func goToAddIndividualMemberViewController() {
-        let viewController = AddIndividualMemberViewcontroller()
+        let viewController = AddIndividualMemberViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
