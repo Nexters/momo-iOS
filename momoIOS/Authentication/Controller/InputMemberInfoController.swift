@@ -45,7 +45,7 @@ class InputMemberInfoController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChanged(_ textField: UITextField) {
         guard let text = textField.text else { return }
         
         if text.count > 0 {
@@ -124,10 +124,10 @@ class InputMemberInfoController: UIViewController {
         completeButton.setTitleColor(UIColor(hex: 0xFFFFFF, alpha: 0.4), for: .normal)
         completeButton.isEnabled = false
         
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
-        yearTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
-        nameTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .allEditingEvents)
-        yearTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .allEditingEvents)
+        nameTextField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
+        yearTextField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
+        nameTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .editingChanged)
+        yearTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .editingChanged)
     }
     
     private func setupLayout() {
