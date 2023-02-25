@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0B570E29AAA161002D6F93 /* AttendanceResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B570D29AAA161002D6F93 /* AttendanceResultCell.swift */; };
 		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
 		3A72A1FF29A9D59200F2716A /* CommonBottomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */; };
 		3A72A20129A9D64A00F2716A /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */; };
@@ -45,7 +46,6 @@
 		BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */; };
 		BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57729951F0C0026DCE3 /* ProfileView.swift */; };
 		BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */; };
-		BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */; };
 		BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */; };
 		BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */; };
 		BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */; };
@@ -71,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0B570D29AAA161002D6F93 /* AttendanceResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceResultCell.swift; sourceTree = "<group>"; };
 		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBottomAlert.swift; sourceTree = "<group>"; };
 		3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		BF43B57529951EAF0026DCE3 /* MoimManagementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoimManagementController.swift; sourceTree = "<group>"; };
 		BF43B57729951F0C0026DCE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BF43B57929952AFF0026DCE3 /* MoimSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoimSettingCell.swift; sourceTree = "<group>"; };
-		BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResultCell.swift; sourceTree = "<group>"; };
 		BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationController.swift; sourceTree = "<group>"; };
 		BF9988FF298BB0D3005723C7 /* InputMemberInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberInfoController.swift; sourceTree = "<group>"; };
 		BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -342,8 +342,8 @@
 		BF9988FA298AD002005723C7 /* PersonalInformation */ = {
 			isa = PBXGroup;
 			children = (
+				3A0B570D29AAA161002D6F93 /* AttendanceResultCell.swift */,
 				BF9988FB298AD04E005723C7 /* PersonalInformationController.swift */,
-				BF6EC77E298D1B2E00F4B170 /* AttendanceResultCell.swift */,
 				BF4310F9298C525900270DBF /* AttendanceHistoryCell.swift */,
 			);
 			path = PersonalInformation;
@@ -562,8 +562,7 @@
 				BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */,
 				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
 				BFF7EE1F29A9DF37002E292F /* JobButtonView.swift in Sources */,
-				3A8FC29F29A9F343000B9315 /* AttendanceListViewController.swift in Sources
-				BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */,
+				3A8FC29F29A9F343000B9315 /* AttendanceListViewController.swift in Sources */,
 				BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */,
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
 				3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */,
@@ -590,6 +589,7 @@
 				3ABEDB742997719000F9BF1C /* String+Extension.swift in Sources */,
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
 				3A72A1FF29A9D59200F2716A /* CommonBottomAlert.swift in Sources */,
+				3A0B570E29AAA161002D6F93 /* AttendanceResultCell.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
 				BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */,
 				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,
