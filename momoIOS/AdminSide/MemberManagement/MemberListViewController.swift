@@ -35,8 +35,10 @@ final class MemberListViewController: UIViewController {
         
         self.addMemberButton.setTitle("회원등록", font: .body16, color: .gray500)
         self.addMemberButton.configurate(padding: 0)
+        self.addMemberButton.addTarget(self, action: #selector(goToAddIndividualMemberViewController), for: .touchUpInside)
         self.resetAllButton.setTitle("전체 초기화", font: .body16, color: .gray500)
         self.resetAllButton.configurate(padding: 0)
+        self.resetAllButton.addTarget(self, action: #selector(showResetAllAlert), for: .touchUpInside)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -65,6 +67,20 @@ final class MemberListViewController: UIViewController {
             make.top.equalTo(self.sortLabel.snp.bottom).offset(16)
             make.horizontalEdges.bottom.equalToSuperview()
         }
+    }
+    
+    // MARK: - Action
+    @objc private func goToAddIndividualMemberViewController() {
+        let viewController = AddIndividualMemberViewcontroller()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func showResetAllAlert() {
+        let alert = CommonBottomAlert()
+        alert.configure(title: "회원정보를 초기화 할까요?", description: "한번 초기화된 회원정보는 되돌릴 수 없습니다.\n되돌리고 싶다면 다시 엑셀을 업로드해야 합니다.", cancelTitle: "취소", confirmTitle: "초기화", cancelCompletion: nil) {
+            // TODO: 초기화 로직 추가
+        }
+        alert.show()
     }
 }
 
