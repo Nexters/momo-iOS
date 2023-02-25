@@ -9,134 +9,147 @@ import SnapKit
 
 // MARK: - 메인 세션 정보 cell
 class MainSessionInfoCell: UITableViewCell {
-    let sessionInfoLayout = UIView()
-    let sessionTimeLabel = UILabel()
+    let mainView = UIView()
+    let titleLabel = UILabel()
+    let topLine = UIView()
+    let bottomLine = UIView()
+    let verticalLine = UIView()
+    
+    let sessionTimeLabel = PaddingLabel(radius: 4, color: UIColor(hex: 0xF4EFFF), verticalInset: 4, horizontalInset: 12)
     let sessionTime = UILabel()
-    let sessionPlaceLabel = UILabel()
+    let sessionPlaceLabel = PaddingLabel(radius: 4, color: UIColor(hex: 0xF4EFFF), verticalInset: 4, horizontalInset: 12)
     let sessionPlace = UILabel()
-    let sessionPlaceAddress = UILabel()
+    
     let findRoadBtn = UIButton()
-    let line = UIView()
     let moreDetailBtn = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: "MainSessionInfoCell")
+        self.selectionStyle = .none
+        
         self.initViews()
-        self.setViewConstraints()
-        self.setLabelConstraints()
-        self.setBtnConstraints()
+        self.setTopConstraints()
+        self.setBottomConstraints()
     }
 
     private func initViews() {
-        self.contentView.addSubviews(sessionInfoLayout)
-    
-        sessionInfoLayout.layer.borderColor = UIColor.systemGray5.cgColor
-        sessionInfoLayout.layer.borderWidth = 1
-        sessionInfoLayout.layer.cornerRadius = 12
-        sessionInfoLayout.addSubviews(sessionTimeLabel, sessionTime, sessionPlaceLabel, sessionPlace, sessionPlaceAddress, findRoadBtn, line, moreDetailBtn)
+        self.contentView.addSubview(mainView)
+        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        mainView.backgroundColor = .white
+        
+        self.mainView.addSubviews(titleLabel, topLine, sessionTimeLabel, sessionTime, sessionPlaceLabel, sessionPlace, bottomLine, verticalLine, findRoadBtn, moreDetailBtn)
 
-        findRoadBtn.layer.cornerRadius = 7
-        findRoadBtn.setTitle("길찾기", size: 12, weight: .medium, color: .black)
-        findRoadBtn.backgroundColor = .systemGray5
+        titleLabel.text = "상세 정보"
+        titleLabel.textColor = .gray800
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(600))
         
-        line.backgroundColor = .systemGray6
+        topLine.backgroundColor = UIColor(hex: 0xEEEEEE)
+        bottomLine.backgroundColor = UIColor(hex: 0xEEEEEE)
+        verticalLine.backgroundColor = UIColor(hex: 0xEEEEEE)
         
-        moreDetailBtn.setTitle("세션 상세정보", size: 13, weight: .medium, color: .lightGray)
-        moreDetailBtn.setImage(UIImage(systemName: "arrow.right"), for: .normal)
-        moreDetailBtn.semanticContentAttribute = .forceRightToLeft
-        moreDetailBtn.contentHorizontalAlignment = .fill
-        moreDetailBtn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 10), forImageIn: .normal)
-        moreDetailBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
+        findRoadBtn.setTitle("길찾기", for: .normal)
+        findRoadBtn.setTitleColor(.gray700, for: .normal)
+        findRoadBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        findRoadBtn.setImage(UIImage(named: "findRoadButton"), for: .normal)
+        findRoadBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 7)
+        findRoadBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
         
-        setLabelAttribute()
-    }
-    
-    private func setLabelAttribute() {
+        moreDetailBtn.setTitle("세션 상세정보", for: .normal)
+        moreDetailBtn.setTitleColor(.gray700, for: .normal)
+        moreDetailBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        moreDetailBtn.setImage(UIImage(named: "clockButton"), for: .normal)
+        moreDetailBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 7)
+        moreDetailBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
+        
         sessionTimeLabel.text = "시간"
+        sessionTimeLabel.textColor = .main
         sessionTimeLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
 
-        sessionTime.text = "23.01.07 토요일 pm1:00~pm5:00"
-        sessionTime.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        sessionTime.text = "2023.01.07 토요일 오후 1:00"
+        sessionTime.textAlignment = .right
+        sessionTime.textColor = UIColor(hex: 0x454545)
+        sessionTime.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         
         sessionPlaceLabel.text = "장소"
+        sessionPlaceLabel.textColor = .main
         sessionPlaceLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         
-        sessionPlace.text = "마루 180"
-        sessionPlace.lineBreakMode = .byTruncatingTail
-        sessionPlace.textAlignment = .left
-        sessionPlace.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-
-        sessionPlaceAddress.text = "서울특별시 강남구 역삼로 180"
-        sessionPlaceAddress.sizeToFit()
-        sessionPlaceAddress.textColor = UIColor(hex: 0x5A5A5A)
-        sessionPlaceAddress.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        sessionPlace.text = "서울특별시 강남구 역삼로 마루180 지하 1층"
+        sessionPlace.textColor = UIColor(hex: 0x454545)
+        sessionPlace.textAlignment = .right
+        sessionPlace.numberOfLines = 0
+        sessionPlace.font = UIFont.systemFont(ofSize: 16, weight: .medium)
     }
     
-    private func setLabelConstraints() {
-        sessionTimeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(28)
-            make.leading.equalToSuperview().offset(22)
-            make.width.equalTo(25)
-        }
-    
-        sessionTime.snp.makeConstraints { make in
-            make.top.equalTo(sessionTimeLabel)
-            make.leading.equalTo(sessionTimeLabel.snp.trailing).offset(8)
-        }
-        
-        sessionPlaceLabel.snp.makeConstraints { make in
-            make.top.equalTo(sessionTimeLabel.snp.bottom).offset(12)
-            make.width.equalTo(25)
-            make.leading.equalTo(sessionTimeLabel)
-        }
-        
-        sessionPlace.snp.makeConstraints { make in
-            make.top.equalTo(sessionPlaceLabel)
-            make.leading.equalTo(sessionPlaceLabel.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().offset(-22)
-        }
-        
-        sessionPlaceAddress.snp.makeConstraints { make in
-            make.top.equalTo(sessionPlaceLabel.snp.bottom).offset(12)
-            make.leading.equalTo(sessionTimeLabel)
-        }
-    }
-
-    private func setViewConstraints() {
+    private func setTopConstraints() {
         self.contentView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(220)
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(280)
         }
         
-        sessionInfoLayout.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+        mainView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
-            make.height.equalTo(202)
         }
         
-        line.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-61)
-            make.leading.equalToSuperview().offset(11)
-            make.trailing.equalToSuperview().offset(-11)
+        topLine.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
         
+        sessionTimeLabel.snp.makeConstraints { make in
+            make.top.equalTo(topLine.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(24)
+        }
+    
+        sessionTime.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(27)
+            make.centerY.equalTo(sessionTimeLabel)
+        }
+        
+        sessionPlaceLabel.snp.makeConstraints { make in
+            make.top.equalTo(sessionTimeLabel.snp.bottom).offset(17)
+            make.leading.equalToSuperview().offset(24)
+        }
+        
+        sessionPlace.snp.makeConstraints { make in
+            make.centerY.equalTo(sessionPlaceLabel)
+            make.leading.equalTo(sessionPlaceLabel.snp.trailing).offset(50)
+            make.trailing.equalToSuperview().inset(27)
+        }
     }
     
-    private func setBtnConstraints() {
+    private func setBottomConstraints() {
+        bottomLine.snp.makeConstraints { make in
+            make.top.equalTo(sessionPlace.snp.bottom).offset(28)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        verticalLine.snp.makeConstraints { make in
+            make.top.equalTo(bottomLine.snp.bottom)
+            make.bottom.centerX.equalToSuperview()
+            make.width.equalTo(1)
+        }
+        
         findRoadBtn.snp.makeConstraints { make in
-            make.centerY.equalTo(sessionPlaceAddress)
-            make.leading.equalTo(sessionPlaceAddress.snp.trailing).offset(13)
-            make.width.equalTo(67)
-            make.height.equalTo(30)
+            make.top.equalTo(bottomLine.snp.bottom)
+            make.width.equalTo(UIScreen.main.bounds.width / 2)
+            make.height.equalTo(72)
+            make.leading.equalToSuperview()
         }
 
         moreDetailBtn.snp.makeConstraints { make in
-            make.top.equalTo(line.snp.bottom).offset(23)
-            make.width.equalTo(130)
-            make.height.equalTo(16)
-            make.right.equalToSuperview()
+            make.top.equalTo(bottomLine.snp.bottom)
+            make.width.equalTo(UIScreen.main.bounds.width / 2)
+            make.height.equalTo(72)
+            make.trailing.equalToSuperview()
         }
     }
     

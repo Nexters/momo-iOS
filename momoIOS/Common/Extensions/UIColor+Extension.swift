@@ -24,7 +24,12 @@ extension UIColor {
                   blue: hex & 0xFF, alpha: alpha)
     }
     
+    // Key Color
     static let main = UIColor(hex: 0x946BEA)
+    
+    // Text Color
     static let gray800 = UIColor(hex: 0x222222)
     static let gray700 = UIColor(hex: 0x4F505C)
+    static let gray600 = UIColor(hex: 0x727484)
+    static let gray500 = UIColor(hex: 0xB3B6C5)
 }
