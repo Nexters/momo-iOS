@@ -53,7 +53,7 @@ extension UIButton {
     }
     
     func configurate(
-        bgColor: UIColor = .clear,
+        bgColor: UIColor? = nil,
         strokeColor: UIColor? = nil,
         strokeWidth: CGFloat? = nil,
         cornerRadius: CGFloat? = nil,
