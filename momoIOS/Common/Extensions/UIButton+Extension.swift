@@ -8,19 +8,24 @@
 import UIKit
 
 extension UIButton {
-    func setTitle(_ title: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) {
+    func setTitle(_ title: String, font: UIFont, color: UIColor) {
         if #available(iOS 15.0, *) {
             var attributedTitle = AttributedString(title)
-            attributedTitle.font = .pretendard(size: size, weight: weight)
+            attributedTitle.font = font
             attributedTitle.foregroundColor = color
             var configuration = self.configuration ?? .plain()
             configuration.attributedTitle = attributedTitle
             self.configuration = configuration
         } else {
             self.setTitle(title, for: .normal)
-            self.titleLabel?.font = .pretendard(size: size, weight: weight)
+            self.titleLabel?.font = font
             self.setTitleColor(color, for: .normal)
         }
+    }
+    
+    func setTitle(_ title: String, size: CGFloat, weight: UIFont.Weight, color: UIColor) {
+        let font = UIFont.pretendard(size: size, weight: weight)
+        self.setTitle(title, font: font, color: color)
     }
     
     func configurate(
