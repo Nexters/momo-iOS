@@ -119,7 +119,6 @@ class InputSecurityCodeViewController: UIViewController {
         okButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(20)
             make.left.right.equalToSuperview().inset(24)
-            make.height.equalTo(52)
         }
     }
 }
