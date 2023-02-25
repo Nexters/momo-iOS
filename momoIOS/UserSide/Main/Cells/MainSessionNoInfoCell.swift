@@ -65,7 +65,7 @@ class MainSessionNoInfoCell: UITableViewCell {
             make.centerX.equalToSuperview()
         }
         noInfoMessageLabel.text = "상세정보가 업데이트 될 예정이에요"
-        noInfoMessageLabel.textColor = UIColor(hex: 0x727484)
+        noInfoMessageLabel.textColor = .gray600
         noInfoMessageLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
     }
     
