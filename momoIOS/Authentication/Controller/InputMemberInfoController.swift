@@ -171,7 +171,7 @@ class InputMemberInfoController: UIViewController {
         }
         
         completeButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            make.bottom.equalTo(view.snp.bottom).inset(50)
             make.horizontalEdges.equalToSuperview().inset(20)
         }
     }
