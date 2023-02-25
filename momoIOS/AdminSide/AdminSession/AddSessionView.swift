@@ -22,7 +22,6 @@ class AddSessionView {
     let limitLabel = UILabel()
     let countLabel = UILabel()
     
-    //let weekBtn = KeyButton(title: "1주차", tintColor: .gray700)
     let weekBtn = CommonWeekSelectButton()
     let keywordTxtField = KeyTextField(placeHolder: "세션을 대표하는 키워드를 입력해주세요")
     let detailTxtField = KeyTextView(placeHolder: "세션을 대표하는 정보를 입력해주세요")

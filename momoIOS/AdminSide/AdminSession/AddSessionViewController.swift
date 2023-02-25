@@ -237,7 +237,6 @@ extension AddSessionViewController {
     }
     
     @objc func didTapRegisterBtn(_ sender: UIButton) {
-        
         if self.addSessionView.dateBtn.titleLabel?.text != "날짜" && self.addSessionView.timeBtn.titleLabel?.text != "시작시간~종료시간" && self.weekSelected {
             self.navigationController?.popViewController(animated: true)
         } else {
