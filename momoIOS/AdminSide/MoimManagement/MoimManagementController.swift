@@ -8,9 +8,11 @@
 import UIKit
 import SnapKit
 
-class MoimManagementcontrolelr: UIViewController {
+class MoimManagementcontroller: UIViewController {
     
     // MARK: - Properties
+    
+    var securityCode: String = "12345"
     
     private lazy var gradientBaseLayer: UIView = {
         let baseLayer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
@@ -24,28 +26,34 @@ class MoimManagementcontrolelr: UIViewController {
     private lazy var toEndThisMoimLabel: UILabel = {
         let label = UILabel()
         label.text = "현재 기수를 종료할까요?"
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = .title20
         label.textColor = .gray800
         return label
     }()
     
     private lazy var toEndThisMoimButton: UIButton = {
         let button = UIButton()
-        button.setTitle("종료하기", size: 16, weight: .medium, color: .white)
+        button.setTitle("종료하기", size: 16, weight: .w500, color: .white)
+        button.configurate(bgColor: .gray500, strokeColor: .none, strokeWidth: 0, cornerRadius: 8, padding: 0)
         button.titleLabel?.textAlignment = .center
-        button.backgroundColor = .gray500
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 8
         return button
     }()
+    
+    private let alert = CommonBottomAlert()
     
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .rgba(245, 245, 245, 1)
-        setupCustomNav()
+        self.view.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.setupCustomNav()
         self.setupLayout()
+    }
+    
+    // MARK: - Selectors
+    
+    @objc private func toEndThisMoim() {
+        alert.show()
     }
     
     // MARK: - Helpers
@@ -86,6 +94,12 @@ class MoimManagementcontrolelr: UIViewController {
         
         view.addSubviews(profileView, toEndThisMoimLabel, toEndThisMoimButton)
         setupSettingTableView()
+
+        alert.configure(
+            title: "현재 기수를 종료할까요?", description: "종료한다면 모든 기록들이 사라집니다.", cancelTitle: "취소", confirmTitle: "종료하기", cancelCompletion: nil, confirmCompletion: nil
+        )
+        
+        self.toEndThisMoimButton.addTarget(self, action: #selector(toEndThisMoim), for: .touchUpInside)
     }
     
     private func setupLayout() {
@@ -104,19 +118,19 @@ class MoimManagementcontrolelr: UIViewController {
         }
 
         toEndThisMoimLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(93)
-            make.horizontalEdges.equalToSuperview().inset(24)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(93)
+            make.leading.equalToSuperview().inset(24)
         }
 
         toEndThisMoimButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(15)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(15)
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.equalTo(60)
         }
     }
 }
 
-extension MoimManagementcontrolelr: UITableViewDelegate, UITableViewDataSource {
+extension MoimManagementcontroller: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
            return 1
        }
@@ -128,6 +142,7 @@ extension MoimManagementcontrolelr: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MoimSettingCell.id) as! MoimSettingCell
         cell.settingTitle.text = indexPath.row == 0 ? "로그아웃" : "가입보안코드 확인"
+        cell.settingSubtitle.text = indexPath.row == 0 ? "→" : securityCode
         return cell
     }
 }

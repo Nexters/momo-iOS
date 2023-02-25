@@ -17,18 +17,17 @@ class MoimSettingCell: UITableViewCell {
     lazy var settingTitle: UILabel = {
         let label = UILabel()
         label.text = "설정"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = .body16
         label.textColor = .gray800
         return label
     }()
     
-    private let arrow: UIImageView = {
-        let imageView = UIImageView()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 13, weight: .bold)
-        let image = UIImage(systemName: "arrow.right", withConfiguration: imageConfig)
-        imageView.image = image
-        imageView.tintColor = .rgba(159, 159, 159, 1)
-        return imageView
+    lazy var settingSubtitle: UILabel = {
+        let label = UILabel()
+        label.text = "→"
+        label.font = .body16
+        label.textColor = .gray600
+        return label
     }()
     
     // MARK: - Initializer
@@ -47,11 +46,11 @@ class MoimSettingCell: UITableViewCell {
     
     private func setupCell() {
         contentView.backgroundColor = .white
-        contentView.addSubviews(settingTitle, arrow)
+        contentView.addSubviews(settingTitle, settingSubtitle)
         
         contentView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
-            make.height.greaterThanOrEqualTo(50)
+            make.height.equalTo(50)
         }
         
         settingTitle.snp.makeConstraints { make in
@@ -60,7 +59,7 @@ class MoimSettingCell: UITableViewCell {
             make.height.equalTo(contentView)
         }
         
-        arrow.snp.makeConstraints { make in
+        settingSubtitle.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
             make.right.equalTo(contentView).inset(20)
 //            make.height.equalTo(contentView)

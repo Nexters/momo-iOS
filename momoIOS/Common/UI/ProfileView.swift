@@ -33,18 +33,18 @@ class ProfileView: UIView {
         view.spacing = 8
         
         usernameLabel.text = username
-        usernameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        usernameLabel.font = .title20
         usernameLabel.textColor = .gray800
         
         jobLabel.text = userJob
         jobLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        jobLabel.textColor = .rgba(116, 121, 231, 1)
+        jobLabel.textColor = .b400
         jobLabelView.addSubview(jobLabel)
         jobLabel.snp.makeConstraints { make in
             make.verticalEdges.equalTo(jobLabelView).inset(5)
             make.horizontalEdges.equalTo(jobLabelView).inset(10)
         }
-        jobLabelView.backgroundColor = UIColor.rgba(221, 241, 255, 1)
+        jobLabelView.backgroundColor = .b100
         jobLabelView.layer.cornerRadius = 8
         
         return view
@@ -53,8 +53,8 @@ class ProfileView: UIView {
     private lazy var userAdditionalInformationView: UILabel = {
         let label = UILabel()
         label.text = email
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = UIColor.rgba(118, 118, 118, 1)
+        label.font = .body16
+        label.textColor = UIColor.gray600
         return label
     }()
     
@@ -63,17 +63,19 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
         self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
         self.setupLayout()
     }
+    
     // MARK: - Helpers
+    
     private func setupLayout() {
         self.addSubviews(profileImageView, userBasicInfomationView, userAdditionalInformationView)
         

@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func goToMoimSettingViewController() {
-        self.navigationController?.pushViewController(MoimManagementcontrolelr(), animated: true)
+        self.navigationController?.pushViewController(MoimManagementcontroller(), animated: true)
     }
     
     @objc private func goToRegisterPlaceViewController() {
