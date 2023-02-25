@@ -29,6 +29,8 @@ extension UIColor {
     static let main = UIColor(hex: 0x946BEA)
     /// 0xF4EFFF
     static let p100 = UIColor(hex: 0xF4EFFF)
+    /// 0xD5CCEE
+    static let stroke = UIColor(hex: 0xD5CCEE)
     /// 0xFF6464
     static let warning = UIColor(hex: 0xFF6464)
     /// 0x7FCBE5

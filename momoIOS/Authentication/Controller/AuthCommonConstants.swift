@@ -28,7 +28,7 @@ func pushAnotherViewButton(subtitle: String, title: String) -> UIButton {
 func setupAreaLabel(text: String) -> UILabel {
     let label = UILabel()
     label.text = "\(text)"
-    label.textColor = UIColor(hex: 0x565656)
+    label.textColor = UIColor.gray700
     label.font = .body16
     return label
 }
