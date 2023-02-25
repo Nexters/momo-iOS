@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
+		3A72A1FF29A9D59200F2716A /* CommonBottomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */; };
+		3A72A20129A9D64A00F2716A /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */; };
 		3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20429A9E16500F2716A /* PaddingLabel.swift */; };
 		3A72A20729A9E19300F2716A /* AddSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20629A9E19300F2716A /* AddSessionView.swift */; };
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
@@ -28,7 +30,6 @@
 		BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086A2987E34800F1129B /* AuthCommonConstants.swift */; };
 		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
-		BF088BC5299A10B100A63A5B /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */; };
 		BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */; };
 		BF088BCA299A188900A63A5B /* InputSecurityCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */; };
 		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
@@ -65,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBottomAlert.swift; sourceTree = "<group>"; };
+		3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		3A72A20429A9E16500F2716A /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		3A72A20629A9E19300F2716A /* AddSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSessionView.swift; sourceTree = "<group>"; };
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
@@ -84,7 +87,7 @@
 		3AD90ABA29A7491D00E8AC71 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		3AD90ABB29A7491D00E8AC71 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		3AD90ABC29A7491D00E8AC71 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
-		3AD90ABD29A7491D00E8AC71 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		3AD90ABD29A7491D00E8AC71 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		3AD90ABE29A7491D00E8AC71 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		3AD90ABF29A7491D00E8AC71 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		3AD90AC029A7491D00E8AC71 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -95,7 +98,6 @@
 		BF04086A2987E34800F1129B /* AuthCommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCommonConstants.swift; sourceTree = "<group>"; };
 		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
-		BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
 		BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMoimYearViewController.swift; sourceTree = "<group>"; };
 		BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSecurityCodeViewController.swift; sourceTree = "<group>"; };
 		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
@@ -166,12 +168,12 @@
 		3ABBF742299750A4004D4D0B /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */,
 				BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */,
 				BF405C7F29976F9300B5889D /* CommonTextField.swift */,
 				BF405C81299773AA00B5889D /* CommonActionButton.swift */,
 				3A72A20429A9E16500F2716A /* PaddingLabel.swift */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
+				3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -327,12 +329,13 @@
 				3ABEDB75299771A900F9BF1C /* Collection+Extension.swift */,
 				3ABEDB7029976EF100F9BF1C /* Optional+Extension.swift */,
 				3ABEDB732997719000F9BF1C /* String+Extension.swift */,
+				3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */,
 				3A5AC30F29898B330080323A /* UIButton+Extension.swift */,
 				3AA713D0298946FF006F922F /* UIColor+Extension.swift */,
+				3AD90AB629A7439000E8AC71 /* UIFont+Extension.swift */,
 				3ABEDB6F29976EF100F9BF1C /* UINavigationController+Extension.swift */,
 				BFB8431E298CFF9200BA11EC /* UIStackView+Extension.swift */,
 				E8207931298A163400B36FC9 /* UIView+Extension.swift */,
-				3AD90AB629A7439000E8AC71 /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -519,7 +522,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF088BC5299A10B100A63A5B /* AbsenceModalViewController.swift in Sources */,
 				BF9988FC298AD04E005723C7 /* PersonalInformationController.swift in Sources */,
 				BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */,
 				E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */,
@@ -552,9 +554,11 @@
 				E820792D298A137700B36FC9 /* MainSessionTimeCell.swift in Sources */,
 				E820792B298A119900B36FC9 /* MainSessionDetailCell.swift in Sources */,
 				E8207936298A248200B36FC9 /* MainSessionNoInfoCell.swift in Sources */,
+				3A72A20129A9D64A00F2716A /* UIApplication+Extension.swift in Sources */,
 				BF43B57629951EAF0026DCE3 /* MoimManagementController.swift in Sources */,
 				3ABEDB742997719000F9BF1C /* String+Extension.swift in Sources */,
 				3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */,
+				3A72A1FF29A9D59200F2716A /* CommonBottomAlert.swift in Sources */,
 				3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */,
 				BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */,
 				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,

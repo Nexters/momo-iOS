@@ -36,7 +36,6 @@ extension UIColor {
     /// 0xFF8B32
     static let noticeAbsance = UIColor(hex: 0xFF8B32)
     
-    
     // Text Color
     /// 0x222222
     static let gray800 = UIColor(hex: 0x222222)
@@ -46,4 +45,14 @@ extension UIColor {
     static let gray600 = UIColor(hex: 0x727484)
     /// 0xB3B6C5
     static let gray500 = UIColor(hex: 0xB3B6C5)
+    
+    // Background
+    /// 0xF6F6F6
+    static let background = UIColor(hex: 0xF6F6F6)
+    /// 0xF8F8F9
+    static let textbox1 = UIColor(hex: 0xF8F8F9)
+    /// 0xF8F8FE
+    static let textbox2 = UIColor(hex: 0xF8F8FE)
+    /// 0xE7E8EC
+    static let pastbox = UIColor(hex: 0xE7E8EC)
 }

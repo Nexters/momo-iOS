@@ -72,9 +72,7 @@ class MainViewController: UIViewController {
     }
     
     private func showAbsenceModal() {
-        let absenceModal = AbsenceModalViewController()
-        absenceModal.modalPresentationStyle = .overFullScreen
-        self.present(absenceModal, animated: true)
+        CommonBottomAlert.absenceConfirmAlert().show()
     }
         
     @objc private func goToUserProfileVC() {
