@@ -25,11 +25,25 @@ extension UIColor {
     }
     
     // Key Color
+    /// 0x946BEA
     static let main = UIColor(hex: 0x946BEA)
+    /// 0xFF6464
+    static let warning = UIColor(hex: 0xFF6464)
+    /// 0x7FCBE5
+    static let attendanceCheck = UIColor(hex: 0x7FCBE5)
+    /// 0xFFC531
+    static let attendanceLate = UIColor(hex: 0xFFC531)
+    /// 0xFF8B32
+    static let noticeAbsance = UIColor(hex: 0xFF8B32)
+    
     
     // Text Color
+    /// 0x222222
     static let gray800 = UIColor(hex: 0x222222)
+    /// 0x4F505C
     static let gray700 = UIColor(hex: 0x4F505C)
+    /// 0x727484
     static let gray600 = UIColor(hex: 0x727484)
+    /// 0xB3B6C5
     static let gray500 = UIColor(hex: 0xB3B6C5)
 }
