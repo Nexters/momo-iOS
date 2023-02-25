@@ -34,7 +34,7 @@ class MainSessionInfoCell: UITableViewCell {
 
     private func initViews() {
         self.contentView.addSubview(mainView)
-        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.contentView.backgroundColor = .background
         mainView.backgroundColor = .white
         
         self.mainView.addSubviews(titleLabel, topLine, sessionTimeLabel, sessionTime, sessionPlaceLabel, sessionPlace, bottomLine, verticalLine, findRoadBtn, moreDetailBtn)

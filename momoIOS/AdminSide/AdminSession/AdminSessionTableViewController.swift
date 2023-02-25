@@ -21,7 +21,7 @@ class AdminSessionTableViewController: UIViewController {
     }
     
     private func setTableView() {
-        self.tableView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.tableView.backgroundColor = .background
         self.tableView.separatorStyle = .none
         self.tableView.delegate = self
         self.tableView.dataSource = self

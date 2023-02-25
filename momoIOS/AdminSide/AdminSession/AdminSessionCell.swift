@@ -15,7 +15,7 @@ class AdminSessionCell: UITableViewCell {
     let sessionDdayLabel = PaddingLabel(radius: 8, color: .main, verticalInset: 4, horizontalInset: 9)
     let sessionDateLabel = UILabel()
     let rightArrowImg = UIImageView()
-    let sessionKeyworkLabel = PaddingLabel(radius: 4, color: UIColor(hex: 0xF6F6F6), verticalInset: 4, horizontalInset: 10)
+    let sessionKeyworkLabel = PaddingLabel(radius: 4, color: .background, verticalInset: 4, horizontalInset: 10)
     let sessionDetailLabel = UILabel()
     let cellHeight = UILabel()
     let checkCodeLayout = UIView()
@@ -32,7 +32,7 @@ class AdminSessionCell: UITableViewCell {
     
     private func setBaseView() {
         self.contentView.addSubviews(mainView)
-        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.contentView.backgroundColor = .background
         self.mainView.backgroundColor = .white
         
         self.mainView.addSubviews(sessionWeekLabel, sessionDdayLabel, sessionDateLabel, rightArrowImg, sessionKeyworkLabel, sessionDetailLabel, cellHeight)

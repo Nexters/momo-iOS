@@ -28,7 +28,7 @@ class MainSessionNoInfoCell: UITableViewCell {
             make.height.equalTo(326)
         }
         self.contentView.addSubview(mainView)
-        self.contentView.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.contentView.backgroundColor = .background
 
         mainView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)

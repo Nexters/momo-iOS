@@ -11,7 +11,7 @@ import UIKit
 class MainSessionDetailCell: UITableViewCell {
     let titleLabel = UILabel()
     let topLine = UIView()
-    let sessionMessageTitle = PaddingLabel(radius: 4, color: UIColor(hex: 0xF8F8F9), verticalInset: 10, horizontalInset: 13)
+    let sessionMessageTitle = PaddingLabel(radius: 4, color: .textbox1, verticalInset: 10, horizontalInset: 13)
     let sessionMessageContent = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
