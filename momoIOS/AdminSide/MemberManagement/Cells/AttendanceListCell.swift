@@ -14,7 +14,7 @@ final class AttendanceListCell: UITableViewCell {
     private let nameLabel: UILabel = UILabel()
     private let generationLabel: UILabel = UILabel()
     private let jobLabel: UILabel = UILabel()
-    private let attendanceStatusButton: UIButton = UIButton()
+    private let attendanceStatusButton: AttendanceStatusButton = AttendanceStatusButton()
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,7 +31,8 @@ final class AttendanceListCell: UITableViewCell {
     
     // MARK: - Setup
     private func setupViews() {
-        self.nameLabel.text = "홍길동"
+        let name = ["문다연", "임수현", "조수연"].randomElement() ?? "홍길동"
+        self.nameLabel.text = name
         self.nameLabel.font = .body16
         self.nameLabel.textColor = .gray800
         
@@ -43,8 +44,10 @@ final class AttendanceListCell: UITableViewCell {
         self.jobLabel.font = .body16
         self.jobLabel.textColor = .gray800
         
-        self.attendanceStatusButton.setTitle("정상출석", font: .tag2, color: .white)
-        self.attendanceStatusButton.configurate(bgColor: .attendanceCheck, cornerRadius: 6, padding: 0)
+        let status = [AttendanceStatus](arrayLiteral: .waiting, .attendance, .lateness, .noticedAbsence, .truancy).randomElement() ?? .waiting
+        self.attendanceStatusButton.name = name
+        self.attendanceStatusButton.status = status
+        self.attendanceStatusButton.delegate = self
     }
     
     // MARK: - Layout
@@ -80,5 +83,11 @@ final class AttendanceListCell: UITableViewCell {
             make.width.equalTo(57)
             make.height.equalTo(28)
         }
+    }
+}
+
+extension AttendanceListCell: AttendanceStatusButtonDelegate {
+    func didSelect(status: AttendanceStatus) {
+        self.attendanceStatusButton.status = status
     }
 }
