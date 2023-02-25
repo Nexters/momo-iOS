@@ -39,46 +39,38 @@ class MainSessionInfoCell: UITableViewCell {
         
         self.mainView.addSubviews(titleLabel, topLine, sessionTimeLabel, sessionTime, sessionPlaceLabel, sessionPlace, bottomLine, verticalLine, findRoadBtn, moreDetailBtn)
 
-        titleLabel.text = "상세 정보"
+        titleLabel.text = "상세정보"
         titleLabel.textColor = .gray800
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(600))
+        titleLabel.font = .title20
         
         topLine.backgroundColor = UIColor(hex: 0xEEEEEE)
         bottomLine.backgroundColor = UIColor(hex: 0xEEEEEE)
         verticalLine.backgroundColor = UIColor(hex: 0xEEEEEE)
         
-        findRoadBtn.setTitle("길찾기", for: .normal)
-        findRoadBtn.setTitleColor(.gray700, for: .normal)
-        findRoadBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        findRoadBtn.setImage(UIImage(named: "findRoadButton"), for: .normal)
-        findRoadBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 7)
-        findRoadBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
+        findRoadBtn.setTitle("길찾기", font: .body16, color: .gray700)
+        findRoadBtn.setImage(UIImage(named: "findRoadButton"), tintColor: .gray600, padding: 7, direction: .leading)
         
-        moreDetailBtn.setTitle("세션 상세정보", for: .normal)
-        moreDetailBtn.setTitleColor(.gray700, for: .normal)
-        moreDetailBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        moreDetailBtn.setImage(UIImage(named: "clockButton"), for: .normal)
-        moreDetailBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 7)
-        moreDetailBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
+        moreDetailBtn.setTitle("세션 상세정보", font: .body16, color: .gray700)
+        moreDetailBtn.setImage(UIImage(named: "clockButton"), tintColor: .gray600, padding: 7, direction: .leading)
         
         sessionTimeLabel.text = "시간"
         sessionTimeLabel.textColor = .main
-        sessionTimeLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        sessionTimeLabel.font = .body14
 
         sessionTime.text = "2023.01.07 토요일 오후 1:00"
         sessionTime.textAlignment = .right
         sessionTime.textColor = UIColor(hex: 0x454545)
-        sessionTime.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        sessionTime.font = .body16
         
         sessionPlaceLabel.text = "장소"
         sessionPlaceLabel.textColor = .main
-        sessionPlaceLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        sessionPlaceLabel.font = .body14
         
         sessionPlace.text = "서울특별시 강남구 역삼로 마루180 지하 1층"
         sessionPlace.textColor = UIColor(hex: 0x454545)
         sessionPlace.textAlignment = .right
         sessionPlace.numberOfLines = 0
-        sessionPlace.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        sessionPlace.font = .body16
     }
     
     private func setTopConstraints() {

@@ -146,13 +146,13 @@ class AddSessionViewController: UIViewController {
         
         let next = UIAlertAction(title: "다음", style: .default, handler: { [weak self] _ in
             self?.present(self!.endTimeAlert, animated: true)
-            self?.addSessionView.timeBtn.setTitle(dateFormatter.string(from: startDatePicker.date), size: 14, weight: .medium, color: UIColor(hex: 0x4F505C))
+            self?.addSessionView.timeBtn.setTitle(dateFormatter.string(from: startDatePicker.date), font: .body14, color: .gray700)
             self?.addSessionView.timeBtn.setBorderAnimation()
         })
         
         let confirm = UIAlertAction(title: "확인", style: .default, handler: {[weak self] _ in
             guard let str = self?.addSessionView.timeBtn.titleLabel?.text else {return}
-            self?.addSessionView.timeBtn.setTitle("\(str) ~ \(dateFormatter.string(from: endDatePicker.date))", size: 14, weight: .medium, color: UIColor(hex: 0x4F505C))
+            self?.addSessionView.timeBtn.setTitle("\(str) ~ \(dateFormatter.string(from: endDatePicker.date))", font: .body14, color: .gray700)
         })
         
         startTimeAlert.addAction(startCancel)
@@ -190,7 +190,7 @@ extension AddSessionViewController {
         formatter.dateFormat = "yyyy년 M월 dd일"
 
         self.dateAlert.dismiss(animated: true)
-        self.addSessionView.dateBtn.setTitle(formatter.string(from: sender.date), size: 14, weight: .medium, color: UIColor(hex: 0x4F505C))
+        self.addSessionView.dateBtn.setTitle(formatter.string(from: sender.date), font: .body14, color: .gray700)
         self.addSessionView.dateBtn.setBorderAnimation()
     }
     
@@ -206,15 +206,15 @@ extension AddSessionViewController {
 // MARK: - text view delegate 용 extension
 extension AddSessionViewController: UITextViewDelegate, UITextFieldDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor != UIColor(hex: 0x4F505C) {
+        if textView.textColor != .gray700 {
             textView.text.removeAll()
-            textView.textColor = UIColor(hex: 0x4F505C)
+            textView.textColor = .gray700
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.textColor = UIColor(hex: 0xB3B6C5)
+            textView.textColor = .gray500
             textView.text = "세션을 대표하는 정보를 입력해주세요"
         }
     }

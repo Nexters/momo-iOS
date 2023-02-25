@@ -26,14 +26,14 @@ class MainSessionDetailCell: UITableViewCell {
         self.contentView.addSubviews(titleLabel, topLine, sessionMessageTitle, sessionMessageContent)
         
         titleLabel.text = "무엇을 하나요?"
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(600))
+        titleLabel.font = .title20
         titleLabel.textColor = .gray800
         
         topLine.backgroundColor = UIColor(hex: 0xEEEEEE)
         
         sessionMessageTitle.text = "1주차, 우리 조를 구성해봐요!"
-        sessionMessageTitle.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        sessionMessageTitle.textColor = UIColor(hex: 0x3A3232)
+        sessionMessageTitle.font = .body16
+        sessionMessageTitle.textColor = .gray800
         sessionMessageTitle.textAlignment = .left
         sessionMessageTitle.numberOfLines = 0
         
@@ -45,7 +45,7 @@ class MainSessionDetailCell: UITableViewCell {
         let attrStr = NSMutableAttributedString(string: str)
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineSpacing = 4
-        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor.gray700, .paragraphStyle: paragraph], range: NSRange(location: 0, length: str.count))
+        attrStr.addAttributes([.font: UIFont.body14, .foregroundColor: UIColor.gray700, .paragraphStyle: paragraph], range: NSRange(location: 0, length: str.count))
         sessionMessageContent.attributedText = attrStr
     }
     
