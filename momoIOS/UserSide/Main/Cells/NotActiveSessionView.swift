@@ -71,7 +71,7 @@ import SnapKit
      }
      
      @objc func didTapAskButton(_ sender: UIButton) {
-         let url = "https://pf.kakao.com/_xdxmnnj"
+         let url = "kakaoplus://plusfriend/home/291871691"
          
          if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
              if #available(iOS 10.0, *) {
