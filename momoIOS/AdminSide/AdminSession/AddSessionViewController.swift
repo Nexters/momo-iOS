@@ -233,7 +233,7 @@ extension AddSessionViewController: UITextViewDelegate, UITextFieldDelegate {
         if textView.text.count == 1 {
             UIView.animate(withDuration: 1, delay: 0, animations: {
                 textView.layer.borderWidth = 1
-                textView.backgroundColor = UIColor(hex: 0xD5CCEE, alpha: 0.2)
+                textView.backgroundColor = .textbox2
             })
         }
         

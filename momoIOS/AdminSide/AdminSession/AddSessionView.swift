@@ -80,7 +80,7 @@ class AddSessionView {
         
         sessionImgBtn.setTitle("이미지 추가하기", font: .body18, color: .gray600)
         sessionImgBtn.setImage(UIImage(systemName: "plus.circle.fill"), tintColor: .gray600, padding: 15, direction: .trailing)
-        sessionImgBtn.configurate(bgColor: UIColor(hex: 0xE7E8EC), strokeColor: nil, strokeWidth: 0, cornerRadius: 8, padding: 10)
+        sessionImgBtn.configurate(bgColor: .pastbox, strokeColor: nil, strokeWidth: 0, cornerRadius: 8, padding: 10)
         
         registerBtn.setTitle("등록하기", font: .body18, color: .white)
         registerBtn.configurate(bgColor: .main, strokeColor: nil, strokeWidth: 0, cornerRadius: 8, padding: 10)
@@ -89,7 +89,7 @@ class AddSessionView {
         registerBtn.layer.shadowOffset = CGSize(width: 0, height: 3)
         registerBtn.layer.shadowOpacity = 0.6
         
-        weekBtn.configurate(bgColor: UIColor(hex: 0xD5CCEE, alpha: 0.2), strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
+        weekBtn.configurate(bgColor: .textbox2, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
     }
     
     private func setConstraintsTop() {
@@ -268,7 +268,7 @@ class KeyTextView: UITextView {
         let str = NSAttributedString(string: placeHolder, attributes: [.font: UIFont.body14, .foregroundColor: UIColor.gray500])
         self.textAlignment = .justified
         self.attributedText = str
-        self.backgroundColor =  UIColor(hex: 0xF8F8F9)
+        self.backgroundColor =  .textbox1
         self.layer.cornerRadius = 8
         self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
     }
@@ -298,7 +298,7 @@ class KeyTextField: UITextField {
         self.attributedPlaceholder = str
         self.textColor = .gray700
         self.font = .body14
-        self.backgroundColor = UIColor(hex: 0xF8F8F9)
+        self.backgroundColor = .textbox1
         self.layer.cornerRadius = 8
         self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
         self.addTarget(self, action: #selector(didTFChanged), for: .editingChanged)
@@ -307,7 +307,7 @@ class KeyTextField: UITextField {
     @objc func didTFChanged(_ sender: UITextField) {
         UIView.animate(withDuration: 0.3, delay: 0, animations: {
             self.layer.borderWidth = 1
-            self.backgroundColor = UIColor(hex: 0xD5CCEE, alpha: 0.2)
+            self.backgroundColor = .textbox2
         })
     }
 }
@@ -325,13 +325,13 @@ class KeyButton: UIButton {
         self.init(frame: .zero)
 
         self.setTitle(title, font: .body14, color: tintColor)
-        self.configurate(bgColor: UIColor(hex: 0xF8F8F9), strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 0, cornerRadius: 8, padding: 16)
+        self.configurate(bgColor: .textbox1, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 0, cornerRadius: 8, padding: 16)
         self.contentHorizontalAlignment = .left
     }
     
     func setBorderAnimation() {
         UIView.animate(withDuration: 0.3, delay: 0, animations: {
-            self.configurate(bgColor: UIColor(hex: 0xD5CCEE, alpha: 0.2), strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
+            self.configurate(bgColor: .textbox2, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
         })
     }
 }
