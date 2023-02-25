@@ -16,6 +16,7 @@ import SnapKit
      
      override init(frame: CGRect) {
          super.init(frame: frame)
+         self.backgroundColor = .white
          
          self.initViews()
          self.setConstraints()
@@ -36,6 +37,7 @@ import SnapKit
 
          askBtn.setTitle("문의하기", font: .body18, color: .white)
          askBtn.configurate(bgColor: .main, strokeColor: nil, strokeWidth: 0, cornerRadius: 8, padding: 10)
+         askBtn.addTarget(self, action: #selector(didTapAskButton), for: .touchUpInside)
      }
      
      private func setConstraints() {
@@ -43,7 +45,7 @@ import SnapKit
              make.width.equalTo(258)
              make.height.equalTo(256)
              make.centerX.equalToSuperview()
-             make.top.equalToSuperview().offset(80)
+             make.top.equalToSuperview().offset(176)
          }
          
          title.snp.makeConstraints { make in
@@ -66,5 +68,17 @@ import SnapKit
 
      required init?(coder: NSCoder) {
          fatalError("init(coder:) has not been implemented")
+     }
+     
+     @objc func didTapAskButton(_ sender: UIButton) {
+         let url = "https://pf.kakao.com/_xdxmnnj"
+         
+         if let openApp = URL(string: url), UIApplication.shared.canOpenURL(openApp) {
+             if #available(iOS 10.0, *) {
+                 UIApplication.shared.open(openApp, options: [:], completionHandler: nil)
+             } else {
+                 UIApplication.shared.openURL(openApp)
+             }
+         }
      }
  }

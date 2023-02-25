@@ -16,7 +16,6 @@
 		3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
 		3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713D0298946FF006F922F /* UIColor+Extension.swift */; };
-		3ABBF74829975801004D4D0B /* NotActiveSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF74729975801004D4D0B /* NotActiveSessionCell.swift */; };
 		3ABBF75129975EDA004D4D0B /* AdminSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF74E29975ED9004D4D0B /* AdminSessionCell.swift */; };
 		3ABBF75229975EDA004D4D0B /* AdminSessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF74F29975ED9004D4D0B /* AdminSessionTableViewController.swift */; };
 		3ABBF75329975EDA004D4D0B /* AddSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABBF75029975ED9004D4D0B /* AddSessionViewController.swift */; };
@@ -57,6 +56,7 @@
 		E83238EC2984FE0800DC83C2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EB2984FE0800DC83C2 /* Toast */; };
 		E83238EF2984FE3200DC83C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E83238EE2984FE3200DC83C2 /* Alamofire */; };
 		E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83238F0298506A000DC83C2 /* MainViewController.swift */; };
+		E89F6DF329AA024C00602075 /* NotActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89F6DF229AA024C00602075 /* NotActiveSessionView.swift */; };
 		E8D5C3F12984FC23003D1AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */; };
 		E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */; };
 		E8D5C3F52984FC23003D1AD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D5C3F42984FC23003D1AD0 /* ViewController.swift */; };
@@ -74,7 +74,6 @@
 		3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCodeDetailViewController.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
 		3AA713D0298946FF006F922F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		3ABBF74729975801004D4D0B /* NotActiveSessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActiveSessionCell.swift; sourceTree = "<group>"; };
 		3ABBF74E29975ED9004D4D0B /* AdminSessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSessionCell.swift; sourceTree = "<group>"; };
 		3ABBF74F29975ED9004D4D0B /* AdminSessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSessionTableViewController.swift; sourceTree = "<group>"; };
 		3ABBF75029975ED9004D4D0B /* AddSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSessionViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionInfoCell.swift; sourceTree = "<group>"; };
 		E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSessionNoInfoCell.swift; sourceTree = "<group>"; };
 		E83238F0298506A000DC83C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E89F6DF229AA024C00602075 /* NotActiveSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotActiveSessionView.swift; sourceTree = "<group>"; };
 		E8D5C3ED2984FC23003D1AD0 /* momoIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momoIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D5C3F02984FC23003D1AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D5C3F22984FC23003D1AD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,11 +193,11 @@
 				E820792A298A119900B36FC9 /* MainSessionDetailCell.swift */,
 				E820792C298A137700B36FC9 /* MainSessionTimeCell.swift */,
 				E820792E298A138500B36FC9 /* MainSessionAbsentCell.swift */,
+				E89F6DF229AA024C00602075 /* NotActiveSessionView.swift */,
 				E8207933298A22D000B36FC9 /* MainSessionInfoCell.swift */,
 				E8207935298A248100B36FC9 /* MainSessionNoInfoCell.swift */,
 				3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */,
 				3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */,
-				3ABBF74729975801004D4D0B /* NotActiveSessionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -539,11 +539,11 @@
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
 				3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
+				E89F6DF329AA024C00602075 /* NotActiveSessionView.swift in Sources */,
 				BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */,
 				3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */,
 				BF405C82299773AA00B5889D /* CommonActionButton.swift in Sources */,
 				E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */,
-				3ABBF74829975801004D4D0B /* NotActiveSessionCell.swift in Sources */,
 				3ABBF75229975EDA004D4D0B /* AdminSessionTableViewController.swift in Sources */,
 				3A72A20729A9E19300F2716A /* AddSessionView.swift in Sources */,
 				BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */,
