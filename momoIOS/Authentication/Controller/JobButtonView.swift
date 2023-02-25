@@ -7,7 +7,7 @@
 
 import UIKit
 
-class JobButtonView: UIView {
+class JobButtonView: UIButton {
     
     // MARK: - Properties
     var jobTag: Int?
@@ -34,14 +34,14 @@ class JobButtonView: UIView {
         jobLabel.textColor = jobTag == 1 ? .main : .gray500
         jobImageView.image = UIImage(named: jobName.lowercased())
         
-        self.backgroundColor = jobTag == 1 ? UIColor.rgba(237, 234, 255, 1) : .white
-        self.setupLayout()
-        
         self.layer.masksToBounds = true
-        self.layer.borderColor = jobTag == 1 ? UIColor.main.cgColor : UIColor.pastbox.cgColor
-        self.layer.borderWidth = 2
-        self.layer.cornerRadius = 8
-        self.tag = tag
+        self.configurate(bgColor: jobTag == 1 ? UIColor.rgba(237, 234, 255, 1) : .white,
+                         strokeColor: jobTag == 1 ? .main : .pastbox,
+                         strokeWidth: jobTag == 1 ? 2 : 1,
+                         cornerRadius: 8,
+                         padding: 0)
+        
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +55,8 @@ class JobButtonView: UIView {
     
     private func setupLayout() {
         self.addSubviews(jobLabel, jobImageView)
+        jobImageView.isUserInteractionEnabled = false
+        jobLabel.isUserInteractionEnabled = false
         
         jobImageView.snp.makeConstraints { make in
             make.width.equalTo(80)

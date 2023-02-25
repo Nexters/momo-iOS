@@ -23,7 +23,6 @@ class InputMemberInfoController: UIViewController {
     let jobLabel = setupAreaLabel(text: "직군을 선택해주세요")
     
     private var jobButtonView = UIStackView()
-    private var selectedButtonTag: Int = 1
     private lazy var designerButton = JobButtonView(frame: .zero, jobName: "Designer", jobTag: 1)
     private lazy var developerButton = JobButtonView(frame: .zero, jobName: "Developer", jobTag: 2)
     
@@ -44,7 +43,7 @@ class InputMemberInfoController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     // MARK: - Selectors
@@ -76,30 +75,25 @@ class InputMemberInfoController: UIViewController {
         }
     }
     
-    @objc private func handleJobSelection(sender: UITapGestureRecognizer) {
-        guard let view = sender.view as? JobButtonView else { return }
-        if view.jobTag == 1 { // designer
-            selectedButtonTag = 1
-            designerButton.backgroundColor = .rgba(237, 234, 255, 1)
-            designerButton.layer.borderColor = UIColor.main.cgColor
-            designerButton.layer.borderWidth = 2
+    @objc private func handleJobSelection(_ sender: Any) {
+        guard let selectedJob = sender as? JobButtonView else { return }
+        
+        if selectedJob.jobTag == 1 { // designer
+            designerButton.isSelected = true
             designerButton.jobLabel.textColor = .rgba(132, 112, 255, 1)
+            designerButton.configurate(bgColor: .rgba(237, 234, 255, 1), strokeColor: UIColor.main, strokeWidth: 2, cornerRadius: 8, padding: 0)
             
-            developerButton.backgroundColor = .white
-            developerButton.layer.borderColor = UIColor.pastbox.cgColor
-            developerButton.layer.borderWidth = 1
+            developerButton.isSelected = false
             developerButton.jobLabel.textColor = .gray500
+            developerButton.configurate(bgColor: .white, strokeColor: .pastbox, strokeWidth: 1, cornerRadius: 8, padding: 0)
         } else { // developer
-            selectedButtonTag = 2
-            developerButton.backgroundColor = .rgba(237, 234, 255, 1)
-            developerButton.layer.borderColor = UIColor.main.cgColor
-            developerButton.layer.borderWidth = 2
+            developerButton.isSelected = true
+            developerButton.configurate(bgColor: .rgba(237, 234, 255, 1), strokeColor: UIColor.main, strokeWidth: 2, cornerRadius: 8, padding: 0)
             developerButton.jobLabel.textColor = .rgba(132, 112, 255, 1)
             
-            designerButton.backgroundColor = .white
-            designerButton.layer.borderColor = UIColor.pastbox.cgColor
-            designerButton.layer.borderWidth = 1
+            designerButton.isSelected = false
             designerButton.jobLabel.textColor = .gray500
+            designerButton.configurate(bgColor: .white, strokeColor: .pastbox, strokeWidth: 1, cornerRadius: 8, padding: 0)
         }
     }
     
@@ -123,10 +117,8 @@ class InputMemberInfoController: UIViewController {
         jobButtonView.axis = .horizontal
         jobButtonView.spacing = 15
         
-        let designerTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleJobSelection(sender:)))
-        designerButton.addGestureRecognizer(designerTapGesture)
-        let developerTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleJobSelection(sender:)))
-        developerButton.addGestureRecognizer(developerTapGesture)
+        designerButton.addTarget(self, action: #selector(handleJobSelection), for: .touchUpInside)
+        developerButton.addTarget(self, action: #selector(handleJobSelection), for: .touchUpInside)
         
         designerButton.snp.makeConstraints { make in
             make.height.equalTo(180)
