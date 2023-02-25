@@ -10,7 +10,7 @@ import SnapKit
 
 final class MemberManagementViewController: UIViewController {
     // MARK: - Properties
-    private let pages: [UIViewController] = [MemeberListViewController(), AttendanceListViewController()]
+    private let pages: [UIViewController] = [MemberListViewController(), AttendanceListViewController()]
     
     // MARK: - UI Components
     private let memberButton: UIButton = UIButton()

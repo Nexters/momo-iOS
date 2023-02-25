@@ -13,9 +13,10 @@
 		3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20429A9E16500F2716A /* PaddingLabel.swift */; };
 		3A72A20729A9E19300F2716A /* AddSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20629A9E19300F2716A /* AddSessionView.swift */; };
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
+		3A8BDEF329AA6D66005CF633 /* MemberListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BDEF229AA6D66005CF633 /* MemberListCell.swift */; };
 		3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */; };
 		3A8FC29929A9EFEF000B9315 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FC29829A9EFEF000B9315 /* MemberManagementViewController.swift */; };
-		3A8FC29D29A9F31D000B9315 /* MemeberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FC29C29A9F31D000B9315 /* MemeberListViewController.swift */; };
+		3A8FC29D29A9F31D000B9315 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FC29C29A9F31D000B9315 /* MemberListViewController.swift */; };
 		3A8FC29F29A9F343000B9315 /* AttendanceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FC29E29A9F343000B9315 /* AttendanceListViewController.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
 		3AA713D1298946FF006F922F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713D0298946FF006F922F /* UIColor+Extension.swift */; };
@@ -75,9 +76,10 @@
 		3A72A20429A9E16500F2716A /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		3A72A20629A9E19300F2716A /* AddSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSessionView.swift; sourceTree = "<group>"; };
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
+		3A8BDEF229AA6D66005CF633 /* MemberListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListCell.swift; sourceTree = "<group>"; };
 		3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCodeDetailViewController.swift; sourceTree = "<group>"; };
 		3A8FC29829A9EFEF000B9315 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
-		3A8FC29C29A9F31D000B9315 /* MemeberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeberListViewController.swift; sourceTree = "<group>"; };
+		3A8FC29C29A9F31D000B9315 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		3A8FC29E29A9F343000B9315 /* AttendanceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceListViewController.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
 		3AA713D0298946FF006F922F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A8BDEF129AA6D55005CF633 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3A8BDEF229AA6D66005CF633 /* MemberListCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		3A8E2DDC2997697E00D5476A /* AttendanceCodeDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,9 +316,10 @@
 		BF405C7629972C0700B5889D /* MemberManagement */ = {
 			isa = PBXGroup;
 			children = (
+				3A8BDEF129AA6D55005CF633 /* Cells */,
 				BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */,
 				3A8FC29829A9EFEF000B9315 /* MemberManagementViewController.swift */,
-				3A8FC29C29A9F31D000B9315 /* MemeberListViewController.swift */,
+				3A8FC29C29A9F31D000B9315 /* MemberListViewController.swift */,
 				3A8FC29E29A9F343000B9315 /* AttendanceListViewController.swift */,
 			);
 			path = MemberManagement;
@@ -554,6 +565,7 @@
 				3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
 				E89F6DF329AA024C00602075 /* NotActiveSessionView.swift in Sources */,
+				3A8BDEF329AA6D66005CF633 /* MemberListCell.swift in Sources */,
 				BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */,
 				3A8FC29929A9EFEF000B9315 /* MemberManagementViewController.swift in Sources */,
 				3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */,
@@ -578,7 +590,7 @@
 				BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */,
 				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
-				3A8FC29D29A9F31D000B9315 /* MemeberListViewController.swift in Sources */,
+				3A8FC29D29A9F31D000B9315 /* MemberListViewController.swift in Sources */,
 				BF4310FA298C525900270DBF /* AttendanceHistoryCell.swift in Sources */,
 				3ABEDB76299771A900F9BF1C /* Collection+Extension.swift in Sources */,
 				BFC2E406299E5B22001D1E34 /* momo++Bundle.swift in Sources */,
