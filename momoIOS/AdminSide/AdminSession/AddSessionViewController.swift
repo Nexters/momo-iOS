@@ -168,13 +168,20 @@ class AddSessionViewController: UIViewController {
 // MARK: - event 처리 용 extension
 extension AddSessionViewController {
     @objc func didTapDeleteButton(_ sender: UIButton) {
-        // MARK: 삭제 로직 추가 및 custom alert vc
-        self.navigationController?.popViewController(animated: true)
+        let alert = CommonBottomAlert()
+        alert.configure(title: "세션을 삭제하시나요?", description: "삭제하신다면 세션 내용은 지워지며,\n다시 새로 등록하셔야 합니다.", cancelTitle: "취소", confirmTitle: "삭제", cancelCompletion: nil, confirmCompletion: { [weak self] in
+            // MARK: 삭제 로직 추가
+            self?.navigationController?.popViewController(animated: true)
+        })
+        alert.show()
     }
     
     @objc func didTapBackButton(_ sender: UIButton) {
-        // MARK: custom alert vc
-        self.navigationController?.popViewController(animated: true)
+        let alert = CommonBottomAlert()
+        alert.configure(title: "저장하지 않고 나가시나요?", description: "나가신다면 작성한 내용은 저장되지 않습니다.", cancelTitle: "취소", confirmTitle: "나가기", cancelCompletion: nil, confirmCompletion: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
+        alert.show()
     }
     
     @objc func didTapTimePickerBtn(_ sender: UIButton) {
