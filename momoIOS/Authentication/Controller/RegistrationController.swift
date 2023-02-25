@@ -116,10 +116,17 @@ class RegistrationController: UIViewController {
         if password.isEmpty {
             passwordTextField.layer.borderWidth = 0
         } else {
-            passwordTextField.layer.borderWidth = 1
-            passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            if !isValidPassword(password: password) {
+                validPasswordFormatLabel.text = "영문, 숫자를 포함한 8자리 이상 비밀번호를 입력해주세요"
+                passwordTextField.layer.borderWidth = 1
+                passwordTextField.layer.borderColor = UIColor(red: 241, green: 90, blue: 80, alpha: 1).cgColor
+            } else {
+                passwordTextField.layer.borderWidth = 1
+                passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            }
         }
         
+        /// passwordTextField를 새로 입력하면 checkPasswordTextField를 다시 입력하도록 합니다
         checkPasswordTextField.text?.removeAll()
         checkPasswordTextField.layer.borderWidth = 0
     }
@@ -217,7 +224,7 @@ class RegistrationController: UIViewController {
         }
         
         fieldStack.snp.makeConstraints { make in
-            make.top.equalTo(logoImage.snp.bottom).offset(50)
+            make.top.equalTo(logoImage.snp.bottom).offset(47)
             make.left.right.equalToSuperview().inset(24)
         }
         
