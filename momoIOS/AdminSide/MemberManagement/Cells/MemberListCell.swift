@@ -14,7 +14,7 @@ final class MemberListCell: UITableViewCell {
     private let nameLabel: UILabel = UILabel()
     private let generationLabel: UILabel = UILabel()
     private let jobLabel: UILabel = UILabel()
-    private let attendanceStatusButton: UIButton = UIButton()
+    private let disableButton: UIButton = UIButton()
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -23,7 +23,7 @@ final class MemberListCell: UITableViewCell {
         self.selectionStyle = .none
         self.setupViews()
         self.setupLayout()
-    }    
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,13 +43,13 @@ final class MemberListCell: UITableViewCell {
         self.jobLabel.font = .body16
         self.jobLabel.textColor = .gray800
         
-        self.attendanceStatusButton.setTitle("출석", font: .tag2, color: .white)
-        self.attendanceStatusButton.configurate(bgColor: .attendanceCheck, cornerRadius: 6, edgeInsets: .init(top: 0, leading: 11, bottom: 0, trailing: 11))
+        self.disableButton.setTitle("비활성화", font: .tag1, color: .gray800)
+        self.disableButton.configurate(bgColor: .white, strokeColor: .gray500, strokeWidth: 1, cornerRadius: 6, padding: 0)
     }
     
     // MARK: - Layout
     private func setupLayout() {
-        self.contentView.addSubviews(self.nameLabel, self.generationLabel, self.jobLabel, self.attendanceStatusButton)
+        self.contentView.addSubviews(self.nameLabel, self.generationLabel, self.jobLabel, self.disableButton)
         
         self.contentView.snp.makeConstraints { make in
             make.width.equalToSuperview()
@@ -73,7 +73,7 @@ final class MemberListCell: UITableViewCell {
             make.leading.greaterThanOrEqualTo(self.generationLabel.snp.trailing).offset(12)
         }
         
-        self.attendanceStatusButton.snp.makeConstraints { make in
+        self.disableButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.greaterThanOrEqualTo(self.jobLabel.snp.trailing).offset(12)
             make.trailing.equalToSuperview().inset(24)

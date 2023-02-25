@@ -13,8 +13,8 @@
 		3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20429A9E16500F2716A /* PaddingLabel.swift */; };
 		3A72A20729A9E19300F2716A /* AddSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20629A9E19300F2716A /* AddSessionView.swift */; };
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
-		3A8BDEF329AA6D66005CF633 /* MemberListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BDEF229AA6D66005CF633 /* MemberListCell.swift */; };
-		3A8BDEF529AA7B74005CF633 /* AttendanceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BDEF429AA7B74005CF633 /* AttendanceListCell.swift */; };
+		3A8BDEF329AA6D66005CF633 /* AttendanceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BDEF229AA6D66005CF633 /* AttendanceListCell.swift */; };
+		3A8BDEF529AA7B74005CF633 /* MemberListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BDEF429AA7B74005CF633 /* MemberListCell.swift */; };
 		3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */; };
 		3A8FC29929A9EFEF000B9315 /* MemberManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FC29829A9EFEF000B9315 /* MemberManagementViewController.swift */; };
 		3A8FC29D29A9F31D000B9315 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8FC29C29A9F31D000B9315 /* MemberListViewController.swift */; };
@@ -77,8 +77,8 @@
 		3A72A20429A9E16500F2716A /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		3A72A20629A9E19300F2716A /* AddSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSessionView.swift; sourceTree = "<group>"; };
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
-		3A8BDEF229AA6D66005CF633 /* MemberListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListCell.swift; sourceTree = "<group>"; };
-		3A8BDEF429AA7B74005CF633 /* AttendanceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceListCell.swift; sourceTree = "<group>"; };
+		3A8BDEF229AA6D66005CF633 /* AttendanceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceListCell.swift; sourceTree = "<group>"; };
+		3A8BDEF429AA7B74005CF633 /* MemberListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListCell.swift; sourceTree = "<group>"; };
 		3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCodeDetailViewController.swift; sourceTree = "<group>"; };
 		3A8FC29829A9EFEF000B9315 /* MemberManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManagementViewController.swift; sourceTree = "<group>"; };
 		3A8FC29C29A9F31D000B9315 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
@@ -162,8 +162,8 @@
 		3A8BDEF129AA6D55005CF633 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3A8BDEF229AA6D66005CF633 /* MemberListCell.swift */,
-				3A8BDEF429AA7B74005CF633 /* AttendanceListCell.swift */,
+				3A8BDEF229AA6D66005CF633 /* AttendanceListCell.swift */,
+				3A8BDEF429AA7B74005CF633 /* MemberListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -557,7 +557,7 @@
 				BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */,
 				E8D5C3F32984FC23003D1AD0 /* SceneDelegate.swift in Sources */,
 				3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */,
-				3A8BDEF529AA7B74005CF633 /* AttendanceListCell.swift in Sources */,
+				3A8BDEF529AA7B74005CF633 /* MemberListCell.swift in Sources */,
 				E83238F1298506A000DC83C2 /* MainViewController.swift in Sources */,
 				BF998900298BB0D3005723C7 /* InputMemberInfoController.swift in Sources */,
 				BF0408632987B3AA00F1129B /* LoginController.swift in Sources */,
@@ -569,7 +569,7 @@
 				3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
 				E89F6DF329AA024C00602075 /* NotActiveSessionView.swift in Sources */,
-				3A8BDEF329AA6D66005CF633 /* MemberListCell.swift in Sources */,
+				3A8BDEF329AA6D66005CF633 /* AttendanceListCell.swift in Sources */,
 				BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */,
 				3A8FC29929A9EFEF000B9315 /* MemberManagementViewController.swift in Sources */,
 				3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */,

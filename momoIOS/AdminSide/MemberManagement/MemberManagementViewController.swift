@@ -37,7 +37,7 @@ final class MemberManagementViewController: UIViewController {
         self.memberButton.setTitle("회원", font: .body18, color: .gray800)
         self.memberButton.addTarget(self, action: #selector(selectMemberButton), for: .touchUpInside)
         
-        self.attendanceButton.setTitle("참석", font: .body18, color: .gray800)
+        self.attendanceButton.setTitle("출석", font: .body18, color: .gray800)
         self.attendanceButton.addTarget(self, action: #selector(selectAttendanceButton), for: .touchUpInside)
         
         [self.memberButton, self.attendanceButton].forEach { (button: UIButton) in
