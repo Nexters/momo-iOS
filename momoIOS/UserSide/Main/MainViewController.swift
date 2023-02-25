@@ -10,7 +10,7 @@ import SnapKit
 
 class MainViewController: UIViewController {
     private let tableView: UITableView = UITableView(frame: .zero)
-    
+    private let notActiveSession = NotActiveSessionView()
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,12 @@ class MainViewController: UIViewController {
         self.tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        self.view.addSubview(notActiveSession)
+        notActiveSession.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        notActiveSession.isHidden = false
     }
     
     // MARK: - Action
