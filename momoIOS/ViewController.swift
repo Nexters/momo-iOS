@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private let registerPlaceButton = UIButton()
     private let newNextersButton: UIButton = UIButton()
     private let moimSettingButton: UIButton = UIButton()
+    private let memberManagmentButton: UIButton = UIButton()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,11 +33,12 @@ class ViewController: UIViewController {
         self.registerPlaceButton.setTitle("장소등록 화면", for: .normal)
         self.newNextersButton.setTitle("새 기수 시작 화면", for: .normal)
         self.moimSettingButton.setTitle("모임 설정 관리 화면", for: .normal)
+        self.memberManagmentButton.setTitle("회원 관리 화면", for: .normal)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.addArrangedSubviews(mainButton, otherButton, adminButton, registerPlaceButton, newNextersButton, moimSettingButton)
+        stackView.addArrangedSubviews(mainButton, otherButton, adminButton, registerPlaceButton, newNextersButton, moimSettingButton, memberManagmentButton)
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -50,6 +52,7 @@ class ViewController: UIViewController {
         self.registerPlaceButton.addTarget(self, action: #selector(goToRegisterPlaceViewController), for: .touchUpInside)
         self.newNextersButton.addTarget(self, action: #selector(goToNewNextersViewController), for: .touchUpInside)
         self.moimSettingButton.addTarget(self, action: #selector(goToMoimSettingViewController), for: .touchUpInside)
+        self.memberManagmentButton.addTarget(self, action: #selector(goToMemberManagementViewController), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -76,4 +79,8 @@ class ViewController: UIViewController {
     @objc private func goToRegisterPlaceViewController() {
         self.navigationController?.pushViewController(RegisterPlaceViewController(), animated: true)
     }
+    
+    @objc private func goToMemberManagementViewController() {
+        self.navigationController?.pushViewController(MemberManagementViewController(), animated: true)
+    }    
 }
