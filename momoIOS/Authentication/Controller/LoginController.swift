@@ -136,32 +136,32 @@ class LoginController: UIViewController {
         
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
         }
         
         logoImage.snp.makeConstraints { make in
             make.top.equalTo(welcomeTitle.snp.bottom).offset(12)
-            make.left.equalToSuperview().offset(22)
+            make.leading.equalToSuperview().offset(22)
         }
         
         emailFieldStack.snp.makeConstraints { make in
             make.top.equalTo(logoImage.snp.bottom).offset(47)
-            make.left.right.equalToSuperview().inset(24)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
         
         validEmailFormatLabel.snp.makeConstraints { make in
             make.top.equalTo(emailFieldStack.snp.bottom).offset(4)
-            make.left.equalToSuperview().offset(29)
+            make.leading.equalToSuperview().offset(29)
         }
         
         passwordFieldStack.snp.makeConstraints { make in
             make.top.equalTo(emailFieldStack.snp.bottom).offset(32)
-            make.left.right.equalToSuperview().inset(24)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
         
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(passwordFieldStack.snp.bottom).offset(24)
-            make.left.right.equalToSuperview().inset(24)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
         
         helpStack.snp.makeConstraints { make in

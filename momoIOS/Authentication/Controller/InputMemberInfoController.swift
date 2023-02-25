@@ -21,8 +21,6 @@ class InputMemberInfoController: UIViewController {
     
     // job area
     let jobLabel = setupAreaLabel(text: "직군을 선택해주세요")
-    
-    private var jobButtonView = UIStackView()
     private lazy var designerButton = JobButtonView(frame: .zero, jobName: "Designer", jobTag: 1)
     private lazy var developerButton = JobButtonView(frame: .zero, jobName: "Developer", jobTag: 2)
     
@@ -114,29 +112,13 @@ class InputMemberInfoController: UIViewController {
         self.navigationItem.titleView = title
     }
     
-    private func setupJobButtonView() {
-        jobButtonView.addArrangedSubviews(designerButton, developerButton)
-        jobButtonView.axis = .horizontal
-        jobButtonView.spacing = 15
+    private func setupViews() {
         
         designerButton.addTarget(self, action: #selector(handleJobSelection), for: .touchUpInside)
         developerButton.addTarget(self, action: #selector(handleJobSelection), for: .touchUpInside)
         
-        designerButton.snp.makeConstraints { make in
-            make.height.equalTo(180)
-            make.width.equalTo((view.frame.width - 63) / 2)
-        }
-        
-        developerButton.snp.makeConstraints { make in
-            make.height.equalTo(180)
-            make.width.equalTo((view.frame.width - 63) / 2)
-        }
-    }
-    
-    private func setupLayout() {
         yearTextField.keyboardType = .numberPad
-        self.setupJobButtonView()
-        view.addSubviews(nameLabel, nameTextField, yearLabel, yearTextField, jobLabel, jobButtonView, completeButton)
+        view.addSubviews(nameLabel, nameTextField, yearLabel, yearTextField, jobLabel, designerButton, developerButton, completeButton)
         
         completeButton.backgroundColor = .gray600
         completeButton.setTitleColor(UIColor(hex: 0xFFFFFF, alpha: 0.4), for: .normal)
@@ -146,10 +128,14 @@ class InputMemberInfoController: UIViewController {
         yearTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
         nameTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .allEditingEvents)
         yearTextField.addTarget(self, action: #selector(textFieldDidFilled), for: .allEditingEvents)
+    }
+    
+    private func setupLayout() {
+        setupViews()
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
         }
         
         nameTextField.snp.makeConstraints { make in
@@ -159,7 +145,7 @@ class InputMemberInfoController: UIViewController {
         
         yearLabel.snp.makeConstraints { make in
             make.top.equalTo(nameTextField.snp.bottom).offset(25)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
         }
         
         yearTextField.snp.makeConstraints { make in
@@ -169,12 +155,19 @@ class InputMemberInfoController: UIViewController {
         
         jobLabel.snp.makeConstraints { make in
             make.top.equalTo(yearTextField.snp.bottom).offset(24)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
         }
         
-        jobButtonView.snp.makeConstraints { make in
+        designerButton.snp.makeConstraints { make in
             make.top.equalTo(jobLabel.snp.bottom).offset(14)
-            make.horizontalEdges.equalToSuperview().inset(24)
+            make.leading.equalToSuperview().inset(24)
+            make.height.equalTo(180)
+        }
+                
+        developerButton.snp.makeConstraints { make in
+            make.top.size.equalTo(designerButton)
+            make.leading.equalTo(designerButton.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().inset(24)
         }
         
         completeButton.snp.makeConstraints { make in

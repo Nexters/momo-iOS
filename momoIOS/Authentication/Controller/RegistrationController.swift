@@ -227,17 +227,17 @@ class RegistrationController: UIViewController {
         
         welcomeTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
         }
         
         logoImage.snp.makeConstraints { make in
             make.top.equalTo(welcomeTitle.snp.bottom).offset(12)
-            make.left.equalToSuperview().offset(22)
+            make.leading.equalToSuperview().offset(22)
         }
         
         fieldStack.snp.makeConstraints { make in
             make.top.equalTo(logoImage.snp.bottom).offset(47)
-            make.left.right.equalToSuperview().inset(24)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
         
         registrationButton.snp.makeConstraints { make in

@@ -122,22 +122,22 @@ class CheckSecurityCodeController: UIViewController {
 
         titlePhrase.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
-            make.left.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(20)
         }
         
         guidePhrase.snp.makeConstraints { make in
             make.top.equalTo(titlePhrase.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
         }
         
         codeField.snp.makeConstraints { make in
             make.top.equalTo(guidePhrase.snp.bottom).offset(30)
-            make.left.right.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
         }
 
         nextButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.left.right.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
         }
         nextButton.addTarget(self, action: #selector(handleCompleteRegistration), for: .touchUpInside)
         codeField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .allEditingEvents)
