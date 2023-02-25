@@ -114,13 +114,7 @@ class LoginController: UIViewController {
     
     // MARK: - Helpers
     
-    func setupViews() {
-        emailTextField.addLeftPadding()
-        passwordTextField.addLeftPadding()
-    }
-    
     func setupLayout() {
-        setupViews()
         
         let emailFieldStack = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         emailFieldStack.axis = .vertical

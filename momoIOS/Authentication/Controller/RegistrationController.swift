@@ -58,10 +58,13 @@ class RegistrationController: UIViewController {
     
     // MARK: - Lifecycles
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = true
         passwordTextField.delegate = self
         checkPasswordTextField.delegate = self
         
@@ -187,10 +190,6 @@ class RegistrationController: UIViewController {
     }
     
     private func setupViews() {
-        emailTextField.addLeftPadding()
-        passwordTextField.addLeftPadding()
-        checkPasswordTextField.addLeftPadding()
-        
         let emailContainerView = setupEmailContainerView()
         let passwordContainerView = setupPasswordTextFieldView()
         
