@@ -8,7 +8,6 @@
 import UIKit
 
 // MARK: - Colors
-let defaultButtonColor: UIColor = .rgba(56, 56, 56, 1)
 
 // MARK: - Buttons
 func pushAnotherViewButton(subtitle: String, title: String) -> UIButton {
@@ -16,11 +15,11 @@ func pushAnotherViewButton(subtitle: String, title: String) -> UIButton {
     let attributedTitle = NSMutableAttributedString(
         string: subtitle,
         attributes: [NSAttributedString.Key.font: UIFont.body16,
-                     NSAttributedString.Key.foregroundColor: UIColor.rgba(97, 97, 97, 1)])
+                     NSAttributedString.Key.foregroundColor: UIColor.gray700])
     attributedTitle.append(NSAttributedString(
         string: "  \(title)",
         attributes: [NSAttributedString.Key.font: UIFont.body16,
-                     NSAttributedString.Key.foregroundColor: UIColor.black]))
+                     NSAttributedString.Key.foregroundColor: UIColor.gray800]))
     button.setAttributedTitle(attributedTitle, for: .normal)
     return button
 }
@@ -29,7 +28,7 @@ func pushAnotherViewButton(subtitle: String, title: String) -> UIButton {
 func setupAreaLabel(text: String) -> UILabel {
     let label = UILabel()
     label.text = "\(text)"
-    label.textColor = .rgba(86, 86, 86, 1)
+    label.textColor = UIColor(hex: 0x565656)
     label.font = .body16
     return label
 }
@@ -39,7 +38,7 @@ func setupPushHelpButton(helpType: String) -> UIButton {
     let attributedTitle = NSMutableAttributedString(
         string: "\(helpType)에 문제가 있나요?",
         attributes: [NSAttributedString.Key.font: UIFont.body16,
-                     NSAttributedString.Key.foregroundColor: UIColor.rgba(153, 153, 153, 1)])
+                     NSAttributedString.Key.foregroundColor: UIColor.gray600])
     button.setAttributedTitle(attributedTitle, for: .normal)
     return button
 }

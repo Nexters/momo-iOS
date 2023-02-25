@@ -52,7 +52,7 @@ class InputMemberInfoController: UIViewController {
         
         if text.count > 0 {
             textField.backgroundColor = .textbox2
-            textField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            textField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
             textField.layer.borderWidth = 1
         } else {
             textField.backgroundColor = .textbox1
@@ -66,7 +66,7 @@ class InputMemberInfoController: UIViewController {
         
         if name.count == 0 || year.count == 0 {
             completeButton.backgroundColor = .gray600
-            completeButton.setTitleColor(UIColor.rgba(255, 255, 255, 0.4), for: .normal)
+            completeButton.setTitleColor(UIColor(hex: 0xFFFFFF, alpha: 0.4), for: .normal)
             completeButton.isEnabled = false
         } else {
             completeButton.backgroundColor = .main
@@ -80,16 +80,16 @@ class InputMemberInfoController: UIViewController {
         
         if selectedJob.jobTag == 1 { // designer
             designerButton.isSelected = true
-            designerButton.jobLabel.textColor = .rgba(132, 112, 255, 1)
-            designerButton.configurate(bgColor: .rgba(237, 234, 255, 1), strokeColor: UIColor.main, strokeWidth: 2, cornerRadius: 8, padding: 0)
+            designerButton.jobLabel.textColor = .main
+            designerButton.configurate(bgColor: .p100, strokeColor: UIColor.main, strokeWidth: 2, cornerRadius: 8, padding: 0)
             
             developerButton.isSelected = false
             developerButton.jobLabel.textColor = .gray500
             developerButton.configurate(bgColor: .white, strokeColor: .pastbox, strokeWidth: 1, cornerRadius: 8, padding: 0)
         } else { // developer
             developerButton.isSelected = true
-            developerButton.configurate(bgColor: .rgba(237, 234, 255, 1), strokeColor: UIColor.main, strokeWidth: 2, cornerRadius: 8, padding: 0)
-            developerButton.jobLabel.textColor = .rgba(132, 112, 255, 1)
+            developerButton.jobLabel.textColor = .main
+            developerButton.configurate(bgColor: .p100, strokeColor: UIColor.main, strokeWidth: 2, cornerRadius: 8, padding: 0)
             
             designerButton.isSelected = false
             designerButton.jobLabel.textColor = .gray500
@@ -102,13 +102,15 @@ class InputMemberInfoController: UIViewController {
     private func setupCustomNav() {
         let navBar = self.navigationController?.navigationBar
         navBar?.isHidden = false
-        navBar?.tintColor = .black
+        navBar?.tintColor = .gray800
         navBar?.backIndicatorImage = UIImage(systemName: "arrow.left")
         navBar?.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left")
         navBar?.topItem?.title = ""
         
         let title = UILabel()
         title.text = "회원정보입력"
+        title.font = .body16
+        title.textColor = .gray800
         self.navigationItem.titleView = title
     }
     
@@ -137,7 +139,7 @@ class InputMemberInfoController: UIViewController {
         view.addSubviews(nameLabel, nameTextField, yearLabel, yearTextField, jobLabel, jobButtonView, completeButton)
         
         completeButton.backgroundColor = .gray600
-        completeButton.setTitleColor(UIColor.rgba(255, 255, 255, 0.4), for: .normal)
+        completeButton.setTitleColor(UIColor(hex: 0xFFFFFF, alpha: 0.4), for: .normal)
         completeButton.isEnabled = false
         
         nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)

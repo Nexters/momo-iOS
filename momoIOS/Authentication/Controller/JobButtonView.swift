@@ -35,7 +35,7 @@ class JobButtonView: UIButton {
         jobImageView.image = UIImage(named: jobName.lowercased())
         
         self.layer.masksToBounds = true
-        self.configurate(bgColor: jobTag == 1 ? UIColor.rgba(237, 234, 255, 1) : .white,
+        self.configurate(bgColor: jobTag == 1 ? UIColor.p100 : .white,
                          strokeColor: jobTag == 1 ? .main : .pastbox,
                          strokeWidth: jobTag == 1 ? 2 : 1,
                          cornerRadius: 8,

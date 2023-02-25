@@ -96,13 +96,13 @@ class RegistrationController: UIViewController {
             } else {
                 validEmailFormatLabel.text = "이메일 형식을 확인해주세요"
                 emailTextField.layer.borderWidth = 1
-                emailTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-                emailTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+                emailTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                emailTextField.backgroundColor = UIColor(hex: 0xF8F8F8)
             }
         } else {
             validEmailFormatLabel.text = ""
             emailTextField.layer.borderWidth = 1
-            emailTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            emailTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
             emailTextField.backgroundColor = .textbox2
         }
     }
@@ -123,11 +123,11 @@ class RegistrationController: UIViewController {
             if !isValidPassword(password: password) {
                 validPasswordFormatLabel.text = "영문, 숫자를 포함한 8자리 이상 비밀번호를 입력해주세요"
                 passwordTextField.layer.borderWidth = 1
-                passwordTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-                passwordTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+                passwordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                passwordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
             } else {
                 passwordTextField.layer.borderWidth = 1
-                passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+                passwordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
                 passwordTextField.backgroundColor = .textbox2
             }
         }
@@ -144,28 +144,28 @@ class RegistrationController: UIViewController {
         if !isValidPassword(password: checkPassword) {
             validPasswordFormatLabel.text = "영문, 숫자를 포함한 8자리 이상 비밀번호를 입력해주세요"
             passwordTextField.layer.borderWidth = 1
-            passwordTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-            passwordTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+            passwordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+            passwordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
             checkPasswordTextField.layer.borderWidth = 1
-            checkPasswordTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-            checkPasswordTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+            checkPasswordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+            checkPasswordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
         } else { // valid
             if password == checkPassword {
                 validPasswordFormatLabel.text = ""
                 passwordTextField.layer.borderWidth = 1
-                passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+                passwordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
                 passwordTextField.backgroundColor = .textbox2
                 checkPasswordTextField.layer.borderWidth = 1
-                checkPasswordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+                checkPasswordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
                 checkPasswordTextField.backgroundColor = .textbox2
             } else { // but incosistent
                 validPasswordFormatLabel.text = "비밀번호가 일치하지 않습니다"
                 passwordTextField.layer.borderWidth = 1
-                passwordTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-                passwordTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+                passwordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                passwordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
                 checkPasswordTextField.layer.borderWidth = 1
-                checkPasswordTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-                checkPasswordTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+                checkPasswordTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                checkPasswordTextField.backgroundColor = UIColor(hex: 0xF8F8FE)
             }
         }
     }

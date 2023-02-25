@@ -39,7 +39,7 @@ class CheckSecurityCodeController: UIViewController {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         codeField.layer.borderWidth = 1
-        codeField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+        codeField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
         codeField.backgroundColor = UIColor.textbox2
     }
     
@@ -53,7 +53,7 @@ class CheckSecurityCodeController: UIViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField.text?.count == 0 {
             nextButton.backgroundColor = .gray600
-            nextButton.setTitleColor(UIColor.rgba(255, 255, 255, 0.4), for: .normal)
+            nextButton.setTitleColor(UIColor(hex: 0xFFFFFF, alpha: 0.4), for: .normal)
             nextButton.isEnabled = false
         } else {
             nextButton.backgroundColor = .main

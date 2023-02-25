@@ -77,13 +77,13 @@ class LoginController: UIViewController {
             } else {
                 validEmailFormatLabel.text = "이메일 형식을 확인해주세요"
                 emailTextField.layer.borderWidth = 1
-                emailTextField.layer.borderColor = UIColor.rgba(241, 90, 80, 1).cgColor
-                emailTextField.backgroundColor = UIColor.rgba(248, 248, 254, 1)
+                emailTextField.layer.borderColor = UIColor(hex: 0xF15A50).cgColor
+                emailTextField.backgroundColor = UIColor(hex: 0xF8F8F8)
             }
         } else {
             validEmailFormatLabel.text = ""
             emailTextField.layer.borderWidth = 1
-            emailTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            emailTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
             emailTextField.backgroundColor = .textbox2
         }
     }
@@ -96,7 +96,7 @@ class LoginController: UIViewController {
             passwordTextField.backgroundColor = .textbox1
         } else {
             passwordTextField.layer.borderWidth = 1
-            passwordTextField.layer.borderColor = UIColor.rgba(213, 204, 238, 1).cgColor
+            passwordTextField.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
             passwordTextField.backgroundColor = .textbox2
         }
         
