@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
+		3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20429A9E16500F2716A /* PaddingLabel.swift */; };
+		3A72A20729A9E19300F2716A /* AddSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20629A9E19300F2716A /* AddSessionView.swift */; };
 		3A75FC10298827BE00B36A46 /* MainAttendanceCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */; };
 		3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */; };
 		3AA713C929884007006F922F /* MainAttendanceDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */; };
@@ -27,9 +29,9 @@
 		BF04086D2987E38C00F1129B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086C2987E38C00F1129B /* RegistrationController.swift */; };
 		BF04086F2987E70200F1129B /* CheckSecurityCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */; };
 		BF088BC5299A10B100A63A5B /* AbsenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */; };
-		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
 		BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */; };
 		BF088BCA299A188900A63A5B /* InputSecurityCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */; };
+		BF234F60299B597300E6ADBA /* RegisterPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */; };
 		BF405C7829972C4900B5889D /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */; };
 		BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */; };
 		BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF405C7F29976F9300B5889D /* CommonTextField.swift */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		3A72A20429A9E16500F2716A /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		3A72A20629A9E19300F2716A /* AddSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSessionView.swift; sourceTree = "<group>"; };
 		3A75FC0F298827BE00B36A46 /* MainAttendanceCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceCodeCell.swift; sourceTree = "<group>"; };
 		3A8E2DDE2997697E00D5476A /* AttendanceCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCodeDetailViewController.swift; sourceTree = "<group>"; };
 		3AA713C829884007006F922F /* MainAttendanceDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendanceDoneCell.swift; sourceTree = "<group>"; };
@@ -92,9 +96,9 @@
 		BF04086C2987E38C00F1129B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		BF04086E2987E70200F1129B /* CheckSecurityCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSecurityCodeController.swift; sourceTree = "<group>"; };
 		BF088BC4299A10B100A63A5B /* AbsenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenceModalViewController.swift; sourceTree = "<group>"; };
-		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
 		BF088BC7299A12FA00A63A5B /* InputMoimYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMoimYearViewController.swift; sourceTree = "<group>"; };
 		BF088BC9299A188900A63A5B /* InputSecurityCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSecurityCodeViewController.swift; sourceTree = "<group>"; };
+		BF234F5F299B597300E6ADBA /* RegisterPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPlaceViewController.swift; sourceTree = "<group>"; };
 		BF405C7729972C4900B5889D /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
 		BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTitleLabel.swift; sourceTree = "<group>"; };
 		BF405C7F29976F9300B5889D /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				BF405C7D29976DB400B5889D /* CommonTitleLabel.swift */,
 				BF405C7F29976F9300B5889D /* CommonTextField.swift */,
 				BF405C81299773AA00B5889D /* CommonActionButton.swift */,
+				3A72A20429A9E16500F2716A /* PaddingLabel.swift */,
 				BF43B57729951F0C0026DCE3 /* ProfileView.swift */,
 			);
 			path = UI;
@@ -218,6 +223,7 @@
 		3ABBF74D29975ED9004D4D0B /* AdminSession */ = {
 			isa = PBXGroup;
 			children = (
+				3A72A20629A9E19300F2716A /* AddSessionView.swift */,
 				3ABBF74E29975ED9004D4D0B /* AdminSessionCell.swift */,
 				3ABBF74F29975ED9004D4D0B /* AdminSessionTableViewController.swift */,
 				3ABBF75029975ED9004D4D0B /* AddSessionViewController.swift */,
@@ -529,6 +535,7 @@
 				BF6EC77F298D1B2E00F4B170 /* AttendanceResultCell.swift in Sources */,
 				BF405C7E29976DB400B5889D /* CommonTitleLabel.swift in Sources */,
 				BF04086B2987E34800F1129B /* AuthCommonConstants.swift in Sources */,
+				3A72A20529A9E16500F2716A /* PaddingLabel.swift in Sources */,
 				3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */,
 				BF43B57829951F0C0026DCE3 /* ProfileView.swift in Sources */,
 				3A8E2DDF2997697E00D5476A /* AttendanceCodeDetailViewController.swift in Sources */,
@@ -536,6 +543,7 @@
 				E8207934298A22D000B36FC9 /* MainSessionInfoCell.swift in Sources */,
 				3ABBF74829975801004D4D0B /* NotActiveSessionCell.swift in Sources */,
 				3ABBF75229975EDA004D4D0B /* AdminSessionTableViewController.swift in Sources */,
+				3A72A20729A9E19300F2716A /* AddSessionView.swift in Sources */,
 				BF088BC8299A12FA00A63A5B /* InputMoimYearViewController.swift in Sources */,
 				E8207932298A163400B36FC9 /* UIView+Extension.swift in Sources */,
 				BFB8431F298CFF9200BA11EC /* UIStackView+Extension.swift in Sources */,
