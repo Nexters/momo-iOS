@@ -45,6 +45,7 @@ final class MemberListCell: UITableViewCell {
         
         self.disableButton.setTitle("비활성화", font: .tag1, color: .gray800)
         self.disableButton.configurate(bgColor: .white, strokeColor: .gray500, strokeWidth: 1, cornerRadius: 6, padding: 0)
+        self.disableButton.addTarget(self, action: #selector(showDisableMemberAlert), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -80,5 +81,14 @@ final class MemberListCell: UITableViewCell {
             make.width.equalTo(57)
             make.height.equalTo(28)
         }
+    }
+    
+    // MARK: - Action
+    @objc private func showDisableMemberAlert() {
+        let alert = CommonBottomAlert()
+        alert.configure(title: "\(self.nameLabel.text ?? "홍길동")님을 비활성화 할까요?", description: "비활성화한다면 \(self.nameLabel.text ?? "홍길동")님은 \(self.generationLabel.text ?? "22기") 활동이 중단됩니다.", cancelTitle: "취소", confirmTitle: "비활성화", cancelCompletion: nil) {
+            // TODO: 비활성화 로직 추가
+        }
+        alert.show()
     }
 }
