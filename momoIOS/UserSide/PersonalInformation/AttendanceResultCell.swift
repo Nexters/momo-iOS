@@ -36,7 +36,7 @@ class AttendanceResultCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         setupCell()
     }
     

@@ -8,13 +8,12 @@
 import UIKit
 import SnapKit
 
-
 class AttendanceHistoryCell: UITableViewCell {
 
     // MARK: - Properties
     
     static let id = "AttendanceHistoryCell"
-    
+
     private let attendanceStatusContainerView = UIView()
     
     var weekLabel: UILabel = {
@@ -96,7 +95,6 @@ class AttendanceHistoryCell: UITableViewCell {
     }
     
     private func setupCell() {
-        contentView.transform = CGAffineTransformMakeRotation(-.pi)
         contentView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(24)
             make.height.greaterThanOrEqualTo(84)
@@ -104,9 +102,6 @@ class AttendanceHistoryCell: UITableViewCell {
         
         let historyDateContainerView = setupHistoryIndexView()
         setupAttendanceStatusContainerView()
-        
-        dailyAttendanceScore.text = "0"
-        dailyAttendanceScore.textColor = .attendanceCheck
         
         contentView.addSubviews(historyDateContainerView, attendanceStatusContainerView, dailyAttendanceScore)
         historyDateContainerView.snp.makeConstraints { make in

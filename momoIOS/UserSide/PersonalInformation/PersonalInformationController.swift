@@ -24,12 +24,19 @@ class PersonalInformationController: UIViewController {
        AttendanceType.AWOL: Attendance(icon: "🔴", toString: "결석 (무단)", textColor: UIColor(hex: 0xFE505B), backgroundColor: UIColor(hex: 0xFFEFEF), score: -15),
        AttendanceType.AWL: Attendance(icon: "🔴", toString: "결석 (통보)", textColor: UIColor(hex: 0xFE505B), backgroundColor: UIColor(hex: 0xFFEFEF), score: -10)]
     
+    private var numberOfHistory = 8
+    private let heightOfHistoryCell = 84
+    
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
     private lazy var baseLayer: UIImageView = {
         let layer = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
         layer.image = UIImage(named: "profileBackgroundImage")
         layer.contentMode = .scaleAspectFill
         return layer
     }()
+    
     private let profileView = ProfileView()
     private let historyTableView = UITableView()
     private let resultCollectionContainerView = UIView()
@@ -58,7 +65,10 @@ class PersonalInformationController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-
+        self.scrollView.backgroundColor = .clear
+        self.scrollView.contentInsetAdjustmentBehavior = .never
+        self.scrollView.showsVerticalScrollIndicator = false
+        self.contentView.backgroundColor = .clear
         self.setupCustomNav()
         self.setupLayout()
     }
@@ -76,6 +86,10 @@ class PersonalInformationController: UIViewController {
         self.navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(goBackToMainVC))
         navigationItem.leftBarButtonItem?.tintColor = .white
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
         // title (center)
         let title = UILabel()
@@ -96,7 +110,7 @@ class PersonalInformationController: UIViewController {
         self.resultCollectionView.delegate = self
         self.resultCollectionView.dataSource = self
         resultCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        resultCollectionView.backgroundColor = .white
+        resultCollectionView.backgroundColor = .clear
         resultCollectionView.register(AttendanceResultCell.self, forCellWithReuseIdentifier: AttendanceResultCell.id)
         resultCollectionContainerView.addSubview(resultCollectionView)
         resultCollectionView.layer.masksToBounds = false
@@ -115,14 +129,15 @@ class PersonalInformationController: UIViewController {
         historyTableView.showsVerticalScrollIndicator = false
         historyTableView.allowsSelection = false
         historyTableView.separatorStyle = .none
-        historyTableView.transform = CGAffineTransformMakeRotation(-.pi)
         historyTableView.isScrollEnabled = false
-        historyTableView.rowHeight = UITableView.automaticDimension
     }
     
     private func setupViews() {
-        view.addSubviews(baseLayer, profileView, resultCollectionContainerView)
-        view.addSubviews(tableViewHeader, borderView, historyTableView)
+        view.addSubviews(scrollView, baseLayer)
+        scrollView.addSubview(contentView)
+        contentView.addSubviews(profileView, resultCollectionContainerView, tableViewHeader, borderView, historyTableView)
+        view.sendSubviewToBack(baseLayer)
+        
         setupResultCollectionView()
         setupHistoryTableView()
     }
@@ -130,20 +145,33 @@ class PersonalInformationController: UIViewController {
     private func setupLayout() {
         setupViews()
         
+        scrollView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(view)
+            make.verticalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(2000)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            make.verticalEdges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.snp.width)
+            make.height.greaterThanOrEqualTo(view.snp.height).priority(.low)
+        }
+        
         profileView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(contentView.snp.top).offset(10)
+            make.centerX.equalTo(contentView)
             make.height.equalTo(200)
         }
         
         resultCollectionContainerView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(24)
+            make.horizontalEdges.equalTo(contentView).inset(24)
             make.top.equalTo(profileView.snp.bottom).offset(26)
             make.height.equalTo(110)
         }
         
         tableViewHeader.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
+            make.leading.equalTo(contentView.snp.leading).inset(24)
             make.top.equalTo(resultCollectionView.snp.bottom).offset(35)
         }
         
@@ -155,7 +183,8 @@ class PersonalInformationController: UIViewController {
         historyTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(borderView.snp.bottom)
-            make.bottom.equalToSuperview().offset(350)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(heightOfHistoryCell * numberOfHistory)
         }
     }
 }
@@ -173,7 +202,7 @@ extension PersonalInformationController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AttendanceHistoryCell.id, for: indexPath) as! AttendanceHistoryCell
         let data = attendanceType.randomElement()!.value
-        cell.weekLabel.text = "\(indexPath.row+1)주차 (1/7)"
+        cell.weekLabel.text = "\(8-indexPath.row)주차 (1/7)"
         cell.statusIcon.text = "\(data.icon)"
         cell.attendanceStatusLabel.text = data.toString
         cell.dailyAttendanceScore.text = "\(data.score)"
