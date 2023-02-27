@@ -8,9 +8,18 @@
 import UIKit
 import SnapKit
 
-class MoimManagementcontrolelr: UIViewController {
+class MoimManagementController: UIViewController {
     
     // MARK: - Properties
+    
+    var securityCode: String = "12345"
+    
+    private lazy var gradientBaseLayer: UIImageView = {
+        let baseLayer = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
+        baseLayer.image = UIImage(named: "profileBackgroundImage")
+        baseLayer.contentMode = .scaleAspectFill
+        return baseLayer
+    }()
     
     private let profileView = ProfileView()
     private let moimSettingTableView = UITableView()
@@ -18,49 +27,53 @@ class MoimManagementcontrolelr: UIViewController {
     private lazy var toEndThisMoimLabel: UILabel = {
         let label = UILabel()
         label.text = "현재 기수를 종료할까요?"
-        label.font = .systemFont(ofSize: 21, weight: .regular)
-        label.textColor = .rgba(37, 41, 48, 1)
+        label.font = .title20
+        label.textColor = .gray800
         return label
     }()
     
     private lazy var toEndThisMoimButton: UIButton = {
         let button = UIButton()
-        button.setTitle("종료하기", size: 16, weight: .semibold, color: .rgba(37, 41, 45, 1))
+        button.setTitle("종료하기", size: 16, weight: .w500, color: .white)
+        button.configurate(bgColor: .gray500, strokeColor: .none, strokeWidth: 0, cornerRadius: 8, padding: 0)
         button.titleLabel?.textAlignment = .center
-        button.backgroundColor = .white
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 7
-        button.layer.borderColor = UIColor.rgba(201, 201, 201, 1).cgColor
-        button.layer.borderWidth = 1
         return button
     }()
+    
+    private let alert = CommonBottomAlert()
     
     // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .rgba(245, 245, 245, 1)
-        setupCustomNav()
+        self.view.backgroundColor = UIColor(hex: 0xF6F6F6)
+        self.setupCustomNav()
         self.setupLayout()
+    }
+    
+    // MARK: - Selectors
+    
+    @objc private func toEndThisMoim() {
+        alert.show()
     }
     
     // MARK: - Helpers
     
-    private func setupCustomNav() { // TODO: 나중에 루트뷰 설정하고 삭제해야하는 코드
+    private func setupCustomNav() {
         // custom nav
         let navBar = self.navigationController?.navigationBar
-        let appearance = UINavigationBarAppearance()
-        appearance.shadowColor = .rgba(24, 24, 24, 0.16)
-        appearance.backgroundColor = .rgba(245, 245, 245, 1)
-        navBar?.scrollEdgeAppearance = appearance
+        navBar?.shadowImage = UIImage()
+        navBar?.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
-        // back button (left)
-        let title = UILabel()
-        title.text = "넥스터즈"
-        title.textColor = .rgba(56, 56, 56, 1)
-        title.font = .systemFont(ofSize: 21, weight: .bold)
-        self.navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: title)
+        // logo item (left)
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "nextersLogoWhite")?.withRenderingMode(.alwaysOriginal)
+        let logoItem = UIBarButtonItem(customView: imageView)
+        logoItem.customView?.translatesAutoresizingMaskIntoConstraints = false
+        logoItem.customView?.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        logoItem.customView?.widthAnchor.constraint(equalToConstant: 126).isActive = true
+        navigationItem.leftBarButtonItem = logoItem
     }
     
     private func setupSettingTableView() {
@@ -77,39 +90,48 @@ class MoimManagementcontrolelr: UIViewController {
     }
     
     private func setupViews() {
+        // background
+        view.addSubviews(gradientBaseLayer)
+        
         view.addSubviews(profileView, toEndThisMoimLabel, toEndThisMoimButton)
         setupSettingTableView()
+
+        alert.configure(
+            title: "현재 기수를 종료할까요?", description: "종료한다면 모든 기록들이 사라집니다.", cancelTitle: "취소", confirmTitle: "종료하기", cancelCompletion: nil, confirmCompletion: nil
+        )
+        
+        self.toEndThisMoimButton.addTarget(self, action: #selector(toEndThisMoim), for: .touchUpInside)
     }
     
     private func setupLayout() {
         setupViews()
         
         profileView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.centerX.equalToSuperview()
             make.height.equalTo(200)
         }
-        
+
         moimSettingTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
             make.top.equalTo(profileView.snp.bottom).offset(40)
             make.height.equalTo(100)
         }
-        
+
         toEndThisMoimLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(120)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(93)
+            make.leading.equalToSuperview().inset(24)
         }
-        
+
         toEndThisMoimButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(53)
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(52)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.equalTo(60)
         }
     }
 }
 
-extension MoimManagementcontrolelr: UITableViewDelegate, UITableViewDataSource {
+extension MoimManagementController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
            return 1
        }
@@ -121,6 +143,7 @@ extension MoimManagementcontrolelr: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MoimSettingCell.id) as! MoimSettingCell
         cell.settingTitle.text = indexPath.row == 0 ? "로그아웃" : "가입보안코드 확인"
+        cell.settingSubtitle.text = indexPath.row == 0 ? "→" : securityCode
         return cell
     }
 }
