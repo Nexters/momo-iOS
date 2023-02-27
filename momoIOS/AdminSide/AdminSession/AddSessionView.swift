@@ -22,7 +22,7 @@ class AddSessionView {
     let limitLabel = UILabel()
     let countLabel = UILabel()
     
-    let weekBtn = KeyButton(title: "1주차", tintColor: .gray700)
+    let weekBtn = CommonWeekSelectButton()
     let keywordTxtField = KeyTextField(placeHolder: "세션을 대표하는 키워드를 입력해주세요")
     let detailTxtField = KeyTextView(placeHolder: "세션을 대표하는 정보를 입력해주세요")
     let dateBtn = KeyButton(title: "날짜")
@@ -73,7 +73,7 @@ class AddSessionView {
         countLabel.textColor = .gray500
         countLabel.font = .body14
         
-        sessionImgView.contentMode = .scaleAspectFit
+        sessionImgView.contentMode = .scaleToFill
         
         placeBtn.addSubview(rightImg)
         rightImg.tintColor = .gray500
@@ -89,7 +89,7 @@ class AddSessionView {
         registerBtn.layer.shadowOffset = CGSize(width: 0, height: 3)
         registerBtn.layer.shadowOpacity = 0.6
         
-        weekBtn.configurate(bgColor: .textbox2, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
+        weekBtn.configurate(bgColor: .textbox2, strokeColor: .stroke, strokeWidth: 1, cornerRadius: 8, padding: 16)
     }
     
     private func setConstraintsTop() {
@@ -270,7 +270,7 @@ class KeyTextView: UITextView {
         self.attributedText = str
         self.backgroundColor =  .textbox1
         self.layer.cornerRadius = 8
-        self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
+        self.layer.borderColor = UIColor.stroke.cgColor
     }
 }
 
@@ -300,7 +300,7 @@ class KeyTextField: UITextField {
         self.font = .body14
         self.backgroundColor = .textbox1
         self.layer.cornerRadius = 8
-        self.layer.borderColor = UIColor(hex: 0xD5CCEE).cgColor
+        self.layer.borderColor = UIColor.stroke.cgColor
         self.addTarget(self, action: #selector(didTFChanged), for: .editingChanged)
     }
     
@@ -325,13 +325,13 @@ class KeyButton: UIButton {
         self.init(frame: .zero)
 
         self.setTitle(title, font: .body14, color: tintColor)
-        self.configurate(bgColor: .textbox1, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 0, cornerRadius: 8, padding: 16)
+        self.configurate(bgColor: .textbox1, strokeColor: .stroke, strokeWidth: 0, cornerRadius: 8, padding: 16)
         self.contentHorizontalAlignment = .left
     }
     
     func setBorderAnimation() {
         UIView.animate(withDuration: 0.3, delay: 0, animations: {
-            self.configurate(bgColor: .textbox2, strokeColor: UIColor(hex: 0xD5CCEE), strokeWidth: 1, cornerRadius: 8, padding: 16)
+            self.configurate(bgColor: .textbox2, strokeColor: .stroke, strokeWidth: 1, cornerRadius: 8, padding: 16)
         })
     }
 }
