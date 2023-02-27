@@ -16,11 +16,18 @@ class PersonalInformationController: UIViewController {
     private let data = [0: ("출석", 3),
                         1: ("지각", 0),
                         2: ("결석", 0)]
-    // indexPath.row: (title.text, result.text, score?.text)
+    // indexPath.row: (title.text, result.text)
     
-    private lazy var baseLayer: UIView = {
-        let layer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
-        layer.backgroundColor = UIColor(hex: 0x222328)
+    private let attendanceType: [AttendanceType: Attendance]
+    = [AttendanceType.present: Attendance(icon: "🔵", toString: "정상출석", textColor: UIColor.attendanceCheck, backgroundColor: UIColor(hex: 0x7FCBE5, alpha: 0.2), score: 0),
+       AttendanceType.late: Attendance(icon: "🟡", toString: "지각", textColor: UIColor(hex: 0xFF8E26), backgroundColor: UIColor(hex: 0xFFF8E4), score: -5),
+       AttendanceType.AWOL: Attendance(icon: "🔴", toString: "결석 (무단)", textColor: UIColor(hex: 0xFE505B), backgroundColor: UIColor(hex: 0xFFEFEF), score: -15),
+       AttendanceType.AWL: Attendance(icon: "🔴", toString: "결석 (통보)", textColor: UIColor(hex: 0xFE505B), backgroundColor: UIColor(hex: 0xFFEFEF), score: -10)]
+    
+    private lazy var baseLayer: UIImageView = {
+        let layer = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
+        layer.image = UIImage(named: "profileBackgroundImage")
+        layer.contentMode = .scaleAspectFill
         return layer
     }()
     private let profileView = ProfileView()
@@ -91,29 +98,31 @@ class PersonalInformationController: UIViewController {
         resultCollectionView.translatesAutoresizingMaskIntoConstraints = false
         resultCollectionView.backgroundColor = .white
         resultCollectionView.register(AttendanceResultCell.self, forCellWithReuseIdentifier: AttendanceResultCell.id)
-        
         resultCollectionContainerView.addSubview(resultCollectionView)
         resultCollectionView.layer.masksToBounds = false
+        resultCollectionView.isScrollEnabled = false
+        
         resultCollectionView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(resultCollectionContainerView)
             make.horizontalEdges.equalTo(resultCollectionContainerView)
         }
-        
-        view.addSubviews(resultCollectionContainerView)
     }
     
     private func setupHistoryTableView() {
         self.historyTableView.delegate = self
         self.historyTableView.dataSource = self
         self.historyTableView.register(AttendanceHistoryCell.self, forCellReuseIdentifier: AttendanceHistoryCell.id)
-        view.addSubviews(tableViewHeader, borderView, historyTableView)
         historyTableView.showsVerticalScrollIndicator = false
         historyTableView.allowsSelection = false
         historyTableView.separatorStyle = .none
+        historyTableView.transform = CGAffineTransformMakeRotation(-.pi)
+        historyTableView.isScrollEnabled = false
+        historyTableView.rowHeight = UITableView.automaticDimension
     }
     
     private func setupViews() {
-        view.addSubviews(baseLayer, profileView)
+        view.addSubviews(baseLayer, profileView, resultCollectionContainerView)
+        view.addSubviews(tableViewHeader, borderView, historyTableView)
         setupResultCollectionView()
         setupHistoryTableView()
     }
@@ -146,28 +155,33 @@ class PersonalInformationController: UIViewController {
         historyTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(borderView.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(350)
         }
     }
 }
 
 extension PersonalInformationController: UITableViewDelegate, UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
            return 1
        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: AttendanceHistoryCell.id) {
-            return cell
-        } else {
-            let cell = UITableViewCell()
-            cell.backgroundColor = .black
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: AttendanceHistoryCell.id, for: indexPath) as! AttendanceHistoryCell
+        let data = attendanceType.randomElement()!.value
+        cell.weekLabel.text = "\(indexPath.row+1)주차 (1/7)"
+        cell.statusIcon.text = "\(data.icon)"
+        cell.attendanceStatusLabel.text = data.toString
+        cell.dailyAttendanceScore.text = "\(data.score)"
+        cell.dailyAttendanceScore.verticalInset = 4
+        cell.dailyAttendanceScore.horizontalInset = 10
+        cell.dailyAttendanceScore.backgroundColor = data.backgroundColor
+        cell.dailyAttendanceScore.textColor = data.textColor
+        return cell
     }
 }
 

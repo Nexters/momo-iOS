@@ -6,55 +6,49 @@
 //
 
 import UIKit
+import SnapKit
+
 
 class AttendanceHistoryCell: UITableViewCell {
-    
+
     // MARK: - Properties
     
     static let id = "AttendanceHistoryCell"
     
-    private lazy var historyDateContainerView = setupHistoryIndexView()
     private let attendanceStatusContainerView = UIView()
     
-    private let weekLabel: UILabel = {
+    var weekLabel: UILabel = {
         let label = UILabel()
-        label.text = "1주차"
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .black
+        label.text = "1주차 (1/7)"
+        label.font = .body14
+        label.textColor = .gray600
         return label
     }()
     
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.text = "(1/7)"
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .black
-        return label
+    var statusIcon: UILabel = {
+        let icon = UILabel()
+        icon.text = "🔵"
+        icon.font = .pretendard(size: 14, weight: .w500)
+        return icon
     }()
     
-    private let attendanceStatusLabel: UILabel = {
+    var attendanceStatusLabel: UILabel = {
         let label = UILabel()
         label.text = "정상 출석"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .rgba(84, 84, 84, 1)
+        label.font = .pretendard(size: 16, weight: .w600)
+        label.textColor = .gray700
         return label
     }()
     
-    private let attendedDatetime: UILabel = {
+    var attendedDatetime: UILabel = {
         let label = UILabel()
         label.text = "2023.01.07 12:00"
-        label.font = .systemFont(ofSize: 11)
-        label.textColor = .gray
+        label.font = .body14
+        label.textColor = .gray600
         return label
     }()
     
-    private let dailyAttendanceScore: UILabel = {
-        let label = UILabel()
-        label.text = "-"
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = UIColor.rgba(84, 84, 84, 1)
-        return label
-    }()
+    var dailyAttendanceScore = PaddingLabel(radius: 5, color: UIColor(hex: 0x7FCBE5, alpha: 0.2))
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -67,40 +61,33 @@ class AttendanceHistoryCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.accessoryType = .none
+    }
+    
     // MARK: - Helpers
     
     private func setupHistoryIndexView() -> UIView {
         let historyDateContainerView = UIView()
-        historyDateContainerView.addSubviews(weekLabel, dateLabel)
+        historyDateContainerView.addSubviews(weekLabel)
         weekLabel.snp.makeConstraints { make in
             make.verticalEdges.equalTo(historyDateContainerView)
             make.left.equalTo(historyDateContainerView)
-        }
-        dateLabel.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(historyDateContainerView)
-            make.left.equalTo(weekLabel.snp.right).offset(5)
         }
         return historyDateContainerView
     }
     
     private func setupAttendanceStatusContainerView() {
-        let statusIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let statusIcon = UIImage(systemName: "checkmark.circle.fill")
-        // 결석시 x.circle.fill
-        statusIconView.image = statusIcon
-        statusIconView.tintColor = .rgba(29, 186, 83, 1)
-        statusIconView.contentMode = .scaleAspectFit
-        // 지각시 rgba(222, 185, 90, 1)
-        // 결석시 rgba(232, 32, 68, 1)
-        
-        attendanceStatusContainerView.addSubviews(statusIconView, attendanceStatusLabel, attendedDatetime)
-        statusIconView.snp.makeConstraints { make in
+        attendanceStatusContainerView.addSubviews(statusIcon, attendanceStatusLabel, attendedDatetime)
+        statusIcon.snp.makeConstraints { make in
             make.top.equalTo(attendanceStatusContainerView.snp.top)
-            make.left.equalTo(attendanceStatusContainerView.snp.left)
+            make.leading.equalTo(attendanceStatusContainerView.snp.leading)
         }
         attendanceStatusLabel.snp.makeConstraints { make in
-            make.top.equalTo(statusIconView)
-            make.left.equalTo(statusIconView.snp.right).offset(5)
+            make.top.equalTo(attendanceStatusContainerView.snp.top)
+            make.leading.equalTo(statusIcon.snp.trailing).offset(6)
         }
         attendedDatetime.snp.makeConstraints { make in
             make.top.equalTo(attendanceStatusLabel.snp.bottom).offset(5)
@@ -109,31 +96,35 @@ class AttendanceHistoryCell: UITableViewCell {
     }
     
     private func setupCell() {
+        contentView.transform = CGAffineTransformMakeRotation(-.pi)
         contentView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.height.greaterThanOrEqualTo(60)
+            make.horizontalEdges.equalToSuperview().inset(24)
+            make.height.greaterThanOrEqualTo(84)
         }
+        
         let historyDateContainerView = setupHistoryIndexView()
         setupAttendanceStatusContainerView()
+        
+        dailyAttendanceScore.text = "0"
+        dailyAttendanceScore.textColor = .attendanceCheck
         
         contentView.addSubviews(historyDateContainerView, attendanceStatusContainerView, dailyAttendanceScore)
         historyDateContainerView.snp.makeConstraints { make in
             make.centerY.equalTo(contentView)
-            make.left.equalTo(contentView).offset(15)
-            make.width.equalTo(80)
+            make.leading.equalTo(contentView)
+            make.width.equalTo(74)
         }
         
         attendanceStatusContainerView.snp.makeConstraints { make in
             make.top.equalTo(historyDateContainerView)
-            make.left.equalTo(historyDateContainerView.snp.right).offset(20)
+            make.leading.equalTo(historyDateContainerView.snp.trailing).offset(16)
             make.width.equalTo(140)
             make.height.equalTo(50)
         }
         
         dailyAttendanceScore.snp.makeConstraints { make in
             make.top.equalTo(historyDateContainerView)
-            make.right.equalTo(contentView.snp.right).offset(-15)
-            make.width.equalTo(30)
+            make.trailing.equalTo(contentView.snp.trailing)
         }
     }
     

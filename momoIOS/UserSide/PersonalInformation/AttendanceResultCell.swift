@@ -40,6 +40,10 @@ class AttendanceResultCell: UICollectionViewCell {
         setupCell()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
     // MARK: - Helpers
     private func setupCell() {
         layer.borderWidth = 1
