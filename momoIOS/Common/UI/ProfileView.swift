@@ -18,7 +18,7 @@ class ProfileView: UIView {
     
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        let image = UIImage(named: "ProfileImage")
+        let image = UIImage(named: "profileImage")
         imageView.image = image
         imageView.contentMode = .scaleToFill
         return imageView

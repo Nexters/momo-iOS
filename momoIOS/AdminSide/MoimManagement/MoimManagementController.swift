@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MoimManagementcontroller: UIViewController {
+class MoimManagementController: UIViewController {
     
     // MARK: - Properties
     
@@ -68,7 +68,7 @@ class MoimManagementcontroller: UIViewController {
         
         // logo item (left)
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "NextersLogoWhite")?.withRenderingMode(.alwaysOriginal)
+        imageView.image = UIImage(named: "nextersLogoWhite")?.withRenderingMode(.alwaysOriginal)
         let logoItem = UIBarButtonItem(customView: imageView)
         logoItem.customView?.translatesAutoresizingMaskIntoConstraints = false
         logoItem.customView?.heightAnchor.constraint(equalToConstant: 16).isActive = true
@@ -131,7 +131,7 @@ class MoimManagementcontroller: UIViewController {
     }
 }
 
-extension MoimManagementcontroller: UITableViewDelegate, UITableViewDataSource {
+extension MoimManagementController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
            return 1
        }
