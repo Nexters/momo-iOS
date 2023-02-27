@@ -147,8 +147,8 @@ class PersonalInformationController: UIViewController {
         
         scrollView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view)
-            make.verticalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(2000)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in
@@ -183,7 +183,7 @@ class PersonalInformationController: UIViewController {
         historyTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(borderView.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(30)
             make.height.equalTo(heightOfHistoryCell * numberOfHistory)
         }
     }
