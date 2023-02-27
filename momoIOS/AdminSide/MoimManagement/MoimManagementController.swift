@@ -14,9 +14,10 @@ class MoimManagementcontroller: UIViewController {
     
     var securityCode: String = "12345"
     
-    private lazy var gradientBaseLayer: UIView = {
-        let baseLayer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
-        baseLayer.backgroundColor = UIColor.rgba(34, 35, 40, 1)
+    private lazy var gradientBaseLayer: UIImageView = {
+        let baseLayer = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 197))
+        baseLayer.image = UIImage(named: "profileBackgroundImage")
+        baseLayer.contentMode = .scaleAspectFill
         return baseLayer
     }()
     
