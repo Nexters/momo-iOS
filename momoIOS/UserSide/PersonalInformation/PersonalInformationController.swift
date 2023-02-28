@@ -91,6 +91,10 @@ class PersonalInformationController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = UIColor(hex: 0x222328)
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        
         // title (center)
         let title = UILabel()
         title.text = "나의 정보"
@@ -115,6 +119,7 @@ class PersonalInformationController: UIViewController {
         resultCollectionContainerView.addSubview(resultCollectionView)
         resultCollectionView.layer.masksToBounds = false
         resultCollectionView.isScrollEnabled = false
+        resultCollectionView.contentInsetAdjustmentBehavior = .never
         
         resultCollectionView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(resultCollectionContainerView)
@@ -133,9 +138,9 @@ class PersonalInformationController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubviews(scrollView, baseLayer)
+        view.addSubviews(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(profileView, resultCollectionContainerView, tableViewHeader, borderView, historyTableView)
+        contentView.addSubviews(baseLayer, profileView, resultCollectionContainerView, tableViewHeader, borderView, historyTableView)
         view.sendSubviewToBack(baseLayer)
         
         setupResultCollectionView()
@@ -147,7 +152,7 @@ class PersonalInformationController: UIViewController {
         
         scrollView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view)
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
@@ -159,7 +164,7 @@ class PersonalInformationController: UIViewController {
         }
         
         profileView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(10)
+            make.top.equalTo(contentView.snp.top).offset(126)
             make.centerX.equalTo(contentView)
             make.height.equalTo(200)
         }
