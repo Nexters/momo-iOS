@@ -15,23 +15,16 @@ class AttendanceResultCell: UICollectionViewCell {
     
     var cellTitle: UILabel = {
         let title = UILabel()
-        title.font = .systemFont(ofSize: 15, weight: .medium)
-        title.textColor = .rgba(138, 138, 138, 1)
+        title.font = .body14
+        title.textColor = .gray600
         return title
     }()
     
     var attendanceResult: UILabel = {
         let result = UILabel()
-        result.font = .systemFont(ofSize: 40, weight: .regular)
-        result.textColor = .rgba(53, 53, 53, 1)
+        result.font = .pretendard(size: 39, weight: .w400)
+        result.textColor = .gray800
         return result
-    }()
-    
-    var resultScore: UILabel = {
-        let score = UILabel()
-        score.font = .systemFont(ofSize: 13, weight: .medium)
-        score.textColor = .rgba(217, 91, 91, 1)
-        return score
     }()
     
     // MARK: - Initializers
@@ -43,31 +36,29 @@ class AttendanceResultCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         setupCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
     
     // MARK: - Helpers
     private func setupCell() {
-        layer.shadowColor = UIColor.rgba(191, 191, 191, 1).cgColor
-        layer.shadowOpacity = 0.25
-        layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 10
-        contentView.addSubviews(cellTitle, attendanceResult, resultScore)
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(hex: 0xEBEBEB).cgColor
+        layer.cornerRadius = 8
+        contentView.addSubviews(cellTitle, attendanceResult)
         
         cellTitle.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(contentView).offset(10)
+            make.top.equalTo(contentView).offset(16)
         }
         
         attendanceResult.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(cellTitle.snp.bottom).offset(9)
-        }
-        
-        resultScore.snp.makeConstraints { make in
-            make.centerX.equalTo(contentView)
-            make.top.equalTo(attendanceResult.snp.bottom)
+            make.top.equalTo(cellTitle.snp.bottom).offset(10)
         }
     }
 }
