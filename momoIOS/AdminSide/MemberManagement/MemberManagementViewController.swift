@@ -21,12 +21,32 @@ final class MemberManagementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupNavigation()
         self.setupViews()
         self.setupLayout()
         self.selectMemberButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     // MARK: - Setup
+    private func setupNavigation() {
+        let emptyView = UIView(frame: .init(x: 0, y: 0, width: 0, height: 1))
+        let logoImage = UIImage(named: "nextersLogoBlack")
+        let logoView = UIImageView(image: logoImage)
+        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: emptyView), UIBarButtonItem(customView: logoView)]
+        
+        let addMemberButton = UIButton()
+        addMemberButton.setTitle("회원등록", font: .body16, color: .gray800)
+        addMemberButton.setImage(UIImage(named: "naviExcel"), tintColor: .clear, padding: 7, direction: .leading)
+        addMemberButton.configurate(edgeInsets: .init(top: 20, leading: 8, bottom: 20, trailing: 8))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addMemberButton)
+    }
+    
     private func setupViews() {
         self.view?.backgroundColor = .background
         self.setupButtons()
@@ -47,6 +67,7 @@ final class MemberManagementViewController: UIViewController {
             button.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         }
     }
+    
     private func setupPageViewController() {
         self.addChild(self.pageViewController)
         
@@ -63,7 +84,7 @@ final class MemberManagementViewController: UIViewController {
         self.view.addSubviews(self.memberButton, self.attendanceButton, self.pageViewController.view)
         
         self.memberButton.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(3)
             make.leading.equalTo(self.view.safeAreaLayoutGuide).inset(24)
         }
         
