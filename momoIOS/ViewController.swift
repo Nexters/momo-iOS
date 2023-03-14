@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     private let moimSettingButton: UIButton = UIButton()
     private let addIndividualMemberButton: UIButton = UIButton()
     private let memberManagmentButton: UIButton = UIButton()
+    private let adminTabbarButton: UIButton = UIButton()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,11 +37,12 @@ class ViewController: UIViewController {
         self.moimSettingButton.setTitle("모임 설정 관리 화면", for: .normal)
         self.addIndividualMemberButton.setTitle("개별 회원 등록", for: .normal)
         self.memberManagmentButton.setTitle("회원 관리 화면", for: .normal)
+        self.adminTabbarButton.setTitle("어드민 탭바로 이동", for: .normal)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.addArrangedSubviews(mainButton, otherButton, adminButton, registerPlaceButton, newNextersButton, moimSettingButton, addIndividualMemberButton, memberManagmentButton)
+        stackView.addArrangedSubviews(mainButton, otherButton, adminButton, registerPlaceButton, newNextersButton, moimSettingButton, addIndividualMemberButton, memberManagmentButton, adminTabbarButton)
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -56,6 +58,7 @@ class ViewController: UIViewController {
         self.moimSettingButton.addTarget(self, action: #selector(goToMoimSettingViewController), for: .touchUpInside)
         self.addIndividualMemberButton.addTarget(self, action: #selector(goToAddIndividualMemberViewController), for: .touchUpInside)
         self.memberManagmentButton.addTarget(self, action: #selector(goToMemberManagementViewController), for: .touchUpInside)
+        self.adminTabbarButton.addTarget(self, action: #selector(goToAdminTabBarController), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -89,5 +92,9 @@ class ViewController: UIViewController {
 
     @objc private func goToMemberManagementViewController() {
         self.navigationController?.pushViewController(MemberManagementViewController(), animated: true)
-    }    
+    }
+    
+    @objc private func goToAdminTabBarController() {
+        self.navigationController?.pushViewController(AdminTabBarController(), animated: true)
+    }
 }

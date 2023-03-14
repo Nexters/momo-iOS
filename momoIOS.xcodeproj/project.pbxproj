@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A0B570E29AAA161002D6F93 /* AttendanceResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B570D29AAA161002D6F93 /* AttendanceResultCell.swift */; };
 		3A0B571429AACD3F002D6F93 /* AddIndividualMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B571329AACD3F002D6F93 /* AddIndividualMemberViewController.swift */; };
+		3A0B571029AAAD22002D6F93 /* AdminTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B570F29AAAD22002D6F93 /* AdminTabBarController.swift */; };
 		3A5AC31029898B330080323A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AC30F29898B330080323A /* UIButton+Extension.swift */; };
 		3A72A1FF29A9D59200F2716A /* CommonBottomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */; };
 		3A72A20129A9D64A00F2716A /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		3A0B570D29AAA161002D6F93 /* AttendanceResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceResultCell.swift; sourceTree = "<group>"; };
 		3A0B571329AACD3F002D6F93 /* AddIndividualMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIndividualMemberViewController.swift; sourceTree = "<group>"; };
+		3A0B570F29AAAD22002D6F93 /* AdminTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarController.swift; sourceTree = "<group>"; };
 		3A5AC30F29898B330080323A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		3A72A1FE29A9D59200F2716A /* CommonBottomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBottomAlert.swift; sourceTree = "<group>"; };
 		3A72A20029A9D64A00F2716A /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				3ABBF74D29975ED9004D4D0B /* AdminSession */,
 				BF43B57429951CB90026DCE3 /* MoimManagement */,
 				BF405C7629972C0700B5889D /* MemberManagement */,
+				3A0B570F29AAAD22002D6F93 /* AdminTabBarController.swift */,
 			);
 			path = AdminSide;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				3A0B571429AACD3F002D6F93 /* AddIndividualMemberViewController.swift in Sources */,
 				BF405C8029976F9300B5889D /* CommonTextField.swift in Sources */,
 				BF9BC4C629AB996B006A8CB0 /* Attendance.swift in Sources */,
+				3A0B571029AAAD22002D6F93 /* AdminTabBarController.swift in Sources */,
 				BF43B57A29952AFF0026DCE3 /* MoimSettingCell.swift in Sources */,
 				E820792F298A138500B36FC9 /* MainSessionAbsentCell.swift in Sources */,
 				3A8FC29D29A9F31D000B9315 /* MemberListViewController.swift in Sources */,
