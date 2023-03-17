@@ -5,8 +5,9 @@
 //  Created by 임수현 on 2023/02/25.
 //
 
-import UIKit
+import MobileCoreServices
 import SnapKit
+import UIKit
 
 final class MemberManagementViewController: UIViewController {
     // MARK: - Properties
@@ -17,16 +18,92 @@ final class MemberManagementViewController: UIViewController {
     private let attendanceButton: UIButton = UIButton()
     private let pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
+    @available(iOS 14.0, *)
+    private var excelButtonMenu: UIMenu {
+        let actions = [
+            UIAction(
+                title: "엑셀 불러오기",
+                image: UIImage(systemName: "arrow.down.doc"),
+                handler: { [weak self] _ in
+                    self?.selectImportExcelButton()
+                }
+            ),
+            UIAction(
+                title: "엑셀 내보내기",
+                image: UIImage(systemName: "arrow.up.doc"),
+                handler: { [weak self] _ in
+                    self?.selectExportExcelButton()
+                })
+        ]
+        
+        return UIMenu(title: "", image: nil, identifier: nil, options: [], children: actions)
+    }
+    
+    private var excelButtonAlert: UIAlertController {
+        let alert = UIAlertController(title: nil, message: "회원등록", preferredStyle: .actionSheet)
+        
+        let importAction = UIAlertAction(
+            title: "엑셀 불러오기",
+            style: .default,
+            handler: { [weak self] _ in
+                self?.selectImportExcelButton()
+            }
+        )
+        let exportAction = UIAlertAction(
+            title: "엑셀 내보내기",
+            style: .default,
+            handler: { [weak self] _ in
+                self?.selectExportExcelButton()
+            }
+        )
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(importAction)
+        alert.addAction(exportAction)
+        alert.addAction(cancelAction)
+        
+        return alert
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupNavigation()
         self.setupViews()
         self.setupLayout()
         self.selectMemberButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     // MARK: - Setup
+    private func setupNavigation() {
+        let emptyView = UIView(frame: .init(x: 0, y: 0, width: 0, height: 1))
+        let logoImage = UIImage(named: "nextersLogoBlack")
+        let logoView = UIImageView(image: logoImage)
+        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: emptyView), UIBarButtonItem(customView: logoView)]
+        
+        let excelImage = UIImage(named: "naviExcel")?.withRenderingMode(.alwaysOriginal)
+        let excelButton = UIButton()
+        excelButton.setTitle("회원등록", font: .body16, color: .gray800)
+        excelButton.setImage(excelImage, tintColor: .clear, padding: 7, direction: .leading)
+        excelButton.configurate(edgeInsets: .init(top: 20, leading: 8, bottom: 20, trailing: 8))
+        
+        if #available(iOS 14.0, *) {
+            excelButton.menu = self.excelButtonMenu
+            excelButton.showsMenuAsPrimaryAction = true
+        } else {
+            excelButton.addTarget(self, action: #selector(selectExcelButton), for: .touchUpInside)
+        }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: excelButton)
+    }
+    
     private func setupViews() {
         self.view?.backgroundColor = .background
         self.setupButtons()
@@ -47,6 +124,7 @@ final class MemberManagementViewController: UIViewController {
             button.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         }
     }
+    
     private func setupPageViewController() {
         self.addChild(self.pageViewController)
         
@@ -63,7 +141,7 @@ final class MemberManagementViewController: UIViewController {
         self.view.addSubviews(self.memberButton, self.attendanceButton, self.pageViewController.view)
         
         self.memberButton.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(3)
             make.leading.equalTo(self.view.safeAreaLayoutGuide).inset(24)
         }
         
@@ -95,6 +173,24 @@ final class MemberManagementViewController: UIViewController {
         guard let attendanceViewController = self.pages[safe: 1] else { return }
         self.pageViewController.setViewControllers([attendanceViewController], direction: .forward, animated: true)
     }
+    
+    @objc private func selectExcelButton() {
+        self.present(self.excelButtonAlert, animated: true, completion: nil)
+    }
+    
+    /// 엑셀 불러오기
+    /// - 파일 선택기를 open한다.
+    /// - 서버로 전송할 스프레드시트 파일을 선택한다.
+    /// - 파일 선택 후에는 delegate의 `documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL])` 가 호출된다.
+    @objc private func selectImportExcelButton() {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeSpreadsheet)], in: .import)
+        documentPicker.delegate = self
+        self.present(documentPicker, animated: true)
+    }
+    
+    @objc private func selectExportExcelButton() {
+        
+    }
 }
 
 // MARK: - UIPageViewController Delegate, Datasource
@@ -125,5 +221,11 @@ extension MemberManagementViewController: UIPageViewControllerDelegate, UIPageVi
             self.memberButton.backgroundColor = .clear
             self.attendanceButton.backgroundColor = .white
         }
+    }
+}
+
+extension MemberManagementViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        // send to server
     }
 }
