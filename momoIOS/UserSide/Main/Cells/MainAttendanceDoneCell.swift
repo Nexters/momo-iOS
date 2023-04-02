@@ -36,6 +36,7 @@ class MainAttendanceDoneCell: UITableViewCell {
     // MARK: - Setup
     // TODO: ViewModel 바라보도록 수정 필요
     private func setupViews() {
+        self.backgroundColor = .clear
         self.cardView.backgroundColor = .rgba(128, 135, 201, 1)
         self.cardView.layer.cornerRadius = 12
         self.contentView.addSubview(self.cardView)

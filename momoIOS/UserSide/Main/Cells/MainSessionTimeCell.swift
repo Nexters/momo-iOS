@@ -23,6 +23,7 @@ class MainSessionTimeCell: UITableViewCell {
     }
     
     private func initViews() {
+        self.backgroundColor = .clear
         self.contentView.addSubviews(sessionWeekLabel, sessionDateLabel, sessionDdayLabel, bottomLine)
         
         sessionWeekLabel.text = "1주차"

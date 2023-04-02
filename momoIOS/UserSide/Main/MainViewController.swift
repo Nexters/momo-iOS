@@ -9,13 +9,15 @@ import UIKit
 import SnapKit
 
 class MainViewController: UIViewController {
+    private let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: "gradi_light"))
     private let tableView: UITableView = UITableView(frame: .zero)
     private let notActiveSession = NotActiveSessionView()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupTableView()
+        self.setupViews()
         self.setupLayout()
         self.setNavCustom()
     }
@@ -40,7 +42,14 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Setup
+    private func setupViews() {
+        self.view.backgroundColor = .white
+        self.backgroundImageView.isHidden = true
+        self.setupTableView()
+    }
+    
     private func setupTableView() {
+        self.tableView.backgroundView = self.backgroundImageView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.registerCells()
@@ -68,7 +77,7 @@ class MainViewController: UIViewController {
         notActiveSession.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        notActiveSession.isHidden = false
+        notActiveSession.isHidden = true
     }
     
     // MARK: - Action
@@ -85,12 +94,17 @@ class MainViewController: UIViewController {
         let controller = PersonalInformationController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    private func isClear(cell: UITableViewCell) -> Bool {
+        cell is MainSessionTimeCell || cell is MainAttendanceCodeCell || cell is MainAttendanceDoneCell
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 7
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -100,7 +114,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return tableView.dequeueReusableCell(withIdentifier: "MainSessionTimeCell") ?? UITableViewCell()
         case 1:
-            return tableView.dequeueReusableCell(withIdentifier: "MainAttendanceCodeCell") ?? UITableViewCell()
+            guard let codeCell = tableView.dequeueReusableCell(withIdentifier: "MainAttendanceCodeCell") as? MainAttendanceCodeCell else {
+                return UITableViewCell()
+            }
+            return codeCell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainAttendanceDoneCell") as? MainAttendanceDoneCell else {
                 return UITableViewCell()
@@ -135,5 +152,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.isClear(cell: cell) {
+            self.backgroundImageView.isHidden = false
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        for visibleCell in tableView.visibleCells {
+            if self.isClear(cell: visibleCell) { return }
+        }
+        self.backgroundImageView.isHidden = true
     }
 }
