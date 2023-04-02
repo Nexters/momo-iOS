@@ -9,13 +9,11 @@ import UIKit
 import SnapKit
 
 class MainAttendanceDoneCell: UITableViewCell {
-    private let cardView: UIView = UIView()
-    private var iconImageView: UIImageView = UIImageView()
+    private let attendanceDoneImageView: UIImageView = UIImageView(image: UIImage(named: "attendanceDone"))
     private let titleLabel: UILabel = UILabel()
-    private let timeStatusContainerView: UIView = UIView()
+    private let timeStatusContainerView: UIStackView = UIStackView()
     private let timeLabel: UILabel = UILabel()
     private let statusLabel: UILabel = UILabel()
-    private let scoreLabel: UILabel = UILabel()
     private let historyButton: UIButton = UIButton()
     
     var historyButtonAction: (() -> Void)?
@@ -37,105 +35,82 @@ class MainAttendanceDoneCell: UITableViewCell {
     // TODO: ViewModel 바라보도록 수정 필요
     private func setupViews() {
         self.backgroundColor = .clear
-        self.cardView.backgroundColor = .rgba(128, 135, 201, 1)
-        self.cardView.layer.cornerRadius = 12
-        self.contentView.addSubview(self.cardView)
-
-        self.setupIconImageView()
+        self.setupAttendanceDoneImageView()
         self.setupTitleLabel()
         self.setupTimeStatusViews()
-        self.setupScoreLabel()
         self.setupHistoryButton()
     }
     
-    private func setupIconImageView() {
-        let checkImage = UIImage(systemName: "checkmark.circle")
-        self.iconImageView.image = checkImage
-        self.iconImageView.tintColor = .white
-        self.cardView.addSubview(self.iconImageView)
+    private func setupAttendanceDoneImageView() {
+        self.attendanceDoneImageView.contentMode = .scaleAspectFit
+        self.contentView.addSubview(self.attendanceDoneImageView)
     }
     
     private func setupTitleLabel() {
         self.titleLabel.text = "출석이 완료되었습니다"
-        self.titleLabel.font = .systemFont(ofSize: 17, weight: .medium)
-        self.titleLabel.textColor = .white
-        self.cardView.addSubview(self.titleLabel)
+        self.titleLabel.font = .pretendard(size: 24, weight: .w600)
+        self.titleLabel.textColor = .gray800
+        self.contentView.addSubview(self.titleLabel)
     }
     
     private func setupTimeStatusViews() {
-        self.timeLabel.text = "2023.01.07 pm 1:30"
-        self.timeLabel.font = .systemFont(ofSize: 13, weight: .medium)
-        self.timeLabel.textColor = .white
-        self.timeStatusContainerView.addSubview(self.timeLabel)
+        self.timeStatusContainerView.axis = .horizontal
+        self.timeStatusContainerView.spacing = 8
+        self.timeStatusContainerView.alignment = .center
         
-        self.statusLabel.text = "지각😞"
-        self.statusLabel.font = .systemFont(ofSize: 13, weight: .medium)
-        self.statusLabel.textColor = .white
-        self.timeStatusContainerView.addSubview(self.statusLabel)
+        self.timeLabel.text = "2023.01.07 PM12:30"
+        self.timeLabel.font = .body16
+        self.timeLabel.textColor = .gray800
+        self.timeStatusContainerView.addArrangedSubview(self.timeLabel)
         
-        self.cardView.addSubview(self.timeStatusContainerView)
-    }
-    
-    private func setupScoreLabel() {
-        self.scoreLabel.text = "(-5점이 감점되었습니다)"
-        self.scoreLabel.font = .systemFont(ofSize: 13, weight: .regular)
-        self.scoreLabel.textColor = .white
-        self.cardView.addSubview(self.scoreLabel)
+        let view = UIView()
+        view.backgroundColor = .black
+        self.timeStatusContainerView.addArrangedSubview(view)
+        view.snp.makeConstraints { make in
+            make.width.equalTo(1)
+            make.height.equalTo(12)
+        }
+        
+        self.statusLabel.text = "정상출석 완료!" // "지각(-5점)"
+        self.statusLabel.font = .body16
+        self.statusLabel.textColor = .gray800
+        self.timeStatusContainerView.addArrangedSubview(self.statusLabel)
+        
+        self.contentView.addSubview(self.timeStatusContainerView)
     }
     
     private func setupHistoryButton() {
         self.historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
-        self.historyButton.setTitle("출석 히스토리", size: 12, weight: .medium, color: .white)
-        self.historyButton.configurate(bgColor: .white.withAlphaComponent(0.14), cornerRadius: 6, padding: 10)
-        self.cardView.addSubview(self.historyButton)        
+        self.historyButton.setTitle("출석 히스토리  →", font: .body16, color: .gray800)
+        self.historyButton.configurate(bgColor: .p200, cornerRadius: 24, edgeInsets: .init(top: 12, leading: 24, bottom: 12, trailing: 20))
+        self.contentView.addSubview(self.historyButton)
     }
     
     // MARK: - Layout
     private func setupLayout() {
-        self.cardView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(19)
-        }
-        
-        self.iconImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(31)
-            make.size.equalTo(42)
+        let screenWidth = UIScreen.main.bounds.width
+        self.attendanceDoneImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(25)
             make.centerX.equalToSuperview()
+            make.width.equalTo(163/375 * screenWidth)
+            make.height.equalTo(106/375 * screenWidth)
         }
         
         self.titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.iconImageView.snp.bottom).offset(31)
+            make.top.equalTo(self.attendanceDoneImageView.snp.bottom).offset(17)
             make.centerX.equalToSuperview()
         }
         
-        self.setupTimeStatusLabelsLayout()
         self.timeStatusContainerView.snp.makeConstraints { make in
-            make.top.equalTo(self.titleLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
-        }
-        
-        self.scoreLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.timeStatusContainerView.snp.bottom).offset(7)
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(12)
             make.centerX.equalToSuperview()
         }
         
         self.historyButton.snp.makeConstraints { make in
-            make.top.equalTo(self.scoreLabel.snp.bottom).offset(23)
-            make.bottom.equalToSuperview().inset(30)
+            make.top.equalTo(self.timeStatusContainerView.snp.bottom).offset(28)
+            make.bottom.equalToSuperview().inset(45)
             make.centerX.equalToSuperview()
         }
-    }
-    
-    private func setupTimeStatusLabelsLayout() {
-        self.timeLabel.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
-        }
-        
-        self.statusLabel.snp.makeConstraints { make in
-            make.leading.equalTo(self.timeLabel.snp.trailing).offset(7)
-            make.trailing.top.bottom.equalToSuperview()
-        }        
     }
     
     // MARK: - Actions

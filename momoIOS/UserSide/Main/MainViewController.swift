@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.updateNavAppearance()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -39,6 +40,12 @@ class MainViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItems = [location, myLocation, GPS]
         self.navigationItem.rightBarButtonItem = profile
+    }
+    
+    private func updateNavAppearance() {
+        let appearance = self.navigationController?.navigationBar.standardAppearance
+        appearance?.backgroundColor = .clear
+        navigationController?.navigationBar.standardAppearance = appearance ?? UINavigationBarAppearance()
     }
     
     // MARK: - Setup
