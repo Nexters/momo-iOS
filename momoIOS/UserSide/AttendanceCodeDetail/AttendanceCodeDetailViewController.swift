@@ -5,31 +5,25 @@
 //  Created by 임수현 on 2023/02/09.
 //
 
+import Toast
 import UIKit
 
 class AttendanceCodeDetailViewController: UIViewController {
-    private let backgroundView: UIView = UIView()
+    private let backgroundView: UIImageView = UIImageView(image: UIImage(named: "gradi_light"))
+    private let lockImageView: UIImageView = UIImageView(image: UIImage(named: "lock"))
     private let titleLabel: UILabel = UILabel()
     private let codeContainerView: UIStackView = UIStackView()
     private let codeTextFields: [UITextField] = [UITextField(), UITextField(), UITextField(), UITextField()]
     private let descriptionLabel: UILabel = UILabel()
-    private let attendButton: UIButton = UIButton()
-    
-    private var inputCodeString: String {
-        var string = ""
-        self.codeTextFields.forEach { textField in
-            string.append(textField.text ?? " ")
-        }
-        return string
-    }
+    private let indicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupKeyboardNotifications()
         self.setupViews()
         self.setupLayout()
+        self.codeTextFields.first?.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,32 +33,8 @@ class AttendanceCodeDetailViewController: UIViewController {
         self.setupNavigation()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     // MARK: - Setup
-    private func setupKeyboardNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow(_:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide(_:)),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
-    }
-    
     private func setupNavigation() {
-        let navigationBar = self.navigationController?.navigationBar
-        let appearance = navigationBar?.standardAppearance ?? UINavigationBarAppearance()
-        appearance.shadowColor = .rgba(24, 24, 24, 0.16)
-        appearance.backgroundColor = .white.withAlphaComponent(0.96)
-        navigationBar?.standardAppearance = appearance
-        
         let backButtonImage = UIImage(systemName: "arrow.left")
         let backBarButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(popViewController))
         self.navigationItem.leftBarButtonItem = backBarButton
@@ -78,15 +48,18 @@ class AttendanceCodeDetailViewController: UIViewController {
     
     private func setupViews() {
         self.view.backgroundColor = .white
-        
-        self.backgroundView.backgroundColor = .rgba(128, 135, 201, 1)
-        self.backgroundView.layer.cornerRadius = 12
+        self.lockImageView.contentMode = .scaleAspectFit
         
         self.titleLabel.text = "출석체크 코드 입력"
-        self.titleLabel.font = .systemFont(ofSize: 17, weight: .bold)
+        self.titleLabel.font = .pretendard(size: 24, weight: .w600)
         self.titleLabel.textColor = .white
         
+        self.descriptionLabel.text = "운영진이 공지해준 출석체크 코드를 입력해주세요!"
+        self.descriptionLabel.font = .body16
+        self.descriptionLabel.textColor = .init(white: 1, alpha: 0.8)
+        
         self.codeContainerView.axis = .horizontal
+        self.codeContainerView.alignment = .center
         self.codeContainerView.spacing = 14
         self.codeContainerView.distribution = .fillEqually
         
@@ -98,67 +71,66 @@ class AttendanceCodeDetailViewController: UIViewController {
             textField.keyboardType = .numberPad
             textField.delegate = self
         }
-        
-        self.descriptionLabel.text = "운영진이 공지해준 출석체크 코드를 입력해주세요!"
-        self.descriptionLabel.font = .systemFont(ofSize: 12)
-        self.descriptionLabel.textColor = .white.withAlphaComponent(0.67)
-        self.backgroundView.addSubview(self.descriptionLabel)
-        
-        self.attendButton.setTitle("출석하기", size: 16, weight: .bold, color: .white)
-        self.configureAttendButtonEnabled()
-        self.attendButton.addTarget(self, action: #selector(didTapAttendButton), for: .touchUpInside)
+        self.stopLoadingIndicator()
     }
     
     // MARK: - Layout
     private func setupLayout() {
         self.view.addSubview(self.backgroundView)
         self.backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(30)
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(24)
+            make.edges.equalToSuperview()
         }
         
-        self.backgroundView.addSubview(self.titleLabel)
+        self.view.addSubview(self.lockImageView)
+        let screenWidth = UIScreen.main.bounds.width
+        self.lockImageView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(40)
+            make.leading.equalToSuperview().inset(143/375 * screenWidth)
+            make.trailing.equalToSuperview().inset(83/375 * screenWidth)
+            make.width.equalTo(148/375 * screenWidth)
+            make.height.equalTo(107/375 * screenWidth)
+        }
+        
+        self.view.addSubview(self.titleLabel)
         self.titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(35)
+            make.top.equalTo(self.lockImageView.snp.bottom).offset(6)
             make.centerX.equalToSuperview()
         }
         
-        self.backgroundView.addSubview(self.codeContainerView)
+        self.view.addSubview(self.descriptionLabel)
+        self.descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(6)
+            make.centerX.equalToSuperview()
+        }
+        
+        self.view.addSubview(self.codeContainerView)
         self.codeContainerView.snp.makeConstraints { make in
-            make.top.equalTo(self.titleLabel.snp.bottom).offset(54)
-            make.leading.trailing.equalToSuperview().inset(53)
+            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(28)
+            make.centerX.equalToSuperview()
         }
         
         self.codeTextFields.forEach { textField in
-            let codeView = UIStackView()
-            codeView.axis = .vertical
-            let view = UIView()
-            view.backgroundColor = .white
+            let boxView = UIView()
+            boxView.layer.backgroundColor = UIColor.init(white: 1, alpha: 0.1).cgColor
+            boxView.layer.cornerRadius = 8
+            boxView.layer.borderWidth = 1
+            boxView.layer.borderColor = UIColor.init(white: 1, alpha: 0.5).cgColor
             
-            codeView.addArrangedSubviews(textField, view)
+            self.codeContainerView.addArrangedSubview(boxView)
+            boxView.snp.makeConstraints { make in
+                make.width.equalTo(56)
+                make.height.equalTo(68)
+            }
+            
+            boxView.addSubview(textField)
             textField.snp.makeConstraints { make in
-                make.width.equalTo(45)
-                make.height.equalTo(70)
+                make.edges.equalToSuperview()
             }
-            view.snp.makeConstraints { make in
-                make.width.equalTo(textField)
-                make.height.equalTo(1)
-            }
-            
-            self.codeContainerView.addArrangedSubview(codeView)
-        }
-        self.backgroundView.addSubview(self.descriptionLabel)
-        self.descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.codeContainerView.snp.bottom).offset(33)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(42)
         }
         
-        self.view.addSubview(self.attendButton)
-        self.attendButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(24)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(28)
-            make.height.equalTo(54)
+        self.view.addSubview(self.indicatorView)
+        self.indicatorView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
     
@@ -167,32 +139,52 @@ class AttendanceCodeDetailViewController: UIViewController {
         self.popViewController()
     }
     
-    private func configureAttendButtonEnabled() {
-        let isAttendButtonEnabled = {
-            for textField in self.codeTextFields where textField.text.isEmptyOrNil {
-                return false
-            }
-            return true
-        }()
+    private func requestCodeIfNeeded() {
+        // 4자리 코드 충족되었는 지 확인
+        for textField in self.codeTextFields where textField.text.isEmptyOrNil {
+            return
+        }
         
-        if isAttendButtonEnabled {
-            self.attendButton.isEnabled = true
-            self.attendButton.configurate(bgColor: .rgba(56, 56, 56, 1), cornerRadius: 7, padding: 10)
-        } else {
-            self.attendButton.isEnabled = false
-            self.attendButton.configurate(bgColor: .rgba(200, 200, 200, 1), cornerRadius: 7, padding: 10)
+        self.view.endEditing(true)
+        self.startLoadingIndicator()
+        
+        Task {
+            try await Task.sleep(nanoseconds: 2_000_000_000) // request
+            self.stopLoadingIndicator()
+            self.clearAllTextField()
+            
+            // [success]
+//            self.popViewController()
+            
+            // [fail]
+            var toastStyle = ToastStyle()
+            toastStyle.backgroundColor = .warning
+            toastStyle.cornerRadius = 0
+            let point = CGPoint(x: self.view.frame.width / 2, y: 500)
+            self.view.makeToast("출석체크 코드를 확인해주세요", duration: 2, point: point, title: nil, image: nil, style: toastStyle, completion: nil)
+            self.codeTextFields.first?.becomeFirstResponder()
         }
     }
     
     @objc private func popViewController(animated: Bool = true) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    private func startLoadingIndicator() {
+        self.indicatorView.isHidden = false
+        self.indicatorView.startAnimating()
+    }
+    
+    private func stopLoadingIndicator() {
+        self.indicatorView.stopAnimating()
+        self.indicatorView.isHidden = true
+    }
 }
 
 // MARK: - UITextFieldDelegate
 extension AttendanceCodeDetailViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        defer { self.configureAttendButtonEnabled() }
+        defer { self.requestCodeIfNeeded() }
         
         let currentText = textField.text ?? ""
         let newText = range.lowerBound == 0 ? string : currentText.replaced(string, in: range) ?? ""
@@ -207,13 +199,6 @@ extension AttendanceCodeDetailViewController: UITextFieldDelegate {
     }
     
     // MARK: - TextField Values
-    private var isEditingCode: Bool {
-        for textField in self.codeTextFields where textField.isEditing == true {
-            return true
-        }
-        return false
-    }
-    
     private func textFieldIndex(of textField: UITextField) -> Int? {
         for index in 0..<self.codeTextFields.count {
             if textField == self.codeTextFields[index] {
@@ -234,24 +219,6 @@ extension AttendanceCodeDetailViewController: UITextFieldDelegate {
     }
     
     // MARK: - TextField Actions
-    @objc private func keyboardWillShow(_ notification: NSNotification) {
-        if self.isEditingCode {
-            self.attendButton.moveWithKeyboard(
-                willShow: true,
-                notification: notification,
-                safeAreaBottomInset: self.view.safeAreaInsets.bottom
-            )
-        }
-    }
-    
-    @objc private func keyboardWillHide(_ notification: NSNotification) {
-        self.attendButton.moveWithKeyboard(
-            willShow: false,
-            notification: notification,
-            safeAreaBottomInset: self.view.safeAreaInsets.bottom
-        )
-    }
-    
     private func fillTextField(_ textField: UITextField, with string: String) {
         let string = string.trimmingCharacters(in: CharacterSet(charactersIn: "0123456789.").inverted)
         guard !string.isEmpty else { return }
@@ -275,8 +242,24 @@ extension AttendanceCodeDetailViewController: UITextFieldDelegate {
         }
     }
     
+    private func clearAllTextField() {
+        self.codeTextFields.forEach { textField in
+            textField.text = ""
+        }
+    }
+    
     private func setCursor(of textField: UITextField, at position: Int) {
         let position = textField.position(from: textField.beginningOfDocument, offset: position)!
         textField.selectedTextRange = textField.textRange(from: position, to: position)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.superview?.layer.borderColor = UIColor.main.cgColor
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.superview?.layer.borderColor = UIColor.init(white: 1, alpha: 0.5).cgColor
+        return true
     }
 }
