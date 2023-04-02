@@ -157,13 +157,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if self.isClear(cell: cell) {
             self.backgroundImageView.isHidden = false
+        } else if tableView.isLast(for: indexPath) {
+            self.backgroundImageView.isHidden = true
         }
-    }
-
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        for visibleCell in tableView.visibleCells {
-            if self.isClear(cell: visibleCell) { return }
-        }
-        self.backgroundImageView.isHidden = true
     }
 }
